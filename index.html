@@ -10,97 +10,52 @@
         body { background: #f0f2f5; color: #1c2d42; min-height: 100vh; overflow-x: hidden; }
 
         .cpa-banner-header {
-            background: linear-gradient(rgba(15, 23, 42, 0.75), rgba(15, 23, 42, 0.85)),
+            background: linear-gradient(rgba(15, 23, 42, 0.85), rgba(15, 23, 42, 0.95)),
                         url('https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&w=1800&q=80') center/cover no-repeat;
-            color: white;
-            padding: 12px 20px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            border-bottom: 4px solid #2563eb;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.2);
-            position: sticky;
-            top: 0;
-            z-index: 100;
+            color: white; padding: 12px 20px; display: flex; justify-content: space-between; align-items: center;
+            border-bottom: 4px solid #2563eb; box-shadow: 0 4px 20px rgba(0,0,0,0.2); position: sticky; top: 0; z-index: 100;
         }
         .banner-logo-area { display: flex; align-items: center; gap: 12px; }
-        .banner-logo-img { height: 40px; width: auto; object-fit: contain; background: #ffffff; padding: 3px; border-radius: 6px; box-shadow: 0 2px 5px rgba(0,0,0,0.2); }
-        .banner-title-text h1 { font-size: 15px; font-weight: 700; letter-spacing: 0.5px; color: #f8fafc; }
-        .banner-title-text p { font-size: 10px; color: #94a3b8; text-transform: uppercase; letter-spacing: 1.2px; margin-top: 1px; }
+        .banner-title-text h1 { font-size: 15px; font-weight: 700; color: #f8fafc; }
+        .banner-title-text p { font-size: 10px; color: #94a3b8; text-transform: uppercase; letter-spacing: 1px; }
 
         .banner-nav-btns { display: flex; align-items: center; gap: 10px; }
-        .banner-nav-btns button {
-            background: #dc2626; color: white; border: none; padding: 6px 14px;
-            border-radius: 6px; cursor: pointer; font-weight: 600; font-size: 11px; transition: 0.2s;
-            box-shadow: 0 2px 6px rgba(220, 38, 38, 0.3);
-        }
-        .banner-nav-btns button:hover { background: #b91c1c; }
+        .btn-danger { background: #dc2626; color: white; border: none; padding: 6px 14px; border-radius: 6px; cursor: pointer; font-weight: 600; font-size: 11px; }
 
-        .hero {
-            min-height: 85vh;
-            background: linear-gradient(rgba(240, 242, 245, 0.9), rgba(240, 242, 245, 0.9)),
-                        url('https://images.unsplash.com/photo-1578575437130-527eed3abbec?auto=format&fit=crop&w=1600&q=80') center/cover no-repeat;
-            display: flex; flex-direction: column; padding: 30px 5%;
-            gap: 25px;
-        }
-        .hero-top-section {
-            display: flex; align-items: center; justify-content: space-between; gap: 30px; width: 100%;
-        }
+        /* Hero / Login Screen */
+        .hero { min-height: 85vh; padding: 30px 5%; display: flex; flex-direction: column; gap: 25px; }
+        .hero-top-section { display: flex; align-items: center; justify-content: space-between; gap: 30px; flex-wrap: wrap; }
         .hero-text { max-width: 550px; }
-        .hero-text h1 { font-size: 26px; color: #0f172a; margin-bottom: 10px; font-weight: 700; line-height: 1.3; }
-        .hero-text p { color: #475569; font-size: 13px; line-height: 1.6; margin-bottom: 15px; }
+        .hero-text h1 { font-size: 26px; color: #0f172a; margin-bottom: 10px; font-weight: 700; }
         .company-badge { background: #dbeafe; color: #1e40af; padding: 5px 12px; border-radius: 20px; font-size: 11px; font-weight: 700; display: inline-block; margin-bottom: 10px; }
 
-        .auth-card {
-            background: #ffffff; border: 1px solid #e2e8f0;
-            padding: 22px; border-radius: 12px; width: 100%; max-width: 380px; box-shadow: 0 10px 25px rgba(0,0,0,0.08);
-            flex-shrink: 0;
-        }
+        .auth-card { background: #ffffff; border: 1px solid #e2e8f0; padding: 22px; border-radius: 12px; width: 100%; max-width: 380px; box-shadow: 0 10px 25px rgba(0,0,0,0.08); }
         .auth-title { font-size: 15px; font-weight: 700; color: #0f172a; margin-bottom: 12px; border-bottom: 2px solid #f1f5f9; padding-bottom: 6px; }
         .form-group { margin-bottom: 10px; }
         .form-group label { display: block; font-size: 11px; margin-bottom: 3px; color: #334155; font-weight: 600; }
-        .form-control {
-            width: 100%; padding: 8px 12px; background: #f8fafc;
-            border: 1px solid #cbd5e1; border-radius: 6px; color: #0f172a; font-size: 12px; outline: none;
-        }
-        .form-control:focus { border-color: #2563eb; background: #ffffff; }
-        .forgot-link { display: block; font-size: 11px; color: #2563eb; text-decoration: none; margin-top: 4px; text-align: right; cursor: pointer; font-weight: 600; }
+        .form-control { width: 100%; padding: 8px 12px; background: #f8fafc; border: 1px solid #cbd5e1; border-radius: 6px; font-size: 12px; outline: none; }
 
-        .container-search-section {
-            background: #ffffff; border-radius: 12px; padding: 20px; border: 1px solid #e2e8f0;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.03); width: 100%;
-        }
-        .search-box-wrapper {
-            display: flex; gap: 10px; margin-top: 10px; margin-bottom: 15px; flex-wrap: wrap;
-        }
-        .search-input-field {
-            flex: 1; min-width: 260px; padding: 10px 14px; font-size: 13px; border: 2px solid #2563eb; border-radius: 8px; outline: none; background: #f8fafc; font-weight: 600; color: #0f172a;
-        }
+        /* Main Dashboard Screen */
+        #dashboard-view { display: none; padding: 20px 5%; }
+        .dashboard-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 15px; margin-bottom: 20px; }
+        .stat-card { background: white; padding: 18px; border-radius: 10px; border-left: 5px solid #2563eb; box-shadow: 0 2px 10px rgba(0,0,0,0.04); }
+        .stat-card h4 { font-size: 12px; color: #64748b; margin-bottom: 5px; }
+        .stat-card .value { font-size: 22px; font-weight: 700; color: #0f172a; }
 
-        .public-live-section {
-            background: #ffffff; border-radius: 12px; padding: 20px; border: 1px solid #e2e8f0;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.03); width: 100%;
-        }
-        .public-live-section h3 { color: #0f172a; font-size: 15px; font-weight: 700; margin-bottom: 12px; display: flex; align-items: center; gap: 8px; }
+        .panel-box { background: white; border-radius: 10px; padding: 20px; margin-bottom: 20px; box-shadow: 0 2px 10px rgba(0,0,0,0.04); }
+        .panel-box h3 { font-size: 15px; color: #0f172a; margin-bottom: 15px; border-bottom: 1px solid #f1f5f9; padding-bottom: 8px; }
 
-        table { width: 100%; border-collapse: collapse; font-size: 12px; text-align: left; min-width: 600px; }
+        table { width: 100%; border-collapse: collapse; font-size: 12px; text-align: left; }
         th, td { padding: 10px 12px; border: 1px solid #e2e8f0; white-space: nowrap; }
         th { background: #f8fafc; color: #475569; font-weight: 700; }
-        tr:hover { background: #f8fafc; }
 
-        .cpa-btn {
-            border: none; padding: 8px 16px; border-radius: 6px; font-weight: 600; font-size: 12px;
-            cursor: pointer; width: fit-content; color: white; display: inline-flex; align-items: center; gap: 6px;
-        }
+        .cpa-btn { border: none; padding: 8px 16px; border-radius: 6px; font-weight: 600; font-size: 12px; cursor: pointer; color: white; }
         .cpa-btn-blue { background: #2563eb; }
-        .cpa-btn-blue:hover { background: #1d4ed8; }
+        .cpa-btn-green { background: #16a34a; }
 
         @media(max-width: 600px) {
             .hero-top-section { flex-direction: column; }
-            .hero-text { text-align: center; }
-            .cpa-banner-header { padding: 10px 15px; }
-            .banner-title-text h1 { font-size: 13px; }
-            .banner-title-text p { display: none; }
+            #dashboard-view { padding: 15px 3%; }
         }
     </style>
 </head>
@@ -108,77 +63,168 @@
 
     <header class="cpa-banner-header">
         <div class="banner-logo-area">
-            <img src="https://via.placeholder.com/150?text=HSAT+Logo" alt="HSAT Logo" class="banner-logo-img">
             <div class="banner-title-text">
                 <h1>HAJI SABER AHMED TIMBER CO., LTD</h1>
-                <p>HSAT Community System & Terminal Port Operation</p>
+                <p>HSAT Terminal Operations Management</p>
             </div>
         </div>
         <div class="banner-nav-btns">
             <span id="user-display" style="font-size:12px; color:#38bdf8; font-weight:bold; display:none;"></span>
-            <button id="logout-btn" onclick="logout()" style="display:none;">Logout</button>
+            <button id="logout-btn" class="btn-danger" onclick="logout()" style="display:none;">Logout</button>
         </div>
     </header>
 
+    <!-- LOGIN SCREEN -->
     <div class="hero" id="home-view">
         <div class="hero-top-section">
             <div class="hero-text">
                 <span class="company-badge">PORT COMMUNITY SYSTEM (HSAT)</span>
-                <h1>STREAMLINING PORT SERVICE & ENHANCING CONNECTIVITY</h1>
-                <p>আমাদের পোর্টের স্মার্ট পোর্টালে আপনাকে স্বাগতম। কন্টেইনার ডেলিভারি চালান, ইম্পোর্ট EIR, এম্পটি স্টক, পরিবহন ট্রিপ ম্যানেজমেন্ট এবং লাইভ ভেসেল আপডেট দেখুন।</p>
+                <h1>DELIVER CHALLAN & TERMINAL MANAGEMENT SYSTEM</h1>
+                <p>আমাদের পোর্টের ডিজিটালি চালান ও কন্টেইনার ম্যানেজমেন্ট সিস্টেমে আপনাকে স্বাগতম।</p>
             </div>
 
             <div class="auth-card">
                 <div class="auth-title">System Login</div>
-
                 <form id="login-form" onsubmit="handleLogin(event)">
                     <div class="form-group">
                         <label>User Name</label>
-                        <input type="text" id="login-user" class="form-control" required placeholder="User Name">
+                        <input type="text" id="login-user" class="form-control" required placeholder="admin">
                     </div>
                     <div class="form-group">
                         <label>Password</label>
-                        <input type="password" id="login-pass" class="form-control" required placeholder="Password">
-                        <a class="forgot-link" onclick="handleForgotPassword()">Forget Password 🔑</a>
+                        <input type="password" id="login-pass" class="form-control" required placeholder="123456">
                     </div>
-                    <button type="submit" class="cpa-btn cpa-btn-blue" style="width: 100%; justify-content:center; margin-top: 6px;">Login</button>
+                    <button type="submit" class="cpa-btn cpa-btn-blue" style="width: 100%; margin-top: 6px;">Login to Dashboard</button>
                 </form>
             </div>
         </div>
+    </div>
 
-        <div class="container-search-section">
-            <h3>🔍 Container Live Tracking & Details Search</h3>
-            <p style="font-size: 12px; color: #64748b; margin-bottom: 8px;">এখানে কন্টেইনার নম্বর লিখে বা পেস্ট করে সার্চ করুন।</p>
-            <div class="search-box-wrapper">
-                <input type="text" id="main-search-input" class="search-input-field" placeholder="Enter or Paste Container No. here..." oninput="handleMainContainerSearch()">
-                <button class="cpa-btn cpa-btn-blue" onclick="handleMainContainerSearch()">Search Container</button>
+    <!-- MAIN TERMINAL DASHBOARD -->
+    <div id="dashboard-view">
+        <div class="dashboard-grid">
+            <div class="stat-card" style="border-left-color: #2563eb;">
+                <h4>Total Containers Today</h4>
+                <div class="value">48 TEUs</div>
             </div>
-            
-            <div id="search-result-container" style="display:none; margin-top: 15px;">
-                <h4 style="font-size: 13px; color: #1e293b; margin-bottom: 8px; font-weight: 700;">📌 Search Results Found:</h4>
-                <div style="overflow-x: auto;">
-                    <table>
-                        <thead>
-                            <tr>
-                                <th>Source Module</th>
-                                <th>Container No</th>
-                                <th>Details / Info</th>
-                                <th>Size / Type</th>
-                                <th>Vehicle / Trailer</th>
-                                <th>Date / Time</th>
-                            </tr>
-                        </thead>
-                        <tbody id="main-search-result-body"></tbody>
-                    </table>
-                </div>
+            <div class="stat-card" style="border-left-color: #16a34a;">
+                <h4>Delivered Challan</h4>
+                <div class="value">32</div>
+            </div>
+            <div class="stat-card" style="border-left-color: #eab308;">
+                <h4>Pending Operations</h4>
+                <div class="value">16</div>
+            </div>
+            <div class="stat-card" style="border-left-color: #dc2626;">
+                <h4>Gate Out Today</h4>
+                <div class="value">28 Trucks</div>
             </div>
         </div>
 
-        <div class="public-live-section">
-            <h3>⚓ Live Daily Vessel Update Information</h3>
+        <!-- NEW CHALLAN FORM -->
+        <div class="panel-box">
+            <h3>📑 Generate New Deliver Challan</h3>
+            <form onsubmit="generateChallan(event)" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 12px;">
+                <div>
+                    <label style="font-size:11px; font-weight:600;">Container No.</label>
+                    <input type="text" id="c-no" class="form-control" placeholder="e.g. MSKU1234567" required>
+                </div>
+                <div>
+                    <label style="font-size:11px; font-weight:600;">Size / Type</label>
+                    <input type="text" id="c-size" class="form-control" placeholder="40ft High Cube" required>
+                </div>
+                <div>
+                    <label style="font-size:11px; font-weight:600;">Truck / Trailer No.</label>
+                    <input type="text" id="c-truck" class="form-control" placeholder="Chatto-Metro-T-11-2030" required>
+                </div>
+                <div>
+                    <label style="font-size:11px; font-weight:600;">Driver Name & Contact</label>
+                    <input type="text" id="c-driver" class="form-control" placeholder="Driver Name & Phone" required>
+                </div>
+                <div style="grid-column: 1 / -1;">
+                    <button type="submit" class="cpa-btn cpa-btn-green">Create & Print Deliver Challan</button>
+                </div>
+            </form>
+        </div>
+
+        <!-- LIVE OPERATIONS TABLE -->
+        <div class="panel-box">
+            <h3>⚓ Active Terminal Deliveries</h3>
             <div style="overflow-x: auto;">
                 <table>
                     <thead>
+                        <tr>
+                            <th>Challan ID</th>
+                            <th>Container No</th>
+                            <th>Size/Type</th>
+                            <th>Trailer No</th>
+                            <th>Status</th>
+                            <th>Time Stamp</th>
+                        </tr>
+                    </thead>
+                    <tbody id="challan-list">
+                        <tr>
+                            <td>#HSAT-1001</td>
+                            <td>TGBU9823410</td>
+                            <td>40ft HC</td>
+                            <td>Chatto-T-12-8840</td>
+                            <td><span style="background:#dcfce7; color:#15803d; padding:2px 8px; border-radius:10px; font-size:10px; font-weight:bold;">Gate Out</span></td>
+                            <td>2026-09-22 04:15 AM</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function handleLogin(e) {
+            e.preventDefault();
+            var user = document.getElementById('login-user').value;
+            var pass = document.getElementById('login-pass').value;
+
+            if (user === "admin" && pass === "123456") {
+                document.getElementById('home-view').style.display = 'none';
+                document.getElementById('dashboard-view').style.display = 'block';
+                document.getElementById('user-display').style.display = 'inline-block';
+                document.getElementById('user-display').innerText = 'Logged in as: ' + user;
+                document.getElementById('logout-btn').style.display = 'inline-block';
+            } else {
+                alert("ভুল ইউজারনেম বা পাসওয়ার্ড! (User: admin, Pass: 123456 দিয়ে চেষ্টা করুন)");
+            }
+        }
+
+        function logout() {
+            document.getElementById('home-view').style.display = 'flex';
+            document.getElementById('dashboard-view').style.display = 'none';
+            document.getElementById('user-display').style.display = 'none';
+            document.getElementById('logout-btn').style.display = 'none';
+            document.getElementById('login-user').value = '';
+            document.getElementById('login-pass').value = '';
+        }
+
+        function generateChallan(e) {
+            e.preventDefault();
+            var cNo = document.getElementById('c-no').value;
+            var cSize = document.getElementById('c-size').value;
+            var cTruck = document.getElementById('c-truck').value;
+            var randomId = '#HSAT-' + Math.floor(1000 + Math.random() * 9000);
+
+            var tbody = document.getElementById('challan-list');
+            var row = `<tr>
+                <td>${randomId}</td>
+                <td>${cNo}</td>
+                <td>${cSize}</td>
+                <td>${cTruck}</td>
+                <td><span style="background:#fef9c3; color:#a16207; padding:2px 8px; border-radius:10px; font-size:10px; font-weight:bold;">In Progress</span></td>
+                <td>Just Now</td>
+            </tr>`;
+            tbody.innerHTML = row + tbody.innerHTML;
+            alert("নতুুুন চালান " + randomId + " সফলভাবে তৈরি হয়েছে!");
+        }
+    </script>
+</body>
+</html>
                         <tr>
                             <th>Sl No</th>
                             <th>Vessel Name</th>
