@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Haji Saber Ahmed Timber Co., Ltd | HSAT Terminal</title>
+    <link href="https://fonts.googleapis.com/css2?family=Segoe+UI:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
+        body { background: #f0f2f5; color: #1c2d42; min-height: 100vh; overflow-x: hidden; }
+
+        .cpa-banner-header {
+            background: linear-gradient(rgba(15, 23, 42, 0.75), rgba(15, 23, 42, 0.85)),
+                        url('https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&w=1800&q=80') center/cover no-repeat;
+            color: white;
+            padding: 12px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 4px solid #2563eb;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        .banner-logo-area { display: flex; align-items: center; gap: 12px; }
+        .banner-logo-img { height: 40px; width: auto; object-fit: contain; background: #ffffff; padding: 3px; border-radius: 6px; box-shadow: 0 2px 5px rgba(0,0,0,0.2); }
+        .banner-title-text h1 { font-size: 15px; font-weight: 700; letter-spacing: 0.5px; color: #f8fafc; }
+        .banner-title-text p { font-size: 10px; color: #94a3b8; text-transform: uppercase; letter-spacing: 1.2px; margin-top: 1px; }
+
+        .banner-nav-btns { display: flex; align-items: center; gap: 10px; }
+        .banner-nav-btns button {
+            background: #dc2626; color: white; border: none; padding: 6px 14px;
+            border-radius: 6px; cursor: pointer; font-weight: 600; font-size: 11px; transition: 0.2s;
+            box-shadow: 0 2px 6px rgba(220, 38, 38, 0.3);
+        }
+        .banner-nav-btns button:hover { background: #b91c1c; }
+
+        .hero {
+            min-height: 85vh;
+            background: linear-gradient(rgba(240, 242, 245, 0.9), rgba(240, 242, 245, 0.9)),
+                        url('https://images.unsplash.com/photo-1578575437130-527eed3abbec?auto=format&fit=crop&w=1600&q=80') center/cover no-repeat;
+            display: flex; flex-direction: column; padding: 30px 5%;
+            gap: 25px;
+        }
+        .hero-top-section {
+            display: flex; align-items: center; justify-content: space-between; gap: 30px; width: 100%;
+        }
+        .hero-text { max-width: 550px; }
+        .hero-text h1 { font-size: 26px; color: #0f172a; margin-bottom: 10px; font-weight: 700; line-height: 1.3; }
+        .hero-text p { color: #475569; font-size: 13px; line-height: 1.6; margin-bottom: 15px; }
+        .company-badge { background: #dbeafe; color: #1e40af; padding: 5px 12px; border-radius: 20px; font-size: 11px; font-weight: 700; display: inline-block; margin-bottom: 10px; }
+
+        .auth-card {
+            background: #ffffff; border: 1px solid #e2e8f0;
+            padding: 22px; border-radius: 12px; width: 100%; max-width: 380px; box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+            flex-shrink: 0;
+        }
+        .auth-title { font-size: 15px; font-weight: 700; color: #0f172a; margin-bottom: 12px; border-bottom: 2px solid #f1f5f9; padding-bottom: 6px; }
+        .form-group { margin-bottom: 10px; }
+        .form-group label { display: block; font-size: 11px; margin-bottom: 3px; color: #334155; font-weight: 600; }
+        .form-control {
+            width: 100%; padding: 8px 12px; background: #f8fafc;
+            border: 1px solid #cbd5e1; border-radius: 6px; color: #0f172a; font-size: 12px; outline: none;
+        }
+        .form-control:focus { border-color: #2563eb; background: #ffffff; }
+        .forgot-link { display: block; font-size: 11px; color: #2563eb; text-decoration: none; margin-top: 4px; text-align: right; cursor: pointer; font-weight: 600; }
+
+        .container-search-section {
+            background: #ffffff; border-radius: 12px; padding: 20px; border: 1px solid #e2e8f0;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.03); width: 100%;
+        }
+        .search-box-wrapper {
+            display: flex; gap: 10px; margin-top: 10px; margin-bottom: 15px; flex-wrap: wrap;
+        }
+        .search-input-field {
+            flex: 1; min-width: 260px; padding: 10px 14px; font-size: 13px; border: 2px solid #2563eb; border-radius: 8px; outline: none; background: #f8fafc; font-weight: 600; color: #0f172a;
+        }
+
+        .public-live-section {
+            background: #ffffff; border-radius: 12px; padding: 20px; border: 1px solid #e2e8f0;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.03); width: 100%;
+        }
+        .public-live-section h3 { color: #0f172a; font-size: 15px; font-weight: 700; margin-bottom: 12px; display: flex; align-items: center; gap: 8px; }
+
+        table { width: 100%; border-collapse: collapse; font-size: 12px; text-align: left; min-width: 600px; }
+        th, td { padding: 10px 12px; border: 1px solid #e2e8f0; white-space: nowrap; }
+        th { background: #f8fafc; color: #475569; font-weight: 700; }
+        tr:hover { background: #f8fafc; }
+
+        .cpa-btn {
+            border: none; padding: 8px 16px; border-radius: 6px; font-weight: 600; font-size: 12px;
+            cursor: pointer; width: fit-content; color: white; display: inline-flex; align-items: center; gap: 6px;
+        }
+        .cpa-btn-blue { background: #2563eb; }
+        .cpa-btn-blue:hover { background: #1d4ed8; }
+
+        @media(max-width: 600px) {
+            .hero-top-section { flex-direction: column; }
+            .hero-text { text-align: center; }
+            .cpa-banner-header { padding: 10px 15px; }
+            .banner-title-text h1 { font-size: 13px; }
+            .banner-title-text p { display: none; }
+        }
+    </style>
+</head>
+<body>
+
+    <header class="cpa-banner-header">
+        <div class="banner-logo-area">
+            <img src="https://via.placeholder.com/150?text=HSAT+Logo" alt="HSAT Logo" class="banner-logo-img">
+            <div class="banner-title-text">
+                <h1>HAJI SABER AHMED TIMBER CO., LTD</h1>
+                <p>HSAT Community System & Terminal Port Operation</p>
+            </div>
+        </div>
+        <div class="banner-nav-btns">
+            <span id="user-display" style="font-size:12px; color:#38bdf8; font-weight:bold; display:none;"></span>
+            <button id="logout-btn" onclick="logout()" style="display:none;">Logout</button>
+        </div>
+    </header>
+
+    <div class="hero" id="home-view">
+        <div class="hero-top-section">
+            <div class="hero-text">
+                <span class="company-badge">PORT COMMUNITY SYSTEM (HSAT)</span>
+                <h1>STREAMLINING PORT SERVICE & ENHANCING CONNECTIVITY</h1>
+                <p>আমাদের পোর্টের স্মার্ট পোর্টালে আপনাকে স্বাগতম। কন্টেইনার ডেলিভারি চালান, ইম্পোর্ট EIR, এম্পটি স্টক, পরিবহন ট্রিপ ম্যানেজমেন্ট এবং লাইভ ভেসেল আপডেট দেখুন।</p>
+            </div>
+
+            <div class="auth-card">
+                <div class="auth-title">System Login</div>
+
+                <form id="login-form" onsubmit="handleLogin(event)">
+                    <div class="form-group">
+                        <label>User Name</label>
+                        <input type="text" id="login-user" class="form-control" required placeholder="User Name">
+                    </div>
+                    <div class="form-group">
+                        <label>Password</label>
+                        <input type="password" id="login-pass" class="form-control" required placeholder="Password">
+                        <a class="forgot-link" onclick="handleForgotPassword()">Forget Password 🔑</a>
+                    </div>
+                    <button type="submit" class="cpa-btn cpa-btn-blue" style="width: 100%; justify-content:center; margin-top: 6px;">Login</button>
+                </form>
+            </div>
+        </div>
+
+        <div class="container-search-section">
+            <h3>🔍 Container Live Tracking & Details Search</h3>
+            <p style="font-size: 12px; color: #64748b; margin-bottom: 8px;">এখানে কন্টেইনার নম্বর লিখে বা পেস্ট করে সার্চ করুন।</p>
+            <div class="search-box-wrapper">
+                <input type="text" id="main-search-input" class="search-input-field" placeholder="Enter or Paste Container No. here..." oninput="handleMainContainerSearch()">
+                <button class="cpa-btn cpa-btn-blue" onclick="handleMainContainerSearch()">Search Container</button>
+            </div>
+            
+            <div id="search-result-container" style="display:none; margin-top: 15px;">
+                <h4 style="font-size: 13px; color: #1e293b; margin-bottom: 8px; font-weight: 700;">📌 Search Results Found:</h4>
+                <div style="overflow-x: auto;">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Source Module</th>
+                                <th>Container No</th>
+                                <th>Details / Info</th>
+                                <th>Size / Type</th>
+                                <th>Vehicle / Trailer</th>
+                                <th>Date / Time</th>
+                            </tr>
+                        </thead>
+                        <tbody id="main-search-result-body"></tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <div class="public-live-section">
+            <h3>⚓ Live Daily Vessel Update Information</h3>
+            <div style="overflow-x: auto;">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Sl No</th>
+                            <th>Vessel Name</th>
+                            <th>Jetty</th>
+                            <th>Berthed on</th>
+                            <th>L/Agent</th>
+                        </tr>
+                    </thead>
+                    <tbody id="public-vessel-tbody">
+                        <tr>
+                            <td>01</td>
+                            <td>MV OCEAN PROSPERITY</td>
+                            <td>NCT-2</td>
+                            <td>2026-09-21</td>
+                            <td>GBX LOGISTICS</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function handleLogin(e) {
+            e.preventDefault();
+            var user = document.getElementById('login-user').value;
+            var pass = document.getElementById('login-pass').value;
+
+            if (user === "admin" && pass === "123456") {
+                alert("Login Successful!");
+            } else {
+                alert("Wrong Username or Password!");
+            }
+        }
+
+        function handleForgotPassword() {
+            alert("Contact Administrator.");
+        }
+
+        function handleMainContainerSearch() {
+            var val = document.getElementById('main-search-input').value;
+            var resultDiv = document.getElementById('search-result-container');
+            if(val.trim() !== ""){
+                resultDiv.style.display = 'block';
+            } else {
+                resultDiv.style.display = 'none';
+            }
+        }
+    </script>
+</body>
+  </html>
+                      
