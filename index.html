@@ -4,184 +4,284 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Haji Saber Ahmed Timber Co., Ltd | HSAT Terminal</title>
-    <link href="https://fonts.googleapis.com/css2?family=Segoe+UI:wght@400;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
-        body { background: #f0f2f5; color: #1c2d42; min-height: 100vh; overflow-x: hidden; }
+        :root {
+            --bg-main: #0f172a;
+            --bg-card: rgba(30, 41, 59, 0.7);
+            --bg-glass: rgba(255, 255, 255, 0.03);
+            --border-glow: rgba(56, 189, 248, 0.2);
+            --border-light: rgba(255, 255, 255, 0.08);
+            --accent-cyan: #38bdf8;
+            --accent-blue: #3b82f6;
+            --accent-emerald: #10b981;
+            --accent-purple: #a855f7;
+            --accent-rose: #f43f5e;
+            --accent-amber: #f59e0b;
+            --text-main: #f8fafc;
+            --text-muted: #94a3b8;
+            --radius-lg: 16px;
+            --radius-md: 10px;
+            --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
 
-        /* CPA STYLE BANNER HEADER */
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Plus Jakarta Sans', sans-serif; }
+        
+        body {
+            background: var(--bg-main);
+            color: var(--text-main);
+            min-height: 100vh;
+            overflow-x: hidden;
+            background-image: 
+                radial-gradient(circle at 15% 15%, rgba(56, 189, 248, 0.08) 0%, transparent 40%),
+                radial-gradient(circle at 85% 85%, rgba(168, 85, 247, 0.08) 0%, transparent 40%);
+            background-attachment: fixed;
+        }
+
+        /* CUSTOM SCROLLBAR */
+        ::-webkit-scrollbar { width: 8px; height: 8px; }
+        ::-webkit-scrollbar-track { background: #0f172a; }
+        ::-webkit-scrollbar-thumb { background: #334155; border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: var(--accent-cyan); }
+
+        /* BANNER HEADER */
         .cpa-banner-header {
-            background: linear-gradient(rgba(15, 23, 42, 0.75), rgba(15, 23, 42, 0.85)),
-                        url('https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&w=1800&q=80') center/cover no-repeat;
-            color: white;
-            padding: 12px 20px;
+            background: rgba(15, 23, 42, 0.85);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            padding: 12px 28px;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            border-bottom: 4px solid #2563eb;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+            border-bottom: 1px solid var(--border-glow);
+            box-shadow: 0 8px 32px rgba(0,0,0,0.3);
             position: sticky;
             top: 0;
             z-index: 100;
         }
-        .banner-logo-area { display: flex; align-items: center; gap: 12px; }
-        .banner-logo-img { height: 40px; width: auto; object-fit: contain; background: #ffffff; padding: 3px; border-radius: 6px; box-shadow: 0 2px 5px rgba(0,0,0,0.2); }
-        .banner-title-text h1 { font-size: 15px; font-weight: 700; letter-spacing: 0.5px; color: #f8fafc; }
-        .banner-title-text p { font-size: 10px; color: #94a3b8; text-transform: uppercase; letter-spacing: 1.2px; margin-top: 1px; }
+
+        .banner-logo-area { display: flex; align-items: center; gap: 14px; }
+        .banner-logo-img {
+            height: 44px; width: auto; object-fit: contain;
+            filter: drop-shadow(0 2px 8px rgba(0,0,0,0.4));
+            transition: var(--transition);
+        }
+        .banner-logo-img:hover { transform: scale(1.05); }
+
+        .banner-title-text h1 {
+            font-size: 16px; font-weight: 800; letter-spacing: 0.5px;
+            background: linear-gradient(135deg, #ffffff 0%, #cbd5e1 100%);
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+        }
+        .banner-title-text p {
+            font-size: 10px; color: var(--accent-cyan);
+            text-transform: uppercase; letter-spacing: 1.5px; font-weight: 700; margin-top: 1px;
+        }
 
         .banner-nav-btns { display: flex; align-items: center; gap: 10px; }
-        .banner-nav-btns button {
-            background: #dc2626; color: white; border: none; padding: 6px 14px;
-            border-radius: 6px; cursor: pointer; font-weight: 600; font-size: 11px; transition: 0.2s;
-            box-shadow: 0 2px 6px rgba(220, 38, 38, 0.3);
+        
+        .cpa-btn-glass {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid var(--border-light);
+            color: var(--text-main);
+            padding: 7px 14px; border-radius: 8px;
+            font-weight: 600; font-size: 11px; cursor: pointer;
+            transition: var(--transition); display: inline-flex; align-items: center; gap: 6px;
         }
-        .banner-nav-btns button:hover { background: #b91c1c; }
+        .cpa-btn-glass:hover {
+            background: rgba(255, 255, 255, 0.12);
+            border-color: var(--accent-cyan);
+            transform: translateY(-2px);
+        }
 
-        /* HERO / LOGIN PAGE */
+        .btn-danger-glass {
+            background: rgba(244, 63, 94, 0.15);
+            border: 1px solid rgba(244, 63, 94, 0.3);
+            color: #fca5a5;
+        }
+        .btn-danger-glass:hover {
+            background: rgba(244, 63, 94, 0.3);
+            border-color: var(--accent-rose);
+            color: #fff;
+        }
+
+        /* HERO & LOGIN VIEW */
         .hero {
-            min-height: 85vh;
-            background: linear-gradient(rgba(240, 242, 245, 0.9), rgba(240, 242, 245, 0.9)),
-                        url('https://images.unsplash.com/photo-1578575437130-527eed3abbec?auto=format&fit=crop&w=1600&q=80') center/cover no-repeat;
-            display: flex; flex-direction: column; padding: 30px 5%;
-            gap: 25px;
+            min-height: calc(100vh - 70px);
+            padding: 40px 6%;
+            display: flex; flex-direction: column; gap: 30px;
         }
+        
         .hero-top-section {
-            display: flex; align-items: center; justify-content: space-between; gap: 30px; width: 100%;
+            display: flex; align-items: center; justify-content: space-between; gap: 40px; width: 100%;
         }
-        .hero-text { max-width: 550px; }
-        .hero-text h1 { font-size: 26px; color: #0f172a; margin-bottom: 10px; font-weight: 700; line-height: 1.3; }
-        .hero-text p { color: #475569; font-size: 13px; line-height: 1.6; margin-bottom: 15px; }
-        .company-badge { background: #dbeafe; color: #1e40af; padding: 5px 12px; border-radius: 20px; font-size: 11px; font-weight: 700; display: inline-block; margin-bottom: 10px; }
+        
+        .hero-text { max-width: 600px; }
+        .company-badge {
+            background: rgba(56, 189, 248, 0.1); border: 1px solid var(--border-glow);
+            color: var(--accent-cyan); padding: 6px 14px; border-radius: 20px;
+            font-size: 11px; font-weight: 700; display: inline-block; margin-bottom: 16px;
+            letter-spacing: 1px;
+        }
+        .hero-text h1 {
+            font-size: 32px; font-weight: 800; line-height: 1.25; margin-bottom: 14px;
+            background: linear-gradient(135deg, #f8fafc 0%, #94a3b8 100%);
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+        }
+        .hero-text p { color: var(--text-muted); font-size: 14px; line-height: 1.7; }
 
         /* AUTH CARD */
         .auth-card {
-            background: #ffffff; border: 1px solid #e2e8f0;
-            padding: 22px; border-radius: 12px; width: 100%; max-width: 380px; box-shadow: 0 10px 25px rgba(0,0,0,0.08);
-            flex-shrink: 0;
+            background: var(--bg-card);
+            backdrop-filter: blur(12px);
+            border: 1px solid var(--border-light);
+            padding: 28px; border-radius: var(--radius-lg);
+            width: 100%; max-width: 400px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+            transition: var(--transition);
         }
-        .auth-title { font-size: 15px; font-weight: 700; color: #0f172a; margin-bottom: 12px; border-bottom: 2px solid #f1f5f9; padding-bottom: 6px; }
-        .form-group { margin-bottom: 10px; }
-        .form-group label { display: block; font-size: 11px; margin-bottom: 3px; color: #334155; font-weight: 600; }
-        .form-control {
-            width: 100%; padding: 8px 12px; background: #f8fafc;
-            border: 1px solid #cbd5e1; border-radius: 6px; color: #0f172a; font-size: 12px; outline: none;
-        }
-        .form-control:focus { border-color: #2563eb; background: #ffffff; }
-        .forgot-link { display: block; font-size: 11px; color: #2563eb; text-decoration: none; margin-top: 4px; text-align: right; cursor: pointer; font-weight: 600; }
-
-        /* CONTAINER LIVE TRACKING / SEARCH BOX SECTION ON MAIN PAGE */
-        .container-search-section {
-            background: #ffffff; border-radius: 12px; padding: 20px; border: 1px solid #e2e8f0;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.03); width: 100%;
-        }
-        .search-box-wrapper {
-            display: flex; gap: 10px; margin-top: 10px; margin-bottom: 15px; flex-wrap: wrap;
-        }
-        .search-input-field {
-            flex: 1; min-width: 260px; padding: 10px 14px; font-size: 13px; border: 2px solid #2563eb; border-radius: 8px; outline: none; background: #f8fafc; font-weight: 600; color: #0f172a;
-        }
-
-        /* PUBLIC LIVE MAIN PAGE LISTBOX SECTION */
-        .public-live-section {
-            background: #ffffff; border-radius: 12px; padding: 20px; border: 1px solid #e2e8f0;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.03); width: 100%;
-        }
-        .public-live-section h3 { color: #0f172a; font-size: 15px; font-weight: 700; margin-bottom: 12px; display: flex; align-items: center; gap: 8px; }
-
-        /* CPA PCS DASHBOARD */
-        #dashboard { display: none; padding: 20px 4%; }
+        .auth-card:hover { border-color: var(--border-glow); }
+        .auth-title { font-size: 18px; font-weight: 700; color: #fff; margin-bottom: 18px; border-bottom: 1px solid var(--border-light); padding-bottom: 10px; }
         
-        .cpa-header-text {
-            color: #475569; font-size: 11px; letter-spacing: 0.8px; font-weight: 700; text-transform: uppercase; margin-bottom: 15px; line-height: 1.4;
+        .form-group { margin-bottom: 14px; }
+        .form-group label { display: block; font-size: 11px; margin-bottom: 6px; color: var(--text-muted); font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px; }
+        
+        .form-control {
+            width: 100%; padding: 10px 14px;
+            background: rgba(15, 23, 42, 0.6);
+            border: 1px solid var(--border-light);
+            border-radius: var(--radius-md); color: #fff; font-size: 13px; outline: none;
+            transition: var(--transition);
+        }
+        .form-control:focus {
+            border-color: var(--accent-cyan);
+            box-shadow: 0 0 0 3px rgba(56, 189, 248, 0.15);
+            background: rgba(15, 23, 42, 0.9);
+        }
+        select.form-control { cursor: pointer; color: #f8fafc; }
+        select.form-control option { background: #0f172a; color: #f8fafc; }
+
+        .forgot-link { display: block; font-size: 11px; color: var(--accent-cyan); text-decoration: none; margin-top: 6px; text-align: right; cursor: pointer; font-weight: 600; }
+        .forgot-link:hover { text-decoration: underline; }
+
+        /* GLASS CARD CONTAINERS */
+        .glass-panel {
+            background: var(--bg-card);
+            backdrop-filter: blur(12px);
+            border: 1px solid var(--border-light);
+            border-radius: var(--radius-lg);
+            padding: 24px; width: 100%;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+        .glass-panel h3 { color: #fff; font-size: 16px; font-weight: 700; margin-bottom: 14px; display: flex; align-items: center; gap: 10px; }
+
+        .search-box-wrapper { display: flex; gap: 12px; margin-top: 12px; margin-bottom: 16px; flex-wrap: wrap; }
+        .search-input-field {
+            flex: 1; min-width: 260px; padding: 12px 16px; font-size: 13px;
+            background: rgba(15, 23, 42, 0.8); border: 1px solid var(--border-glow);
+            border-radius: var(--radius-md); outline: none; color: #fff; font-weight: 600;
         }
 
+        /* DASHBOARD GRID */
+        #dashboard { display: none; padding: 30px 5%; }
+        
         .dash-cards-grid {
-            display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 15px; margin-bottom: 25px;
+            display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 18px; margin-bottom: 30px;
         }
 
         .cpa-card {
-            background: #ffffff; border-radius: 14px; padding: 18px;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05); border: 1px solid #e2e8f0;
+            background: var(--bg-card);
+            backdrop-filter: blur(10px);
+            border-radius: var(--radius-lg); padding: 22px;
+            border: 1px solid var(--border-light);
             display: flex; flex-direction: column; justify-content: space-between;
-            transition: transform 0.2s, box-shadow 0.2s;
+            transition: var(--transition);
         }
-        .cpa-card:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08); }
+        .cpa-card:hover {
+            transform: translateY(-4px);
+            border-color: var(--border-glow);
+            box-shadow: 0 12px 28px rgba(0,0,0,0.3);
+        }
 
-        .cpa-card-header { display: flex; align-items: center; gap: 10px; margin-bottom: 12px; }
+        .cpa-card-header { display: flex; align-items: center; gap: 12px; margin-bottom: 12px; }
         .cpa-icon {
-            width: 38px; height: 38px; border-radius: 8px; display: flex; align-items: center; justify-content: center;
-            color: white; font-size: 18px; font-weight: bold; flex-shrink: 0;
+            width: 42px; height: 42px; border-radius: var(--radius-md); display: flex; align-items: center; justify-content: center;
+            color: white; font-size: 20px; font-weight: bold; flex-shrink: 0;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.2);
         }
-        .cpa-icon.blue { background: #3b82f6; }
-        .cpa-icon.green { background: #10b981; }
-        .cpa-icon.purple { background: #8b5cf6; }
-        .cpa-icon.dark { background: #0f172a; }
-        .cpa-icon.teal { background: #0ea5e9; }
-        .cpa-icon.admin-color { background: #f59e0b; }
-        .cpa-icon.rose { background: #e11d48; }
+        .cpa-icon.blue { background: linear-gradient(135deg, #2563eb, #3b82f6); }
+        .cpa-icon.green { background: linear-gradient(135deg, #059669, #10b981); }
+        .cpa-icon.purple { background: linear-gradient(135deg, #7c3aed, #a855f7); }
+        .cpa-icon.dark { background: linear-gradient(135deg, #334155, #475569); }
+        .cpa-icon.teal { background: linear-gradient(135deg, #0284c7, #0ea5e9); }
+        .cpa-icon.admin-color { background: linear-gradient(135deg, #d97706, #f59e0b); }
+        .cpa-icon.rose { background: linear-gradient(135deg, #be123c, #f43f5e); }
+        .cpa-icon.bill-color { background: linear-gradient(135deg, #047857, #10b981); }
 
-        .cpa-card-title { font-size: 14px; font-weight: 700; color: #1e293b; }
-        .cpa-card-desc { font-size: 11px; color: #64748b; margin-bottom: 12px; line-height: 1.4; }
+        .cpa-card-title { font-size: 15px; font-weight: 700; color: #fff; }
+        .cpa-card-desc { font-size: 12px; color: var(--text-muted); margin-bottom: 16px; line-height: 1.5; }
 
         .cpa-btn {
-            border: none; padding: 8px 16px; border-radius: 6px; font-weight: 600; font-size: 12px;
+            border: none; padding: 9px 18px; border-radius: var(--radius-md); font-weight: 600; font-size: 12px;
             cursor: pointer; width: fit-content; color: white; display: inline-flex; align-items: center; gap: 6px;
+            transition: var(--transition); box-shadow: 0 4px 12px rgba(0,0,0,0.2);
         }
+        .cpa-btn:hover { transform: translateY(-2px); opacity: 0.95; }
         .cpa-btn-blue { background: #2563eb; }
-        .cpa-btn-blue:hover { background: #1d4ed8; }
         .cpa-btn-green { background: #10b981; }
-        .cpa-btn-green:hover { background: #059669; }
-        .cpa-btn-purple { background: #8b5cf6; }
-        .cpa-btn-purple:hover { background: #7c3aed; }
-        .cpa-btn-dark { background: #0f172a; }
-        .cpa-btn-dark:hover { background: #1e293b; }
+        .cpa-btn-purple { background: #a855f7; }
+        .cpa-btn-dark { background: #334155; }
         .cpa-btn-teal { background: #0ea5e9; }
-        .cpa-btn-teal:hover { background: #0284c7; }
         .cpa-btn-admin { background: #f59e0b; }
-        .cpa-btn-admin:hover { background: #d97706; }
-        .cpa-btn-rose { background: #e11d48; }
-        .cpa-btn-rose:hover { background: #be123c; }
+        .cpa-btn-rose { background: #f43f5e; }
+        .cpa-btn-bill { background: #059669; }
 
-        /* FORM INTERFACES - RESPONSIVE GRID */
+        /* FORM INTERFACES */
         .interface-card {
-            display: none; background: #ffffff; border-radius: 14px; padding: 20px;
-            border: 1px solid #e2e8f0; margin-bottom: 25px; box-shadow: 0 4px 15px rgba(0,0,0,0.03);
+            display: none; background: var(--bg-card);
+            backdrop-filter: blur(12px); border-radius: var(--radius-lg); padding: 26px;
+            border: 1px solid var(--border-light); margin-bottom: 30px; box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+            animation: fadeIn 0.3s ease-in-out;
         }
-        .interface-card h2 { color: #0f172a; font-size: 17px; font-weight: 700; margin-bottom: 15px; border-bottom: 2px solid #f1f5f9; padding-bottom: 10px; }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+
+        .interface-card h2 { color: #fff; font-size: 18px; font-weight: 700; margin-bottom: 18px; border-bottom: 1px solid var(--border-light); padding-bottom: 12px; }
         
-        .grid-4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; }
-        @media(max-width: 1024px) {
-            .grid-4 { grid-template-columns: repeat(2, 1fr); }
-        }
+        .grid-4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; }
+        @media(max-width: 1024px) { .grid-4 { grid-template-columns: repeat(2, 1fr); } }
         @media(max-width: 600px) {
             .grid-4 { grid-template-columns: 1fr; }
-            .hero-top-section { flex-direction: column; }
-            .hero-text { text-align: center; }
-            .cpa-banner-header { padding: 10px 15px; }
+            .hero-top-section { flex-direction: column; text-align: center; }
+            .cpa-banner-header { padding: 10px 16px; }
             .banner-title-text h1 { font-size: 13px; }
             .banner-title-text p { display: none; }
         }
         
         .btn-submit {
-            background: #2563eb; color: white; border: none; padding: 9px 20px;
-            border-radius: 6px; font-weight: 600; cursor: pointer; margin-top: 15px; font-size: 12px; width: 100%;
+            background: linear-gradient(135deg, #2563eb, #3b82f6); color: white; border: none; padding: 10px 22px;
+            border-radius: var(--radius-md); font-weight: 600; cursor: pointer; margin-top: 16px; font-size: 13px; width: 100%;
+            transition: var(--transition); box-shadow: 0 4px 14px rgba(37, 99, 235, 0.4);
         }
-        @media(min-width: 600px) {
-            .btn-submit { width: auto; }
-        }
+        .btn-submit:hover { transform: translateY(-2px); box-shadow: 0 6px 18px rgba(37, 99, 235, 0.6); }
+        @media(min-width: 600px) { .btn-submit { width: auto; } }
 
-        /* DATA TABLE PANEL - MOBILE SCROLLABLE */
+        /* DATA TABLE PANEL */
         .data-table-panel {
-            background: #ffffff; border-radius: 12px; padding: 15px;
-            border: 1px solid #e2e8f0; margin-top: 20px; box-shadow: 0 2px 10px rgba(0,0,0,0.02);
-            overflow-x: auto;
+            background: rgba(15, 23, 42, 0.5); border-radius: var(--radius-md); padding: 18px;
+            border: 1px solid var(--border-light); margin-top: 22px; overflow-x: auto;
         }
-        .data-table-panel h3 { color: #0f172a; font-size: 14px; font-weight: 700; margin-bottom: 12px; }
-        table { width: 100%; border-collapse: collapse; font-size: 12px; text-align: left; min-width: 600px; }
-        th, td { padding: 10px 12px; border: 1px solid #e2e8f0; white-space: nowrap; }
-        th { background: #f8fafc; color: #475569; font-weight: 700; }
-        tr:hover { background: #f8fafc; }
-        .action-btn { padding: 4px 10px; border: none; border-radius: 4px; cursor: pointer; font-size: 11px; font-weight: 600; margin-right: 4px; }
+        .data-table-panel h3 { color: #fff; font-size: 14px; font-weight: 700; margin-bottom: 14px; }
+        
+        table { width: 100%; border-collapse: separate; border-spacing: 0; font-size: 12px; text-align: left; min-width: 600px; }
+        th, td { padding: 12px 14px; border-bottom: 1px solid var(--border-light); white-space: nowrap; }
+        th { background: rgba(30, 41, 59, 0.8); color: var(--accent-cyan); font-weight: 700; text-transform: uppercase; font-size: 11px; letter-spacing: 0.5px; }
+        th:first-child { border-top-left-radius: 8px; }
+        th:last-child { border-top-right-radius: 8px; }
+        tr:hover td { background: rgba(255, 255, 255, 0.02); }
+        td { color: #cbd5e1; }
+
+        .action-btn { padding: 5px 12px; border: none; border-radius: 6px; cursor: pointer; font-size: 11px; font-weight: 600; margin-right: 4px; transition: var(--transition); }
+        .action-btn:hover { transform: translateY(-1px); opacity: 0.9; }
         .btn-delete { background: #ef4444; color: white; }
         .btn-print { background: #10b981; color: white; }
         .btn-preview { background: #8b5cf6; color: white; }
@@ -199,7 +299,7 @@
             #print-area.challan-a5 .hs-sheet { transform: scale(.53) !important; transform-origin: 0 0 !important; }
         }
 
-        /* HSAT CHALLAN SHEET (same-to-same print layout) */
+        /* CHALLAN & EIR PRINT SHEETS */
         .hs-sheet, .hs-sheet * { font-family: Arial, Helvetica, sans-serif; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
         .hs-wrap { width: 1200px; height: 1040px; overflow: hidden; margin: 0 auto; }
         .hs-sheet { position: relative; width: 1200px; height: 1040px; background-color: #fff; background-image: linear-gradient(rgba(148,163,184,.16) 1px, transparent 1px), linear-gradient(90deg, rgba(148,163,184,.16) 1px, transparent 1px); background-size: 120px 80px; color: #000; transform-origin: 0 0; }
@@ -212,1037 +312,55 @@
         .hs-sheet .hs-cell { background: transparent; text-align: center; font-family: Georgia, "Times New Roman", serif; font-size: 20px; border: 0; overflow: hidden; }
         .hs-sheet .hs-ln { border-bottom: 2px solid #333; font-weight: bold; overflow: hidden; }
         .hs-sheet .hs-co { font-family: Georgia, "Times New Roman", serif; font-weight: bold; text-align: center; }
-        .hs-sheet .hs-stamp { left: 790px; top: 700px; width: 310px; height: 84px; transform: rotate(-32deg); border: 1px solid rgba(90,90,90,.35); background: rgba(150,150,150,.14); text-align: center; font-weight: 900; font-size: 54px; line-height: 80px; color: transparent; -webkit-text-stroke: 2px rgba(30,30,30,.85); letter-spacing: 1px; }
-        .hs-sheet .hs-round-stamp { left: 965px; top: 835px; width: 125px; height: 125px; border: 4px double #222; border-radius: 50%; text-align: center; font-weight: 900; font-size: 13px; line-height: 20px; padding-top: 31px; transform: rotate(-12deg); }
-        .hs-sheet .hs-round-stamp::before { content: '★'; display: block; font-size: 20px; line-height: 20px; }
-        .hs-sheet .hs-bcn { font-family: "Courier New", monospace; font-size: 17px; letter-spacing: 3px; text-align: center; }
+        
         .eir-wrap { width: 900px; height: 1030px; overflow: hidden; margin: 0 auto; }
         .eir-sheet { position: relative; width: 900px; height: 1030px; background-color: #fff; background-image: linear-gradient(rgba(148,163,184,.16) 1px, transparent 1px), linear-gradient(90deg, rgba(148,163,184,.16) 1px, transparent 1px); background-size: 100px 52px; color: #000; font-family: Arial, Helvetica, sans-serif; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
         .eir-sheet .eir-a { position: absolute; white-space: nowrap; line-height: 1; }
         .eir-sheet .eir-label { font-weight: 700; font-size: 20px; }
         .eir-sheet .eir-value { font-weight: 700; font-size: 20px; border-bottom: 2px solid #333; min-height: 26px; overflow: hidden; }
-        .eir-sheet .eir-round-stamp { left: 742px; top: 820px; width: 112px; height: 112px; border: 4px double #222; border-radius: 50%; text-align: center; font-weight: 900; font-size: 11px; line-height: 18px; padding-top: 28px; transform: rotate(-12deg); }
-        .eir-sheet .eir-round-stamp::before { content: '★'; display: block; font-size: 18px; line-height: 18px; }
+
+        /* BILL MEMO PRINT STYLES */
+        .bill-memo { width: 100%; max-width: 800px; margin: 0 auto; padding: 25px; border: 2px solid #000; font-family: Arial, sans-serif; background: #fff; color: #000; }
+        .bill-header { text-align: center; border-bottom: 2px solid #000; padding-bottom: 12px; margin-bottom: 18px; }
+        .bill-header h2 { font-size: 22px; font-weight: bold; margin-bottom: 4px; }
+        .bill-header p { font-size: 13px; }
+        .bill-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; font-size: 13px; margin-bottom: 20px; }
+        .bill-table { width: 100%; border-collapse: collapse; margin-bottom: 25px; }
+        .bill-table th, .bill-table td { border: 1px solid #000; padding: 10px; font-size: 13px; text-align: left; }
+        .bill-table th { background: #f0f0f0; }
+        .bill-total { text-align: right; font-size: 16px; font-weight: bold; margin-bottom: 35px; }
+        .bill-signatures { display: flex; justify-content: space-between; margin-top: 50px; font-size: 13px; }
     </style>
 </head>
 <body>
 
-    <!-- STYLISH BANNER HEADER WITH LOGO -->
+    <!-- BANNER HEADER -->
     <header class="cpa-banner-header">
         <div class="banner-logo-area">
-            <img src="1789382140905.jpg" alt="HSAT Logo" class="banner-logo-img" onerror="this.src='https://via.placeholder.com/150?text=HSAT+Logo'">
+            <!-- UPDATED LOGO: SVG REPLACEMENT -->
+            <svg class="banner-logo-img" viewBox="0 0 160 160" width="44" height="44">
+                <circle cx="80" cy="80" r="76" fill="#0f172a" stroke="#38bdf8" stroke-width="4"/>
+                <path d="M 45 40 L 45 120 M 45 80 L 115 80 M 115 40 L 115 120" stroke="#f8fafc" stroke-width="12" stroke-linecap="round"/>
+                <circle cx="80" cy="80" r="14" fill="#38bdf8"/>
+            </svg>
             <div class="banner-title-text">
                 <h1>HAJI SABER AHMED TIMBER CO., LTD</h1>
                 <p>HSAT Community System & Terminal Port Operation</p>
             </div>
         </div>
         <div class="banner-nav-btns">
-            <span id="user-display" style="font-size:12px; color:#38bdf8; font-weight:bold; display:none;"></span>
-            <div id="backup-actions" style="display:none;align-items:center;gap:5px;flex-wrap:wrap;">
-                <button type="button" onclick="exportBackupJSON()" style="background:#0ea5e9;">Backup JSON</button>
-                <button type="button" onclick="exportBackupCSV()" style="background:#10b981;">Backup CSV</button>
-                <button type="button" onclick="document.getElementById('backup-file-input').click()" style="background:#8b5cf6;">Restore</button>
-                <button type="button" onclick="viewRecycleBin()" style="background:#f59e0b;">Trash</button>
+            <span id="user-display" style="font-size:12px; color:var(--accent-cyan); font-weight:700; display:none;"></span>
+            <div id="backup-actions" style="display:none; align-items:center; gap:8px; flex-wrap:wrap;">
+                <button type="button" class="cpa-btn-glass" onclick="exportBackupJSON()">Backup JSON</button>
+                <button type="button" class="cpa-btn-glass" onclick="exportBackupCSV()">Backup CSV</button>
+                <button type="button" class="cpa-btn-glass" onclick="document.getElementById('backup-file-input').click()">Restore</button>
+                <button type="button" class="cpa-btn-glass" onclick="viewRecycleBin()">Trash</button>
                 <input id="backup-file-input" type="file" accept=".json,application/json" style="display:none" onchange="importBackupFile(event)">
             </div>
-            <button id="logout-btn" onclick="logout()" style="display:none;">Logout</button>
+            <button id="logout-btn" class="cpa-btn-glass btn-danger-glass" onclick="logout()" style="display:none;">Logout</button>
         </div>
     </header>
 
-    <!-- HOME / LOGIN PAGE -->
-    <div class="hero" id="home-view">
-        <div class="hero-top-section">
-            <div class="hero-text">
-                <span class="company-badge">PORT COMMUNITY SYSTEM (HSAT)</span>
-                <h1>STREAMLINING PORT SERVICE & ENHANCING CONNECTIVITY</h1>
-                <p>আমাদের পোর্টের স্মার্ট পোর্টালে আপনাকে স্বাগতম। কন্টেইনার ডেলিভারি চালান, ইম্পোর্ট EIR, এম্পটি স্টক, পরিবহন ট্রিপ ম্যানেজমেন্ট এবং লাইভ ভেসেল আপডেট দেখুন।</p>
-            </div>
-
-            <div class="auth-card">
-                <div class="auth-title">System Login</div>
-
-                <!-- LOGIN FORM ONLY -->
-                <form id="login-form" onsubmit="handleLogin(event)">
-                    <div class="form-group">
-                        <label>User Name</label>
-                        <input type="text" id="login-user" class="form-control" required placeholder="User Name">
-                    </div>
-                    <div class="form-group">
-                        <label>Password</label>
-                        <input type="password" id="login-pass" class="form-control" required placeholder="Password">
-                        <a class="forgot-link" onclick="handleForgotPassword()">Forget Password 🔑</a>
-                    </div>
-                    <button type="submit" class="cpa-btn cpa-btn-blue" style="width: 100%; justify-content:center; margin-top: 6px;">Login</button>
-                </form>
-            </div>
-        </div>
-
-        <!-- NEW: CONTAINER SEARCH / LIVE TRACKING SECTION ON MAIN PAGE -->
-        <div class="container-search-section">
-            <h3>🔍 Container Live Tracking & Details Search</h3>
-            <p style="font-size: 12px; color: #64748b; margin-bottom: 8px;">এখানে কন্টেইনার নম্বর লিখে বা পেস্ট করে সার্চ করুন (যেমন: MSKU1234567)। সিস্টেম সব ডাটাবেজ থেকে কন্টেইনারের তথ্য খুঁজে বের করবে।</p>
-            <div class="search-box-wrapper">
-                <input type="text" id="main-search-input" class="search-input-field" placeholder="Enter or Paste Container No. here..." oninput="handleMainContainerSearch()">
-                <button class="cpa-btn cpa-btn-blue" onclick="handleMainContainerSearch()">Search Container</button>
-            </div>
-            
-            <!-- SEARCH RESULT DISPLAY AREA -->
-            <div id="search-result-container" style="display:none; margin-top: 15px;">
-                <h4 style="font-size: 13px; color: #1e293b; margin-bottom: 8px; font-weight: 700;">📌 Search Results Found:</h4>
-                <div style="overflow-x: auto;">
-                    <table>
-                        <thead>
-                            <tr>
-                                <th>Source Module</th>
-                                <th>Container No</th>
-                                <th>Details / Info</th>
-                                <th>Size / Type</th>
-                                <th>Vehicle / Trailer</th>
-                                <th>Date / Time</th>
-                            </tr>
-                        </thead>
-                        <tbody id="main-search-result-body"></tbody>
-                    </table>
-                </div>
-            </div>
-        </div>
-
-        <!-- PUBLIC MAIN PAGE LIVE LISTBOX FOR DAILY VESSEL UPDATE -->
-        <div class="public-live-section">
-            <h3>⚓ Live Daily Vessel Update Information</h3>
-            <div style="overflow-x: auto;">
-                <table>
-                    <thead>
-                        <tr>
-                            <th>Sl No</th>
-                            <th>Vessel Name</th>
-                            <th>Jetty</th>
-                            <th>Berthed on</th>
-                            <th>L/Agent</th>
-                            <th>Berth Operator</th>
-                            <th>Sailling</th>
-                            <th>Time</th>
-                        </tr>
-                    </thead>
-                    <tbody id="public-vessel-list-body">
-                        <tr><td colspan="8" style="text-align:center; color:#94a3b8;">No vessel update records available at the moment.</td></tr>
-                    </tbody>
-                </table>
-            </div>
-        </div>
-    </div>
-
-    <!-- MAIN DASHBOARD VIEW -->
-    <div id="dashboard">
-        <div class="cpa-header-text">STREAMLINING PORT SERVICE AND ENHANCING CONNECTIVITY FOR SMARTER MARITIME ECOSYSTEM</div>
-
-        <!-- DASHBOARD CARDS -->
-        <div class="dash-cards-grid" id="dash-cards-container">
-            <!-- CARD 1: DELIVER CHALLAN -->
-            <div class="cpa-card" id="card-challan">
-                <div>
-                    <div class="cpa-card-header">
-                        <div class="cpa-icon blue">📋</div>
-                        <div class="cpa-card-title">Container In Entry</div>
-                    </div>
-                    <div class="cpa-card-desc">Deliver Challan Data Form and Management Systems for Container Operations.</div>
-                </div>
-                <button class="cpa-btn cpa-btn-blue" onclick="showInterface('challan')">View Form</button>
-            </div>
-
-            <!-- CARD 2: IMPORT EIR -->
-            <div class="cpa-card" id="card-eir">
-                <div>
-                    <div class="cpa-card-header">
-                        <div class="cpa-icon green">🖨️</div>
-                        <div class="cpa-card-title">Import Container EIR</div>
-                    </div>
-                    <div class="cpa-card-desc">Import Container EIR Entry Interface and Ticket Processing.</div>
-                </div>
-                <button class="cpa-btn cpa-btn-green" onclick="showInterface('eir')">View Form</button>
-            </div>
-
-            <!-- CARD 3: EMPTY STOCK -->
-            <div class="cpa-card" id="card-empty">
-                <div>
-                    <div class="cpa-card-header">
-                        <div class="cpa-icon purple">📦</div>
-                        <div class="cpa-card-title">Empty Stock Interface</div>
-                    </div>
-                    <div class="cpa-card-desc">Empty Container Stock, Dumping Location and Age Calculation Entry.</div>
-                </div>
-                <button class="cpa-btn cpa-btn-purple" onclick="showInterface('empty')">View Form</button>
-            </div>
-
-            <!-- CARD 4: REPORT & SUMMARY -->
-            <div class="cpa-card" id="card-report">
-                <div>
-                    <div class="cpa-card-header">
-                        <div class="cpa-icon dark">📊</div>
-                        <div class="cpa-card-title">Stock Analysis</div>
-                    </div>
-                    <div class="cpa-card-desc">View analyzed category stocks (Import, Load/Export, Empty).</div>
-                </div>
-                <button class="cpa-btn cpa-btn-dark" onclick="showInterface('report')">View Report</button>
-            </div>
-
-            <!-- CARD 5: TRANSPORT SERVICE REPORT -->
-            <div class="cpa-card" id="card-transport">
-                <div>
-                    <div class="cpa-card-header">
-                        <div class="cpa-icon teal">🚛</div>
-                        <div class="cpa-card-title">Transport Service</div>
-                    </div>
-                    <div class="cpa-card-desc">Vehicle-wise monthly trip analysis, driver info & import/export status.</div>
-                </div>
-                <button class="cpa-btn cpa-btn-teal" onclick="showInterface('transport')">View Trips</button>
-            </div>
-
-            <!-- CARD 6: DAILY VESSEL UPDATE (NEW TAB) -->
-            <div class="cpa-card" id="card-vessel">
-                <div>
-                    <div class="cpa-card-header">
-                        <div class="cpa-icon rose">⚓</div>
-                        <div class="cpa-card-title">Daily Vessel Update</div>
-                    </div>
-                    <div class="cpa-card-desc">Manage daily vessel schedules, jetty info, berthed dates, and sailing times.</div>
-                </div>
-                <button class="cpa-btn cpa-btn-rose" onclick="showInterface('vessel')">Manage Vessels</button>
-            </div>
-
-            <!-- CARD 7: ADMIN PANEL -->
-            <div class="cpa-card" id="card-admin" style="display: none;">
-                <div>
-                    <div class="cpa-card-header">
-                        <div class="cpa-icon admin-color">⚙️</div>
-                        <div class="cpa-card-title">System Admin Panel</div>
-                    </div>
-                    <div class="cpa-card-desc">Create staff user IDs and manage permissions.</div>
-                </div>
-                <button class="cpa-btn cpa-btn-admin" onclick="showInterface('admin')">Manage Users</button>
-            </div>
-        </div>
-
-        <!-- 1. DELIVER CHALLAN DATA INTERFACE -->
-        <div class="interface-card" id="challan-interface">
-            <h2>🚚 Deliver Challan Data Interface</h2>
-            <form onsubmit="saveChallan(event)">
-                <div class="grid-4">
-                    <div class="form-group">
-                        <label>Challan No. (Automatic)</label>
-                        <input type="text" id="ch-no" class="form-control" readonly style="color:#2563eb; font-weight:bold;">
-                    </div>
-                    <div class="form-group">
-                        <label>Date & Time (Automatic)</label>
-                        <input type="text" id="ch-time" class="form-control" readonly>
-                    </div>
-                    <div class="form-group">
-                        <label>To Messrs / From Messrs</label>
-                        <select id="ch-messrs" class="form-control">
-                            <option>CPA To Depot</option>
-                            <option>Depot To CPA</option>
-                            <option>Depot To ICL</option>
-                            <option>Depot To NCL</option>
-                            <option>Depot To OFY</option>
-                            <option>OFY to Depot</option>
-                            <option>Depot To KDS</option>
-                            <option>Depot To EBL</option>
-                        </select>
-                    </div>
-                    <div class="form-group">
-                        <label>MLO (Select or Type)</label>
-                        <input type="text" id="ch-mlo" class="form-control" list="mlo-list" required placeholder="Type or select MLO" oninput="syncLineData(this.value, 'ch-line')">
-                        <datalist id="mlo-list">
-                            <option value="MAERSK LINE">
-                            <option value="COSCO SHIPPING">
-                            <option value="MSC">
-                            <option value="ONE LINE">
-                        </datalist>
-                    </div>
-                    <div class="form-group">
-                        <label>Line (Auto Same as MLO)</label>
-                        <input type="text" id="ch-line" class="form-control" readonly>
-                    </div>
-                    <div class="form-group">
-                        <label>Container In 1 (No.)</label>
-                        <input type="text" id="ch-cont-no" class="form-control" required placeholder="First Container No.">
-                    </div>
-                    <div class="form-group">
-                        <label>Container In 2 (No.)</label>
-                        <input type="text" id="ch-cont-no-2" class="form-control" required placeholder="Second Container No.">
-                    </div>
-                    <div class="form-group">
-                        <label>Size</label>
-                        <select id="ch-size" class="form-control">
-                            <option>20"</option>
-                            <option>40"</option>
-                        </select>
-                    </div>
-                    <div class="form-group">
-                        <label>Type</label>
-                        <select id="ch-type" class="form-control">
-                            <option>HC</option>
-                            <option>ST</option>
-                            <option>RF</option>
-                            <option>LCL</option>
-                            <option>TNK</option>
-                        </select>
-                    </div>
-                    <div class="form-group">
-                        <label>Name Of Vessel</label>
-                        <input type="text" id="ch-vessel" class="form-control" placeholder="Vessel Name">
-                    </div>
-                    <div class="form-group">
-                        <label>Rot. No.</label>
-                        <input type="text" id="ch-rot" class="form-control" placeholder="e.g. 2026/1024">
-                    </div>
-                    <div class="form-group">
-                        <label>Status (Operation Category)</label>
-                        <select id="ch-status" class="form-control">
-                            <option value="IMPORT">IMPORT, Import Operation</option>
-                            <option value="LOAD">LOAD, Export Operation</option>
-                            <option value="EMPTY">EMPTY, Empty Operation</option>
-                        </select>
-                    </div>
-                    <div class="form-group">
-                        <label>Trailer / Vehicle No.</label>
-                        <select id="ch-trailer" class="form-control trailer-dropdown">
-                            <!-- Vehicle options will be populated dynamically -->
-                        </select>
-                    </div>
-                    <div class="form-group">
-                        <label>Through CPA Gate</label>
-                        <input type="text" id="ch-gate" class="form-control" value="Gate-4">
-                    </div>
-                    <div class="form-group">
-                        <label>Description Of Goods</label>
-                        <input type="text" id="ch-goods" class="form-control" placeholder="Goods Info">
-                    </div>
-                    <div class="form-group">
-                        <label>Trailer Service Provider</label>
-                        <input type="text" id="ch-provider" class="form-control" placeholder="Provider Name">
-                    </div>
-                    <div class="form-group">
-                        <label>Driver Name & ID</label>
-                        <input type="text" id="ch-driver" class="form-control" placeholder="Driver Info">
-                    </div>
-                    <div class="form-group">
-                        <label>Helper Name & ID</label>
-                        <input type="text" id="ch-helper" class="form-control" placeholder="Helper Info">
-                    </div>
-                </div>
-                <button type="submit" id="challan-save-btn" class="btn-submit">Save & Add Challan Entry</button>
-            </form>
-
-            <!-- CHALLAN DATA LISTBOX -->
-            <div class="data-table-panel">
-                <h3>📋 Submitted Deliver Challan Data List</h3>
-                <table>
-                    <thead>
-                        <tr>
-                            <th>Challan No</th>
-                            <th>Date Time</th>
-                            <th>Messrs</th>
-                            <th>Container No</th>
-                            <th>Size/Type</th>
-                            <th>Status Category</th>
-                            <th>Vehicle No</th>
-                            <th>Driver</th>
-                            <th>Action</th>
-                        </tr>
-                    </thead>
-                    <tbody id="challan-list-body"></tbody>
-                </table>
-            </div>
-        </div>
-
-        <!-- 2. IMPORT CONTAINER EIR ENTRY INTERFACE -->
-        <div class="interface-card" id="eir-interface">
-            <h2>📥 Import Container EIR Entry Interface</h2>
-            <form onsubmit="saveEir(event)">
-                <div class="grid-4">
-                    <div class="form-group">
-                        <label>1. EIR No.</label>
-                        <input type="text" id="eir-no" class="form-control" required placeholder="EIR Number">
-                    </div>
-                    <div class="form-group">
-                        <label>2. Date</label>
-                        <input type="date" id="eir-date" class="form-control" required>
-                    </div>
-                    <div class="form-group">
-                        <label>3. Import Vessel & Rot.No</label>
-                        <input type="text" id="eir-vessel-rot" class="form-control" placeholder="Vessel & Rot">
-                    </div>
-                    <div class="form-group">
-                        <label>4. Berth No.</label>
-                        <input type="text" id="eir-berth" class="form-control" placeholder="Berth No.">
-                    </div>
-                    <div class="form-group">
-                        <label>5. Container No.</label>
-                        <input type="text" id="eir-cont" class="form-control" required placeholder="Container No.">
-                    </div>
-                    <div class="form-group">
-                        <label>6. Declared Seal No.</label>
-                        <input type="text" id="eir-seal" class="form-control" placeholder="Seal No.">
-                    </div>
-                    <div class="form-group">
-                        <label>7. Re-Seal No. (If Applicable)</label>
-                        <input type="text" id="eir-reseal" class="form-control" placeholder="Re-seal No.">
-                    </div>
-                    <div class="form-group">
-                        <label>8. Consignee</label>
-                        <input type="text" id="eir-consignee" class="form-control" placeholder="Consignee Name">
-                    </div>
-                    <div class="form-group">
-                        <label>9. Commodity</label>
-                        <input type="text" id="eir-commodity" class="form-control" placeholder="Commodity">
-                    </div>
-                    <div class="form-group">
-                        <label>10. MLO (Select or Type)</label>
-                        <input type="text" id="eir-mlo" class="form-control" list="mlo-list" required placeholder="Type or select MLO">
-                    </div>
-                    <div class="form-group">
-                        <label>11. Vehicle No.</label>
-                        <select id="eir-trailer" class="form-control trailer-dropdown"></select>
-                    </div>
-                    <div class="form-group">
-                        <label>12. CPA Gate(Out) No.</label>
-                        <input type="text" id="eir-gate" class="form-control" placeholder="Gate Out No.">
-                    </div>
-                </div>
-                <button type="submit" class="btn-submit" style="background:#10b981;">Save EIR Entry</button>
-            </form>
-
-            <!-- EIR DATA LISTBOX -->
-            <div class="data-table-panel">
-                <h3>📋 Submitted Import EIR Data List</h3>
-                <table>
-                    <thead>
-                        <tr>
-                            <th>EIR No</th>
-                            <th>Date</th>
-                            <th>Vessel & Rot</th>
-                            <th>Container No</th>
-                            <th>Consignee</th>
-                            <th>Vehicle No</th>
-                            <th>CPA Gate Out</th>
-                            <th>Action</th>
-                        </tr>
-                    </thead>
-                    <tbody id="eir-list-body"></tbody>
-                </table>
-            </div>
-        </div>
-
-        <!-- 3. EMPTY STOCK INTERFACE -->
-        <div class="interface-card" id="empty-interface">
-            <h2>📦 Empty Stock Interface</h2>
-            <form onsubmit="saveEmptyStock(event)">
-                <div class="grid-4">
-                    <div class="form-group">
-                        <label>1. Container No.</label>
-                        <input type="text" id="es-cont" class="form-control" required placeholder="Container No.">
-                    </div>
-                    <div class="form-group">
-                        <label>2. Size</label>
-                        <select id="es-size" class="form-control">
-                            <option value="40&quot;">40"</option>
-                            <option value="20&quot;">20"</option>
-                        </select>
-                    </div>
-                    <div class="form-group">
-                        <label>3. Type</label>
-                        <select id="es-type" class="form-control">
-                            <option>HC</option>
-                            <option>ST</option>
-                            <option>RF</option>
-                        </select>
-                    </div>
-                    <div class="form-group">
-                        <label>4. Container Dumping Location</label>
-                        <input type="text" id="es-location" class="form-control" required placeholder="e.g. Block-A, Yard-2">
-                    </div>
-                    <div class="form-group">
-                        <label>5. Vehicle No.</label>
-                        <select id="es-trailer" class="form-control trailer-dropdown"></select>
-                    </div>
-                    <div class="form-group">
-                        <label>6. Depot In Date</label>
-                        <input type="date" id="es-indate" class="form-control" required onchange="calculateAge()">
-                    </div>
-                    <div class="form-group">
-                        <label>7. Depot Out Date</label>
-                        <input type="date" id="es-outdate" class="form-control" required onchange="calculateAge()">
-                    </div>
-                    <div class="form-group">
-                        <label>8. Total Age (Days)</label>
-                        <input type="text" id="es-age" class="form-control" readonly style="background:#e2e8f0; font-weight:bold; color:#2563eb;" placeholder="Auto Calculated">
-                    </div>
-                    <div class="form-group">
-                        <label>9. Clearance</label>
-                        <select id="es-clearance" class="form-control">
-                            <option>Cleared</option>
-                            <option>Pending</option>
-                            <option>Custom Hold</option>
-                        </select>
-                    </div>
-                </div>
-                <button type="submit" class="btn-submit" style="background:#8b5cf6;">Save Empty Stock Entry</button>
-            </form>
-
-            <!-- EMPTY STOCK DATA LISTBOX -->
-            <div class="data-table-panel">
-                <h3>📋 Submitted Empty Stock Data List</h3>
-                <table>
-                    <thead>
-                        <tr>
-                            <th>Container No</th>
-                            <th>Size / Type</th>
-                            <th>Dumping Location</th>
-                            <th>Vehicle No</th>
-                            <th>In Date</th>
-                            <th>Out Date</th>
-                            <th>Total Age</th>
-                            <th>Clearance</th>
-                            <th>Action</th>
-                        </tr>
-                    </thead>
-                    <tbody id="empty-list-body"></tbody>
-                </table>
-            </div>
-        </div>
-
-        <!-- 4. CONTAINER IN & STOCK ANALYSIS REPORT INTERFACE -->
-        <div class="interface-card" id="report-interface">
-            <h2>📊 Container In & Category Analysis Report</h2>
-            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px; flex-wrap: wrap; gap: 10px;">
-                <p style="font-size: 12px; color: #64748b;">কন্টেইনার ইন (Challan) ডাটার ক্যাটাগরি (`IMPORT`, `LOAD`, `EMPTY`) অনুযায়ী অ্যানালাইসিস স্ট্যাটাস ও স্টক নিচে দেখানো হলো।</p>
-                <button class="cpa-btn cpa-btn-dark" onclick="printFullReport()">🖨️ Print / Save PDF Report</button>
-            </div>
-
-            <!-- ANALYZED SUMMARY CARDS -->
-            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(210px, 1fr)); gap: 12px; margin-bottom: 20px;">
-                <div style="background:#eff6ff; border:1px solid #bfdbfe; padding:12px; border-radius:8px;">
-                    <div style="font-size:11px; color:#1e40af; font-weight:700;">IMPORT OPERATION STOCK</div>
-                    <div id="stat-import" style="font-size:22px; font-weight:bold; color:#1d4ed8; margin-top:4px;">0</div>
-                </div>
-                <div style="background:#fdf4ff; border:1px solid #f5d0fe; padding:12px; border-radius:8px;">
-                    <div style="font-size:11px; color:#86198f; font-weight:700;">LOAD / EXPORT OPERATION</div>
-                    <div id="stat-load" style="font-size:22px; font-weight:bold; color:#a21caf; margin-top:4px;">0</div>
-                </div>
-                <div style="background:#f5f3ff; border:1px solid #ddd6fe; padding:12px; border-radius:8px;">
-                    <div style="font-size:11px; color:#5b21b6; font-weight:700;">EMPTY OPERATION STOCK</div>
-                    <div id="stat-empty-op" style="font-size:22px; font-weight:bold; color:#7c3aed; margin-top:4px;">0</div>
-                </div>
-                <div style="background:#ecfdf5; border:1px solid #a7f3d0; padding:12px; border-radius:8px;">
-                    <div style="font-size:11px; color:#065f46; font-weight:700;">GENERAL EMPTY STOCK MODULE</div>
-                    <div id="stat-total-stock" style="font-size:22px; font-weight:bold; color:#059669; margin-top:4px;">0</div>
-                </div>
-            </div>
-
-            <!-- REPORT LISTBOX 1: IMPORT OPERATION ANALYZED -->
-            <div class="data-table-panel" style="margin-top:0; margin-bottom:15px;">
-                <h3>📥 Analyzed Stock: IMPORT Operation Listbox</h3>
-                <table>
-                    <thead>
-                        <tr>
-                            <th>Challan No</th>
-                            <th>Date Time</th>
-                            <th>Messrs</th>
-                            <th>Container No</th>
-                            <th>Size/Type</th>
-                            <th>Vehicle No</th>
-                        </tr>
-                    </thead>
-                    <tbody id="report-import-body">
-                        <tr><td colspan="6" style="text-align:center; color:#94a3b8;">No import operation data available</td></tr>
-                    </tbody>
-                </table>
-            </div>
-
-            <!-- REPORT LISTBOX 2: LOAD / EXPORT OPERATION ANALYZED -->
-            <div class="data-table-panel" style="margin-top:0; margin-bottom:15px;">
-                <h3>🚢 Analyzed Stock: LOAD (Export) Operation Listbox</h3>
-                <table>
-                    <thead>
-                        <tr>
-                            <th>Challan No</th>
-                            <th>Date Time</th>
-                            <th>Messrs</th>
-                            <th>Container No</th>
-                            <th>Size/Type</th>
-                            <th>Vehicle No</th>
-                        </tr>
-                    </thead>
-                    <tbody id="report-load-body">
-                        <tr><td colspan="6" style="text-align:center; color:#94a3b8;">No load/export operation data available</td></tr>
-                    </tbody>
-                </table>
-            </div>
-
-            <!-- REPORT LISTBOX 3: EMPTY OPERATION ANALYZED -->
-            <div class="data-table-panel" style="margin-top:0;">
-                <h3>📦 Analyzed Stock: EMPTY Operation Listbox</h3>
-                <table>
-                    <thead>
-                        <tr>
-                            <th>Challan No</th>
-                            <th>Date Time</th>
-                            <th>Messrs</th>
-                            <th>Container No</th>
-                            <th>Size/Type</th>
-                            <th>Vehicle No</th>
-                        </tr>
-                    </thead>
-                    <tbody id="report-emptyop-body">
-                        <tr><td colspan="6" style="text-align:center; color:#94a3b8;">No empty operation data available</td></tr>
-                    </tbody>
-                </table>
-            </div>
-        </div>
-
-        <!-- 5. TRANSPORT SERVICE REPORT INTERFACE -->
-        <div class="interface-card" id="transport-interface">
-            <h2>🚛 Transport Service & Vehicle-wise Monthly & Datewise Trip Report</h2>
-            <p style="font-size: 12px; color: #64748b; margin-bottom: 15px;">প্রতিটি গাড়ির (Vehicle/Trailer No.) বিপরীতে পুরো মাসের মোট ট্রিপ এবং নির্দিষ্ট তারিখ অনুযায়ী (Datewise) কোন দিনে কয়টি ট্রিপ হয়েছে তা এখানে দেখা যাবে।</p>
-            
-            <div style="display: flex; gap: 10px; align-items: center; margin-bottom: 20px; flex-wrap: wrap;">
-                <div style="flex: 1; min-width: 250px;">
-                    <label style="font-size: 11px; font-weight: 600; display: block; margin-bottom: 4px;">Select Vehicle / Trailer No. for Filter</label>
-                    <select id="transport-vehicle-filter" class="form-control trailer-dropdown" onchange="renderTransportReport()">
-                        <option value="ALL">-- Show All Vehicles Summary --</option>
-                    </select>
-                </div>
-                <div>
-                    <button class="cpa-btn cpa-btn-teal" style="margin-top: 18px;" onclick="printTransportReport()">🖨️ Print Transport Report</button>
-                </div>
-            </div>
-
-            <!-- TRANSPORT VEHICLE SUMMARY CARDS -->
-            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 12px; margin-bottom: 20px;">
-                <div style="background:#f0f9ff; border:1px solid #bae6fd; padding:12px; border-radius:8px;">
-                    <div style="font-size:11px; color:#0369a1; font-weight:700;">TOTAL REGISTERED FLEET</div>
-                    <div id="tr-total-fleet" style="font-size:22px; font-weight:bold; color:#0284c7; margin-top:4px;">51</div>
-                </div>
-                <div style="background:#f0fdf4; border:1px solid #bbf7d0; padding:12px; border-radius:8px;">
-                    <div style="font-size:11px; color:#15803d; font-weight:700;">TOTAL RECORDED TRIPS</div>
-                    <div id="tr-total-trips" style="font-size:22px; font-weight:bold; color:#16a34a; margin-top:4px;">0</div>
-                </div>
-            </div>
-
-            <!-- TRANSPORT VEHICLE WISE MONTHLY REPORT TABLE -->
-            <div class="data-table-panel" style="margin-top:0; margin-bottom:20px;">
-                <h3>🚛 Vehicle-wise Monthly Trip Breakdown List (1 Month Data)</h3>
-                <table>
-                    <thead>
-                        <tr>
-                            <th>Vehicle No.</th>
-                            <th>Driver Name & ID</th>
-                            <th>Total Trips</th>
-                            <th>Import Trips</th>
-                            <th>Export (Load) Trips</th>
-                            <th>Empty Trips</th>
-                            <th>Last Activity Date</th>
-                        </tr>
-                    </thead>
-                    <tbody id="transport-list-body">
-                        <tr><td colspan="7" style="text-align:center; color:#94a3b8;">No trip data available</td></tr>
-                    </tbody>
-                </table>
-            </div>
-
-            <!-- NEW: DATEWISE TRIP BREAKDOWN SECTION -->
-            <div class="data-table-panel" style="margin-top:0;">
-                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px; flex-wrap: wrap; gap: 10px;">
-                    <h3 style="margin-bottom:0;">📅 Datewise Trip Breakdown (তারিখ অনুযায়ী ট্রিপ সংখ্যা)</h3>
-                    <div>
-                        <label style="font-size: 11px; font-weight: 600; margin-right: 5px;">Select Date Filter:</label>
-                        <input type="date" id="transport-date-filter" class="form-control" style="display: inline-block; width: auto; padding: 5px 10px;" onchange="renderTransportReport()">
-                    </div>
-                </div>
-                <table>
-                    <thead>
-                        <tr>
-                            <th>Date</th>
-                            <th>Vehicle No.</th>
-                            <th>Driver Name & ID</th>
-                            <th>Total Trips on this Date</th>
-                            <th>Import</th>
-                            <th>Load (Export)</th>
-                            <th>Empty</th>
-                        </tr>
-                    </thead>
-                    <tbody id="transport-datewise-body">
-                        <tr><td colspan="7" style="text-align:center; color:#94a3b8;">No datewise trip records found</td></tr>
-                    </tbody>
-                </table>
-            </div>
-        </div>
-
-        <!-- 6. DAILY VESSEL UPDATE INTERFACE -->
-        <div class="interface-card" id="vessel-interface">
-            <h2>⚓ Daily Vessel Update - Management Panel</h2>
-            <p style="font-size: 12px; color: #64748b; margin-bottom: 15px;">এখান থেকে দৈনিক ভেসেল আপডেট এন্ট্রি করুন। এন্ট্রি করার সাথে সাথে এটি ওয়েবসাইটের মূল পেজে লাইভ লিস্টবক্স হিসেবে প্রদর্শিত হবে।</p>
-            
-            <form onsubmit="saveVesselUpdate(event)">
-                <div class="grid-4">
-                    <div class="form-group">
-                        <label>Sl No. (Automatic)</label>
-                        <input type="text" id="v-sl" class="form-control" readonly style="font-weight:bold; color:#e11d48;">
-                    </div>
-                    <div class="form-group">
-                        <label>Vessel Name</label>
-                        <input type="text" id="v-name" class="form-control" required placeholder="Vessel Name">
-                    </div>
-                    <div class="form-group">
-                        <label>Jetty</label>
-                        <input type="text" id="v-jetty" class="form-control" required placeholder="Jetty No./Location">
-                    </div>
-                    <div class="form-group">
-                        <label>Berthed on</label>
-                        <input type="date" id="v-bertheddate" class="form-control" required>
-                    </div>
-                    <div class="form-group">
-                        <label>L/Agent</label>
-                        <input type="text" id="v-agent" class="form-control" required placeholder="Local Agent Name">
-                    </div>
-                    <div class="form-group">
-                        <label>Berth Operator</label>
-                        <input type="text" id="v-operator" class="form-control" required placeholder="Berth Operator Name">
-                    </div>
-                    <div class="form-group">
-                        <label>Sailling</label>
-                        <input type="text" id="v-sailling" class="form-control" required placeholder="Sailing Status/Date">
-                    </div>
-                    <div class="form-group">
-                        <label>Time</label>
-                        <input type="time" id="v-time" class="form-control" required>
-                    </div>
-                </div>
-                <button type="submit" class="btn-submit" style="background:#e11d48;">Save & Publish Vessel Update</button>
-            </form>
-
-            <!-- VESSEL MANAGEMENT DATA TABLE -->
-            <div class="data-table-panel">
-                <h3>📋 Submitted Daily Vessel Update Records</h3>
-                <table>
-                    <thead>
-                        <tr>
-                            <th>Sl No</th>
-                            <th>Vessel Name</th>
-                            <th>Jetty</th>
-                            <th>Berthed on</th>
-                            <th>L/Agent</th>
-                            <th>Berth Operator</th>
-                            <th>Sailling</th>
-                            <th>Time</th>
-                            <th>Action</th>
-                        </tr>
-                    </thead>
-                    <tbody id="vessel-admin-list-body">
-                        <tr><td colspan="9" style="text-align:center; color:#94a3b8;">No vessel records found</td></tr>
-                    </tbody>
-                </table>
-            </div>
-        </div>
-
-        <!-- 7. ADMIN PANEL INTERFACE -->
-        <div class="interface-card" id="admin-interface">
-            <h2>⚙️ System Admin Panel - Staff User Management & Permissions</h2>
-            <p style="font-size: 12px; color: #64748b; margin-bottom: 15px;">এখান থেকে নতুন স্টাফ আইডি তৈরি করুন এবং তাদের মডিউল অ্যাক্সেস (Allow/Deny) নিয়ন্ত্রণ করুন।</p>
-            
-            <div style="background: #f8fafc; border: 1px solid #cbd5e1; padding: 15px; border-radius: 8px; margin-bottom: 20px;">
-                <h3 style="font-size: 13px; color: #0f172a; margin-bottom: 10px; font-weight: 700;">➕ Create New Staff User ID</h3>
-                <form onsubmit="handleCreateStaff(event)">
-                    <div class="grid-4">
-                        <div class="form-group">
-                            <label>Username</label>
-                            <input type="text" id="new-staff-user" class="form-control" required placeholder="Staff Username">
-                        </div>
-                        <div class="form-group">
-                            <label>Password</label>
-                            <input type="password" id="new-staff-pass" class="form-control" required placeholder="Password">
-                        </div>
-                        <div class="form-group">
-                            <label>Designation</label>
-                            <input type="text" id="new-staff-design" class="form-control" required placeholder="Designation">
-                        </div>
-                        <div class="form-group">
-                            <label>Contact No.</label>
-                            <input type="text" id="new-staff-contact" class="form-control" required placeholder="017xxxxxxxx">
-                        </div>
-                    </div>
-                    <button type="submit" class="cpa-btn cpa-btn-admin" style="margin-top: 10px;">Create Staff ID</button>
-                </form>
-            </div>
-
-            <div class="data-table-panel" style="margin-top:0;">
-                <h3>👥 Registered Staff Users & Access Control Matrix</h3>
-                <table>
-                    <thead>
-                        <tr>
-                            <th>Username</th>
-                            <th>Designation</th>
-                            <th>Contact</th>
-                            <th>Deliver Challan Access</th>
-                            <th>Import EIR Access</th>
-                            <th>Empty Stock Access</th>
-                            <th>Action</th>
-                        </tr>
-                    </thead>
-                    <tbody id="admin-user-list-body"></tbody>
-                </table>
-            </div>
-        </div>
-
-    </div>
-
-    <!-- PRINT PREVIEW CONTAINER -->
-    <div id="print-area"></div>
-
-    <script>
-        // 51 TRAILERS LIST
-        const trailerList = [
-            "ZHDA-61-0001 HS-01", "ZHDA-61-0002 HS-02", "ZHDA-61-0003 HS-03", "ZHDA-61-0004 HS-04",
-            "ZHDA-61-0005 HS-05", "ZHDA-61-0006 HS-06", "ZHDA-61-0007 HS-07", "ZHDA-61-0008 HS-08",
-            "ZHDA-61-0009 HS-09", "ZHDA-61-0010 HS-10", "ZHDA-61-0011 HS-11", "ZHDA-61-0012 HS-12",
-            "ZHDA-61-0013 HS-13", "ZHDA-61-0014 HS-14", "ZHDA-61-0015 HS-15", "CMDA-81-0667 HS-16",
-            "CMD-81-0653 HS-17", "CMD-81-0654 HS-18", "CMD-81-0655 HS-19", "CMD-81-0656 HS-20",
-            "CMD-81-0657 HS-21", "CMD-81-0658 HS-22", "CMD-81-0659 HS-23", "CMD-81-0660 HS-24",
-            "CMD-81-0661 HS-25", "CMD-81-0574 HS-26", "CMD-81-0597 HS-27", "CMDH-81-2183 HS-28",
-            "CMDH-81-2184 HS-29", "CMDH-81-2185 HS-30", "CMDH-81-2186 HS-31", "CMDH-81-2187 HS-32",
-            "CMDH-81-2188 HS-33", "CMDH-81-2189 HS-34", "CMDH-81-2190 HS-35", "CMDH-81-2191 HS-36",
-            "CMDH-81-2192 HS-37", "CMDH-81-2193 HS-38", "CMDH-81-2194 HS-39", "CMDH-81-2195 HS-40",
-            "CMDH-81-2196 HS-41", "CMDH-81-2197 HS-42", "CMDH-81-2198 HS-43", "CMDH-81-2199 HS-44",
-            "CMDH-81-2200 HS-45", "CMDH-81-2208 HS-46", "CMDH-81-2210 HS-47", "CME-81-0151 HS-48",
-            "CMDH-81-0413 HS-49", "CMDH-81-0414 HS-50", "CMDH-81-0348 HS-51"
-        ];
-
-        // DATABASES
-        let registeredUsers = {
-            "admin": { 
-                pass: "1234", 
-                designation: "System Administrator", 
-                contact: "01700000000", 
-                permissions: { challan: true, eir: true, empty: true } 
-            }
-        };
-
-        // Keep staff accounts available after a page refresh. If storage is unavailable
-        // (for example in a restricted private window), the in-memory default still works.
-        try {
-            const savedUsers = localStorage.getItem('hsat_registered_users');
-            if (savedUsers) {
-                const parsedUsers = JSON.parse(savedUsers);
-                if (parsedUsers && typeof parsedUsers === 'object' && parsedUsers.admin) {
-                    registeredUsers = parsedUsers;
-                }
-            }
-        } catch (storageError) {
-            console.warn('User account storage is unavailable; using temporary accounts.', storageError);
-        }
-
-        function persistUsers() {
-            try {
-                localStorage.setItem('hsat_registered_users', JSON.stringify(registeredUsers));
-                if (typeof persistAllData === 'function') persistAllData();
-            } catch (storageError) {
-                console.warn('Could not save user accounts.', storageError);
-            }
-        }
-
-        let challanDataList = [];
-        let eirDataList = [];
-        let emptyStockDataList = [];
-        let vesselDataList = [];
-        let recycleBin = [];
-        let currentUser = null;
-        let editingChallanId = null;
-        let lastDataSaveAt = 0;
-        let lastActivityAt = Date.now();
-        const SESSION_IDLE_LIMIT = 30 * 60 * 1000;
-        const MAX_LOGIN_ATTEMPTS = 5;
-        const LOGIN_LOCK_TIME = 60 * 1000;
-
-        const HSAT_DATA_KEY = 'hsat_all_data_v1';
-        const HSAT_BACKUP_KEY = 'hsat_all_data_backup_v1';
-        const HSAT_RECOVERY_DB = 'hsat_recovery_database_v1';
-
-        function persistAllData() {
-            const payload = {
-                version: 1,
-                savedAt: new Date().toISOString(),
-                registeredUsers,
-                challanDataList,
-                eirDataList,
-                emptyStockDataList,
-                vesselDataList,
-                recycleBin
-            };
-            const serialized = JSON.stringify(payload);
-            try {
-                const previous = localStorage.getItem(HSAT_DATA_KEY);
-                if (previous) localStorage.setItem(HSAT_BACKUP_KEY, previous);
-                localStorage.setItem(HSAT_DATA_KEY, serialized);
-                localStorage.setItem('hsat_last_save_at', payload.savedAt);
-                lastDataSaveAt = Date.now();
-            } catch (storageError) {
-                console.warn('Could not save HSAT data. Browser storage may be full or blocked.', storageError);
-            }
-            persistIndexedDbSnapshot(serialized);
-        }
-
-        function restoreAllData() {
-            let candidates = [];
-            try {
-                candidates = [localStorage.getItem(HSAT_DATA_KEY), localStorage.getItem(HSAT_BACKUP_KEY)].filter(Boolean);
-            } catch (storageError) {
-                console.warn('Local storage could not be read; checking recovery storage.', storageError);
-            }
-            for (const savedData of candidates) {
-                try {
-                    const parsed = JSON.parse(savedData);
-                    if (!parsed || typeof parsed !== 'object') continue;
-                    const data = parsed.data || parsed;
-                    if (Array.isArray(data.challanDataList)) challanDataList = data.challanDataList;
-                    if (Array.isArray(data.eirDataList)) eirDataList = data.eirDataList;
-                    if (Array.isArray(data.emptyStockDataList)) emptyStockDataList = data.emptyStockDataList;
-                    if (Array.isArray(data.vesselDataList)) vesselDataList = data.vesselDataList;
-                    if (Array.isArray(data.recycleBin)) recycleBin = data.recycleBin;
-                    if (data.registeredUsers && data.registeredUsers.admin) {
-                        registeredUsers = data.registeredUsers;
-                        localStorage.setItem('hsat_registered_users', JSON.stringify(registeredUsers));
-                    }
-                    return;
-                } catch (storageError) {
-                    console.warn('A saved HSAT copy was invalid; trying the backup copy.', storageError);
-                }
-            }
-        }
-
-        function persistIndexedDbSnapshot(serialized) {
-            if (!window.indexedDB) return;
-            try {
-                const request = indexedDB.open(HSAT_RECOVERY_DB, 1);
-                request.onupgradeneeded = event => {
-                    event.target.result.createObjectStore('snapshots', { keyPath: 'id' });
-                };
-                request.onsuccess = event => {
-                    const db = event.target.result;
-                    const tx = db.transaction('snapshots', 'readwrite');
-                    tx.objectStore('snapshots').put({ id: 'latest', savedAt: new Date().toISOString(), payload: serialized });
-                    tx.oncomplete = () => db.close();
-                };
-            } catch (storageError) {
-                console.warn('IndexedDB recovery snapshot was not available.', storageError);
-            }
-        }
-
-        function restoreIndexedDbSnapshot() {
-            if (!window.indexedDB) return;
-            try {
-                const request = indexedDB.open(HSAT_RECOVERY_DB, 1);
-                request.onupgradeneeded = event => {
-                    event.target.result.createObjectStore('snapshots', { keyPath: 'id' });
-                };
-                request.onsuccess = event => {
-                    const db = event.target.result;
-                    const readTx = db.transaction('snapshots', 'readonly');
-                    const getRequest = readTx.objectStore('snapshots').get('latest');
-                    getRequest.onsuccess = () => {
-                        const snapshot = getRequest.result;
-                        const hasCurrentData = challanDataList.length || eirDataList.length || emptyStockDataList.length || vesselDataList.length;
-                        if (snapshot && snapshot.payload && !hasCurrentData) {
-                            try {
-                                const parsed = JSON.parse(snapshot.payload);
-                                if (Array.isArray(parsed.challanDataList)) challanDataList = parsed.challanDataList;
-                                if (Array.isArray(parsed.eirDataList)) eirDataList = parsed.eirDataList;
-                                if (Array.isArray(parsed.emptyStockDataList)) emptyStockDataList = parsed.emptyStockDataList;
-                                if (Array.isArray(parsed.vesselDataList)) vesselDataList = parsed.vesselDataList;
-                                if (Array.isArray(parsed.recycleBin)) recycleBin = parsed.recycleBin;
-                                if (parsed.registeredUsers && parsed.registeredUsers.admin) registeredUsers = parsed.registeredUsers;
-                                renderChallanTable();
-                                renderEirTable();
-                                renderEmptyStockTable();
-                                renderPublicVesselTable();
-                                persistAllData();
-                            } catch (recoveryError) {
-                                console.warn('Recovery snapshot could not be read.', recoveryError);
-                            }
-                        }
-                        db.close();
-                    };
-                };
-            } catch (storageError) {
-                console.warn('IndexedDB recovery could not be opened.', storageError);
-            }
-        }
-
-        restoreAllData();
-        restoreIndexedDbSnapshot();
-        setInterval(() => persistAllData(), 10000);
-        window.addEventListener('beforeunload', () => persistAllData());
-
-        // INITIALIZE VEHICLE DROPDOWNS
-        (function initVehicleDropdowns() {
-            document.addEventListener("DOMContentLoaded", function() {
-                populateDropdowns();
-                renderPublicVesselTable();
-            });
-            setTimeout(() => {
-                populateDropdowns();
-                renderPublicVesselTable();
-            }, 50);
-        })();
-
-        function populateDropdowns() {
-            document.querySelectorAll('#transport-vehicle-filter').forEach(dropdown => {
-                dropdown.innerHTML = `<option value="ALL">-- Show All Vehicles Summary --</option>` + trailerList.map(t => `<option value="${t}">${t}</option>`).join('');
-            });
-            
-            document.querySelectorAll('#ch-trailer, #eir-trailer, #es-trailer').forEach(d => {
-                d.innerHTML = trailerList.map(t => `<option value="${t}">${t}</option>`).join('');
-            });
-        }
-
-        window.onload = function() {
-            populateDropdowns();
-            resetChallanAutoFields();
-            resetVesselAutoFields();
-            renderPublicVesselTable();
-            renderChallanTable();
-            renderEirTable();
-            renderEmptyStockTable();
-            const today = new Date().toISOString().split('T')[0];
-            const dateFilter = document.getElementById('transport-date-filter');
-            if(dateFilter) dateFilter.value = today;
-        };
-
-        function resetChallanAutoFields() {
-            document.getElementById('ch-no').value = 'CH-' + Math.floor(100000 + Math.random() * 900000);
-            document.getElementById('ch-time').value = new Date().toLocaleString();
-        }
-
-        function resetVesselAutoFields() {
-            document.getElementById('v-sl').value = 'VS-' + (vesselDataList.length + 101);
-            document.getElementById('v-name').value = '';
-            document.getElementById('v-jetty').value = '';
-            document.getElementById('v-bertheddate').value = '';
-            document.getElementById('v-agent').value = '';
-            document.getElementById('v-operator').value = '';
-            document.getElementById('v-sailling').value = '';
-            document.getElementById('v-time').value = '';
-        }
-
-        // MAIN PAGE CONTAINER SEARCH FUNCTION
-        function handleMainContainerSearch() {
-            const query = document.getElementById('main-search-input').value.trim().toUpperCase();
-            const resultBox = document.getElementById('search-result-container');
-            const tbody = document.getElementById('main-search-result-body');
-
-            if(!query) {
-                resultBox.style.display = 'none';
-                tbody.innerHTML = '';
                 return;
             }
 
