@@ -1,0 +1,2349 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Haji Saber Ahmed Timber Co., Ltd | HSAT Terminal</title>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-main: #0f172a;
+            --bg-card: rgba(30, 41, 59, 0.7);
+            --bg-glass: rgba(255, 255, 255, 0.03);
+            --border-glow: rgba(56, 189, 248, 0.2);
+            --border-light: rgba(255, 255, 255, 0.08);
+            --accent-cyan: #38bdf8;
+            --accent-blue: #3b82f6;
+            --accent-emerald: #10b981;
+            --accent-purple: #a855f7;
+            --accent-rose: #f43f5e;
+            --accent-amber: #f59e0b;
+            --text-main: #f8fafc;
+            --text-muted: #94a3b8;
+            --radius-lg: 16px;
+            --radius-md: 10px;
+            --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Plus Jakarta Sans', sans-serif; }
+        
+        body {
+            background: var(--bg-main);
+            color: var(--text-main);
+            min-height: 100vh;
+            overflow-x: hidden;
+            background-image: 
+                radial-gradient(circle at 15% 15%, rgba(56, 189, 248, 0.08) 0%, transparent 40%),
+                radial-gradient(circle at 85% 85%, rgba(168, 85, 247, 0.08) 0%, transparent 40%);
+            background-attachment: fixed;
+        }
+
+        /* CUSTOM SCROLLBAR */
+        ::-webkit-scrollbar { width: 8px; height: 8px; }
+        ::-webkit-scrollbar-track { background: #0f172a; }
+        ::-webkit-scrollbar-thumb { background: #334155; border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: var(--accent-cyan); }
+
+        /* BANNER HEADER */
+        .cpa-banner-header {
+            background: rgba(15, 23, 42, 0.85);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            padding: 12px 28px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid var(--border-glow);
+            box-shadow: 0 8px 32px rgba(0,0,0,0.3);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .banner-logo-area { display: flex; align-items: center; gap: 14px; }
+        .banner-logo-img {
+            height: 44px; width: auto; object-fit: contain;
+            filter: drop-shadow(0 2px 8px rgba(0,0,0,0.4));
+            transition: var(--transition);
+        }
+        .banner-logo-img:hover { transform: scale(1.05); }
+
+        .banner-title-text h1 {
+            font-size: 16px; font-weight: 800; letter-spacing: 0.5px;
+            background: linear-gradient(135deg, #ffffff 0%, #cbd5e1 100%);
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+        }
+        .banner-title-text p {
+            font-size: 10px; color: var(--accent-cyan);
+            text-transform: uppercase; letter-spacing: 1.5px; font-weight: 700; margin-top: 1px;
+        }
+
+        .banner-nav-btns { display: flex; align-items: center; gap: 10px; }
+        
+        .cpa-btn-glass {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid var(--border-light);
+            color: var(--text-main);
+            padding: 7px 14px; border-radius: 8px;
+            font-weight: 600; font-size: 11px; cursor: pointer;
+            transition: var(--transition); display: inline-flex; align-items: center; gap: 6px;
+        }
+        .cpa-btn-glass:hover {
+            background: rgba(255, 255, 255, 0.12);
+            border-color: var(--accent-cyan);
+            transform: translateY(-2px);
+        }
+
+        .btn-danger-glass {
+            background: rgba(244, 63, 94, 0.15);
+            border: 1px solid rgba(244, 63, 94, 0.3);
+            color: #fca5a5;
+        }
+        .btn-danger-glass:hover {
+            background: rgba(244, 63, 94, 0.3);
+            border-color: var(--accent-rose);
+            color: #fff;
+        }
+
+        /* HERO & LOGIN VIEW */
+        .hero {
+            min-height: calc(100vh - 70px);
+            padding: 40px 6%;
+            display: flex; flex-direction: column; gap: 30px;
+        }
+        
+        .hero-top-section {
+            display: flex; align-items: center; justify-content: space-between; gap: 40px; width: 100%;
+        }
+        
+        .hero-text { max-width: 600px; }
+        .company-badge {
+            background: rgba(56, 189, 248, 0.1); border: 1px solid var(--border-glow);
+            color: var(--accent-cyan); padding: 6px 14px; border-radius: 20px;
+            font-size: 11px; font-weight: 700; display: inline-block; margin-bottom: 16px;
+            letter-spacing: 1px;
+        }
+        .hero-text h1 {
+            font-size: 32px; font-weight: 800; line-height: 1.25; margin-bottom: 14px;
+            background: linear-gradient(135deg, #f8fafc 0%, #94a3b8 100%);
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+        }
+        .hero-text p { color: var(--text-muted); font-size: 14px; line-height: 1.7; }
+
+        /* AUTH CARD */
+        .auth-card {
+            background: var(--bg-card);
+            backdrop-filter: blur(12px);
+            border: 1px solid var(--border-light);
+            padding: 28px; border-radius: var(--radius-lg);
+            width: 100%; max-width: 400px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+            transition: var(--transition);
+        }
+        .auth-card:hover { border-color: var(--border-glow); }
+        .auth-title { font-size: 18px; font-weight: 700; color: #fff; margin-bottom: 18px; border-bottom: 1px solid var(--border-light); padding-bottom: 10px; }
+        
+        .form-group { margin-bottom: 14px; }
+        .form-group label { display: block; font-size: 11px; margin-bottom: 6px; color: var(--text-muted); font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px; }
+        
+        .form-control {
+            width: 100%; padding: 10px 14px;
+            background: rgba(15, 23, 42, 0.6);
+            border: 1px solid var(--border-light);
+            border-radius: var(--radius-md); color: #fff; font-size: 13px; outline: none;
+            transition: var(--transition);
+        }
+        .form-control:focus {
+            border-color: var(--accent-cyan);
+            box-shadow: 0 0 0 3px rgba(56, 189, 248, 0.15);
+            background: rgba(15, 23, 42, 0.9);
+        }
+        select.form-control { cursor: pointer; color: #f8fafc; }
+        select.form-control option { background: #0f172a; color: #f8fafc; }
+
+        .forgot-link { display: block; font-size: 11px; color: var(--accent-cyan); text-decoration: none; margin-top: 6px; text-align: right; cursor: pointer; font-weight: 600; }
+        .forgot-link:hover { text-decoration: underline; }
+
+        /* GLASS CARD CONTAINERS */
+        .glass-panel {
+            background: var(--bg-card);
+            backdrop-filter: blur(12px);
+            border: 1px solid var(--border-light);
+            border-radius: var(--radius-lg);
+            padding: 24px; width: 100%;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+        .glass-panel h3 { color: #fff; font-size: 16px; font-weight: 700; margin-bottom: 14px; display: flex; align-items: center; gap: 10px; }
+
+        .search-box-wrapper { display: flex; gap: 12px; margin-top: 12px; margin-bottom: 16px; flex-wrap: wrap; }
+        .search-input-field {
+            flex: 1; min-width: 260px; padding: 12px 16px; font-size: 13px;
+            background: rgba(15, 23, 42, 0.8); border: 1px solid var(--border-glow);
+            border-radius: var(--radius-md); outline: none; color: #fff; font-weight: 600;
+        }
+
+        /* DASHBOARD GRID */
+        #dashboard { display: none; padding: 30px 5%; }
+        
+        .dash-cards-grid {
+            display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 18px; margin-bottom: 30px;
+        }
+
+        .cpa-card {
+            background: var(--bg-card);
+            backdrop-filter: blur(10px);
+            border-radius: var(--radius-lg); padding: 22px;
+            border: 1px solid var(--border-light);
+            display: flex; flex-direction: column; justify-content: space-between;
+            transition: var(--transition);
+        }
+        .cpa-card:hover {
+            transform: translateY(-4px);
+            border-color: var(--border-glow);
+            box-shadow: 0 12px 28px rgba(0,0,0,0.3);
+        }
+
+        .cpa-card-header { display: flex; align-items: center; gap: 12px; margin-bottom: 12px; }
+        .cpa-icon {
+            width: 42px; height: 42px; border-radius: var(--radius-md); display: flex; align-items: center; justify-content: center;
+            color: white; font-size: 20px; font-weight: bold; flex-shrink: 0;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+        }
+        .cpa-icon.blue { background: linear-gradient(135deg, #2563eb, #3b82f6); }
+        .cpa-icon.green { background: linear-gradient(135deg, #059669, #10b981); }
+        .cpa-icon.purple { background: linear-gradient(135deg, #7c3aed, #a855f7); }
+        .cpa-icon.dark { background: linear-gradient(135deg, #334155, #475569); }
+        .cpa-icon.teal { background: linear-gradient(135deg, #0284c7, #0ea5e9); }
+        .cpa-icon.admin-color { background: linear-gradient(135deg, #d97706, #f59e0b); }
+        .cpa-icon.rose { background: linear-gradient(135deg, #be123c, #f43f5e); }
+        .cpa-icon.bill-color { background: linear-gradient(135deg, #047857, #10b981); }
+
+        .cpa-card-title { font-size: 15px; font-weight: 700; color: #fff; }
+        .cpa-card-desc { font-size: 12px; color: var(--text-muted); margin-bottom: 16px; line-height: 1.5; }
+
+        .cpa-btn {
+            border: none; padding: 9px 18px; border-radius: var(--radius-md); font-weight: 600; font-size: 12px;
+            cursor: pointer; width: fit-content; color: white; display: inline-flex; align-items: center; gap: 6px;
+            transition: var(--transition); box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+        }
+        .cpa-btn:hover { transform: translateY(-2px); opacity: 0.95; }
+        .cpa-btn-blue { background: #2563eb; }
+        .cpa-btn-green { background: #10b981; }
+        .cpa-btn-purple { background: #a855f7; }
+        .cpa-btn-dark { background: #334155; }
+        .cpa-btn-teal { background: #0ea5e9; }
+        .cpa-btn-admin { background: #f59e0b; }
+        .cpa-btn-rose { background: #f43f5e; }
+        .cpa-btn-bill { background: #059669; }
+
+        /* FORM INTERFACES */
+        .interface-card {
+            display: none; background: var(--bg-card);
+            backdrop-filter: blur(12px); border-radius: var(--radius-lg); padding: 26px;
+            border: 1px solid var(--border-light); margin-bottom: 30px; box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+            animation: fadeIn 0.3s ease-in-out;
+        }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+
+        .interface-card h2 { color: #fff; font-size: 18px; font-weight: 700; margin-bottom: 18px; border-bottom: 1px solid var(--border-light); padding-bottom: 12px; }
+        
+        .grid-4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; }
+        @media(max-width: 1024px) { .grid-4 { grid-template-columns: repeat(2, 1fr); } }
+        @media(max-width: 600px) {
+            .grid-4 { grid-template-columns: 1fr; }
+            .hero-top-section { flex-direction: column; text-align: center; }
+            .cpa-banner-header { padding: 10px 16px; }
+            .banner-title-text h1 { font-size: 13px; }
+            .banner-title-text p { display: none; }
+        }
+        
+        .btn-submit {
+            background: linear-gradient(135deg, #2563eb, #3b82f6); color: white; border: none; padding: 10px 22px;
+            border-radius: var(--radius-md); font-weight: 600; cursor: pointer; margin-top: 16px; font-size: 13px; width: 100%;
+            transition: var(--transition); box-shadow: 0 4px 14px rgba(37, 99, 235, 0.4);
+        }
+        .btn-submit:hover { transform: translateY(-2px); box-shadow: 0 6px 18px rgba(37, 99, 235, 0.6); }
+        @media(min-width: 600px) { .btn-submit { width: auto; } }
+
+        /* DATA TABLE PANEL */
+        .data-table-panel {
+            background: rgba(15, 23, 42, 0.5); border-radius: var(--radius-md); padding: 18px;
+            border: 1px solid var(--border-light); margin-top: 22px; overflow-x: auto;
+        }
+        .data-table-panel h3 { color: #fff; font-size: 14px; font-weight: 700; margin-bottom: 14px; }
+        
+        table { width: 100%; border-collapse: separate; border-spacing: 0; font-size: 12px; text-align: left; min-width: 600px; }
+        th, td { padding: 12px 14px; border-bottom: 1px solid var(--border-light); white-space: nowrap; }
+        th { background: rgba(30, 41, 59, 0.8); color: var(--accent-cyan); font-weight: 700; text-transform: uppercase; font-size: 11px; letter-spacing: 0.5px; }
+        th:first-child { border-top-left-radius: 8px; }
+        th:last-child { border-top-right-radius: 8px; }
+        tr:hover td { background: rgba(255, 255, 255, 0.02); }
+        td { color: #cbd5e1; }
+
+        .action-btn { padding: 5px 12px; border: none; border-radius: 6px; cursor: pointer; font-size: 11px; font-weight: 600; margin-right: 4px; transition: var(--transition); }
+        .action-btn:hover { transform: translateY(-1px); opacity: 0.9; }
+        .btn-delete { background: #ef4444; color: white; }
+        .btn-print { background: #10b981; color: white; }
+        .btn-preview { background: #8b5cf6; color: white; }
+        .btn-edit { background: #f59e0b; color: white; }
+        .btn-data { background: #0ea5e9; color: white; }
+
+        /* PRINT AREA */
+        #print-area { display: none; }
+        @media print {
+            body * { visibility: hidden !important; }
+            #print-area, #print-area * { visibility: visible !important; }
+            #print-area { display: block !important; position: absolute; left: 0; top: 0; width: 100%; color: #000; background: #fff; padding: 15px; }
+            #print-area.challan-a5 { width: 210mm !important; height: 148mm !important; padding: 0 !important; display: flex !important; align-items: center; justify-content: center; overflow: hidden; }
+            #print-area.challan-a5 .hs-wrap { width: 636px !important; height: 551px !important; margin: 0 !important; overflow: hidden !important; }
+            #print-area.challan-a5 .hs-sheet { transform: scale(.53) !important; transform-origin: 0 0 !important; }
+        }
+
+        /* CHALLAN & EIR PRINT SHEETS */
+        .hs-sheet, .hs-sheet * { font-family: Arial, Helvetica, sans-serif; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+        .hs-wrap { width: 1200px; height: 1040px; overflow: hidden; margin: 0 auto; }
+        .hs-sheet { position: relative; width: 1200px; height: 1040px; background-color: #fff; background-image: linear-gradient(rgba(148,163,184,.16) 1px, transparent 1px), linear-gradient(90deg, rgba(148,163,184,.16) 1px, transparent 1px); background-size: 120px 80px; color: #000; transform-origin: 0 0; }
+        .hs-sheet .hs-a { position: absolute; white-space: nowrap; line-height: 1; }
+        .hs-sheet .hs-frame { position: absolute; left: 4px; top: 250px; width: 1192px; height: 660px; border: 2px solid #111; }
+        .hs-sheet .hs-lbl { font-size: 18px; }
+        .hs-sheet .hs-b { font-weight: bold; }
+        .hs-sheet .hs-box { border: 2px solid #222; text-align: center; font-weight: bold; overflow: hidden; }
+        .hs-sheet .hs-hd { background: transparent; color: #000; font-weight: bold; text-align: center; font-size: 18px; border: 0; }
+        .hs-sheet .hs-cell { background: transparent; text-align: center; font-family: Georgia, "Times New Roman", serif; font-size: 20px; border: 0; overflow: hidden; }
+        .hs-sheet .hs-ln { border-bottom: 2px solid #333; font-weight: bold; overflow: hidden; }
+        .hs-sheet .hs-co { font-family: Georgia, "Times New Roman", serif; font-weight: bold; text-align: center; }
+        
+        .eir-wrap { width: 900px; height: 1030px; overflow: hidden; margin: 0 auto; }
+        .eir-sheet { position: relative; width: 900px; height: 1030px; background-color: #fff; background-image: linear-gradient(rgba(148,163,184,.16) 1px, transparent 1px), linear-gradient(90deg, rgba(148,163,184,.16) 1px, transparent 1px); background-size: 100px 52px; color: #000; font-family: Arial, Helvetica, sans-serif; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+        .eir-sheet .eir-a { position: absolute; white-space: nowrap; line-height: 1; }
+        .eir-sheet .eir-label { font-weight: 700; font-size: 20px; }
+        .eir-sheet .eir-value { font-weight: 700; font-size: 20px; border-bottom: 2px solid #333; min-height: 26px; overflow: hidden; }
+
+        /* BILL MEMO PRINT STYLES */
+        .bill-memo { width: 100%; max-width: 800px; margin: 0 auto; padding: 25px; border: 2px solid #000; font-family: Arial, sans-serif; background: #fff; color: #000; }
+        .bill-header { text-align: center; border-bottom: 2px solid #000; padding-bottom: 12px; margin-bottom: 18px; }
+        .bill-header h2 { font-size: 22px; font-weight: bold; margin-bottom: 4px; }
+        .bill-header p { font-size: 13px; }
+        .bill-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; font-size: 13px; margin-bottom: 20px; }
+        .bill-table { width: 100%; border-collapse: collapse; margin-bottom: 25px; }
+        .bill-table th, .bill-table td { border: 1px solid #000; padding: 10px; font-size: 13px; text-align: left; }
+        .bill-table th { background: #f0f0f0; }
+        .bill-total { text-align: right; font-size: 16px; font-weight: bold; margin-bottom: 35px; }
+        .bill-signatures { display: flex; justify-content: space-between; margin-top: 50px; font-size: 13px; }
+    </style>
+</head>
+<body>
+
+    <!-- BANNER HEADER -->
+    <header class="cpa-banner-header">
+        <div class="banner-logo-area">
+            <!-- UPDATED LOGO: SVG REPLACEMENT -->
+            <svg class="banner-logo-img" viewBox="0 0 160 160" width="44" height="44">
+                <circle cx="80" cy="80" r="76" fill="#0f172a" stroke="#38bdf8" stroke-width="4"/>
+                <path d="M 45 40 L 45 120 M 45 80 L 115 80 M 115 40 L 115 120" stroke="#f8fafc" stroke-width="12" stroke-linecap="round"/>
+                <circle cx="80" cy="80" r="14" fill="#38bdf8"/>
+            </svg>
+            <div class="banner-title-text">
+                <h1>HAJI SABER AHMED TIMBER CO., LTD</h1>
+                <p>HSAT Community System & Terminal Port Operation</p>
+            </div>
+        </div>
+        <div class="banner-nav-btns">
+            <span id="user-display" style="font-size:12px; color:var(--accent-cyan); font-weight:700; display:none;"></span>
+            <div id="backup-actions" style="display:none; align-items:center; gap:8px; flex-wrap:wrap;">
+                <button type="button" class="cpa-btn-glass" onclick="exportBackupJSON()">Backup JSON</button>
+                <button type="button" class="cpa-btn-glass" onclick="exportBackupCSV()">Backup CSV</button>
+                <button type="button" class="cpa-btn-glass" onclick="document.getElementById('backup-file-input').click()">Restore</button>
+                <button type="button" class="cpa-btn-glass" onclick="viewRecycleBin()">Trash</button>
+                <input id="backup-file-input" type="file" accept=".json,application/json" style="display:none" onchange="importBackupFile(event)">
+            </div>
+            <button id="logout-btn" class="cpa-btn-glass btn-danger-glass" onclick="logout()" style="display:none;">Logout</button>
+        </div>
+    </header>
+
+    <!-- HOME / LOGIN VIEW -->
+    <div class="hero" id="home-view">
+        <div class="hero-top-section">
+            <div class="hero-text">
+                <span class="company-badge">PORT COMMUNITY SYSTEM (HSAT)</span>
+                <h1>STREAMLINING PORT SERVICE & ENHANCING CONNECTIVITY</h1>
+                <p>আমাদের পোর্টের স্মার্ট পোর্টালে আপনাকে স্বাগতম। কন্টেইনার ডেলিভারি চালান, ইম্পোর্ট EIR, এম্পটি স্টক, পরিবহন ট্রিপ ম্যানেজমেন্ট এবং লাইভ ভেসেল আপডেট দেখুন।</p>
+            </div>
+
+            <div class="auth-card">
+                <div class="auth-title">System Login</div>
+                <form id="login-form" onsubmit="handleLogin(event)">
+                    <div class="form-group">
+                        <label>User Name</label>
+                        <input type="text" id="login-user" class="form-control" required placeholder="User Name">
+                    </div>
+                    <div class="form-group">
+                        <label>Password</label>
+                        <input type="password" id="login-pass" class="form-control" required placeholder="Password">
+                        <a class="forgot-link" onclick="handleForgotPassword()">Forget Password 🔑</a>
+                    </div>
+                    <button type="submit" class="cpa-btn cpa-btn-blue" style="width: 100%; justify-content:center; margin-top: 10px;">Login</button>
+                </form>
+            </div>
+        </div>
+
+        <!-- CONTAINER SEARCH SECTION -->
+        <div class="glass-panel">
+            <h3>🔍 Container Live Tracking & Details Search</h3>
+            <p style="font-size: 13px; color: var(--text-muted); margin-bottom: 10px;">এখানে কন্টেইনার নম্বর লিখে বা পেস্ট করে সার্চ করুন (যেমন: MSKU1234567)। সিস্টেম সব ডাটাবেজ থেকে কন্টেইনারের তথ্য খুঁজে বের করবে।</p>
+            <div class="search-box-wrapper">
+                <input type="text" id="main-search-input" class="search-input-field" placeholder="Enter or Paste Container No. here..." oninput="handleMainContainerSearch()">
+                <button class="cpa-btn cpa-btn-blue" onclick="handleMainContainerSearch()">Search Container</button>
+            </div>
+            
+            <div id="search-result-container" style="display:none; margin-top: 15px;">
+                <h4 style="font-size: 13px; color: var(--accent-cyan); margin-bottom: 10px; font-weight: 700;">📌 Search Results Found:</h4>
+                <div style="overflow-x: auto;">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Source Module</th>
+                                <th>Container No</th>
+                                <th>Details / Info</th>
+                                <th>Size / Type</th>
+                                <th>Vehicle / Trailer</th>
+                                <th>Date / Time</th>
+                            </tr>
+                        </thead>
+                        <tbody id="main-search-result-body"></tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <!-- DAILY VESSEL PUBLIC UPDATE -->
+        <div class="glass-panel">
+            <h3>⚓ Live Daily Vessel Update Information</h3>
+            <div style="overflow-x: auto;">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Sl No</th>
+                            <th>Vessel Name</th>
+                            <th>Jetty</th>
+                            <th>Berthed on</th>
+                            <th>L/Agent</th>
+                            <th>Berth Operator</th>
+                            <th>Sailling</th>
+                            <th>Time</th>
+                        </tr>
+                    </thead>
+                    <tbody id="public-vessel-list-body">
+                        <tr><td colspan="8" style="text-align:center; color:var(--text-muted);">No vessel update records available at the moment.</td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <!-- MAIN DASHBOARD VIEW -->
+    <div id="dashboard">
+        <div style="font-size: 11px; font-weight: 800; color: var(--accent-cyan); letter-spacing: 1.5px; text-transform: uppercase; margin-bottom: 20px;">
+            STREAMLINING PORT SERVICE AND ENHANCING CONNECTIVITY FOR SMARTER MARITIME ECOSYSTEM
+        </div>
+
+        <!-- DASHBOARD CARDS -->
+        <div class="dash-cards-grid" id="dash-cards-container">
+            <div class="cpa-card" id="card-challan">
+                <div>
+                    <div class="cpa-card-header">
+                        <div class="cpa-icon blue">📋</div>
+                        <div class="cpa-card-title">Container In Entry</div>
+                    </div>
+                    <div class="cpa-card-desc">Deliver Challan Data Form and Management Systems for Container Operations.</div>
+                </div>
+                <button class="cpa-btn cpa-btn-blue" onclick="showInterface('challan')">View Form</button>
+            </div>
+
+            <div class="cpa-card" id="card-eir">
+                <div>
+                    <div class="cpa-card-header">
+                        <div class="cpa-icon green">🖨️</div>
+                        <div class="cpa-card-title">Import Container EIR</div>
+                    </div>
+                    <div class="cpa-card-desc">Import Container EIR Entry Interface and Ticket Processing.</div>
+                </div>
+                <button class="cpa-btn cpa-btn-green" onclick="showInterface('eir')">View Form</button>
+            </div>
+
+            <div class="cpa-card" id="card-empty">
+                <div>
+                    <div class="cpa-card-header">
+                        <div class="cpa-icon purple">📦</div>
+                        <div class="cpa-card-title">Empty Stock Interface</div>
+                    </div>
+                    <div class="cpa-card-desc">Empty Container Stock, Dumping Location and Age Calculation Entry.</div>
+                </div>
+                <button class="cpa-btn cpa-btn-purple" onclick="showInterface('empty')">View Form</button>
+            </div>
+
+            <div class="cpa-card" id="card-report">
+                <div>
+                    <div class="cpa-card-header">
+                        <div class="cpa-icon dark">📊</div>
+                        <div class="cpa-card-title">Stock Analysis</div>
+                    </div>
+                    <div class="cpa-card-desc">View analyzed category stocks (Import, Load/Export, Empty).</div>
+                </div>
+                <button class="cpa-btn cpa-btn-dark" onclick="showInterface('report')">View Report</button>
+            </div>
+
+            <div class="cpa-card" id="card-transport">
+                <div>
+                    <div class="cpa-card-header">
+                        <div class="cpa-icon teal">🚛</div>
+                        <div class="cpa-card-title">Transport Service</div>
+                    </div>
+                    <div class="cpa-card-desc">Vehicle-wise monthly trip analysis, driver info & import/export status.</div>
+                </div>
+                <button class="cpa-btn cpa-btn-teal" onclick="showInterface('transport')">View Trips</button>
+            </div>
+
+            <div class="cpa-card" id="card-vessel">
+                <div>
+                    <div class="cpa-card-header">
+                        <div class="cpa-icon rose">⚓</div>
+                        <div class="cpa-card-title">Daily Vessel Update</div>
+                    </div>
+                    <div class="cpa-card-desc">Manage daily vessel schedules, jetty info, berthed dates, and sailing times.</div>
+                </div>
+                <button class="cpa-btn cpa-btn-rose" onclick="showInterface('vessel')">Manage Vessels</button>
+            </div>
+
+            <div class="cpa-card" id="card-bill">
+                <div>
+                    <div class="cpa-card-header">
+                        <div class="cpa-icon bill-color">💳</div>
+                        <div class="cpa-card-title">Container Billing System</div>
+                    </div>
+                    <div class="cpa-card-desc">Automatic Bill Generation using Container Size (20ft/40ft), Yard Days, Fixed Rates for Import/Export & Empty Stock.</div>
+                </div>
+                <button class="cpa-btn cpa-btn-bill" onclick="showInterface('bill')">Generate Bill</button>
+            </div>
+
+            <div class="cpa-card" id="card-admin" style="display: none;">
+                <div>
+                    <div class="cpa-card-header">
+                        <div class="cpa-icon admin-color">⚙️</div>
+                        <div class="cpa-card-title">System Admin Panel</div>
+                    </div>
+                    <div class="cpa-card-desc">Create staff user IDs and manage permissions.</div>
+                </div>
+                <button class="cpa-btn cpa-btn-admin" onclick="showInterface('admin')">Manage Users</button>
+            </div>
+        </div>
+
+        <!-- 1. DELIVER CHALLAN INTERFACE -->
+        <div class="interface-card" id="challan-interface">
+            <h2>🚚 Deliver Challan Data Interface</h2>
+            <form onsubmit="saveChallan(event)">
+                <div class="grid-4">
+                    <div class="form-group">
+                        <label>Challan No. (Automatic)</label>
+                        <input type="text" id="ch-no" class="form-control" readonly style="color:var(--accent-cyan); font-weight:bold;">
+                    </div>
+                    <div class="form-group">
+                        <label>Date & Time (Automatic)</label>
+                        <input type="text" id="ch-time" class="form-control" readonly>
+                    </div>
+                    <div class="form-group">
+                        <label>To Messrs / From Messrs</label>
+                        <select id="ch-messrs" class="form-control">
+                            <option>CPA To Depot</option>
+                            <option>Depot To CPA</option>
+                            <option>Depot To ICL</option>
+                            <option>Depot To NCL</option>
+                            <option>Depot To OFY</option>
+                            <option>OFY to Depot</option>
+                            <option>Depot To KDS</option>
+                            <option>Depot To EBL</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>MLO (Select or Type)</label>
+                        <input type="text" id="ch-mlo" class="form-control" list="mlo-list" required placeholder="Type or select MLO" oninput="syncLineData(this.value, 'ch-line')">
+                        <datalist id="mlo-list">
+                            <option value="MAERSK LINE"></option>
+                            <option value="COSCO SHIPPING"></option>
+                            <option value="MSC"></option>
+                            <option value="ONE LINE"></option>
+                        </datalist>
+                    </div>
+                    <div class="form-group">
+                        <label>Line (Auto Same as MLO)</label>
+                        <input type="text" id="ch-line" class="form-control" readonly>
+                    </div>
+                    <div class="form-group">
+                        <label>Container In 1 (No.)</label>
+                        <input type="text" id="ch-cont-no" class="form-control" required placeholder="First Container No.">
+                    </div>
+                    <div class="form-group">
+                        <label>Container In 2 (No.)</label>
+                        <input type="text" id="ch-cont-no-2" class="form-control" required placeholder="Second Container No.">
+                    </div>
+                    <div class="form-group">
+                        <label>Size</label>
+                        <select id="ch-size" class="form-control">
+                            <option>20"</option>
+                            <option>40"</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Type</label>
+                        <select id="ch-type" class="form-control">
+                            <option>HC</option>
+                            <option>ST</option>
+                            <option>RF</option>
+                            <option>LCL</option>
+                            <option>TNK</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Name Of Vessel</label>
+                        <input type="text" id="ch-vessel" class="form-control" placeholder="Vessel Name">
+                    </div>
+                    <div class="form-group">
+                        <label>Rot. No.</label>
+                        <input type="text" id="ch-rot" class="form-control" placeholder="e.g. 2026/1024">
+                    </div>
+                    <div class="form-group">
+                        <label>Status (Operation Category)</label>
+                        <select id="ch-status" class="form-control">
+                            <option value="IMPORT">IMPORT, Import Operation</option>
+                            <option value="LOAD">LOAD, Export Operation</option>
+                            <option value="EMPTY">EMPTY, Empty Operation</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Trailer / Vehicle No.</label>
+                        <select id="ch-trailer" class="form-control trailer-dropdown"></select>
+                    </div>
+                    <div class="form-group">
+                        <label>Through CPA Gate</label>
+                        <input type="text" id="ch-gate" class="form-control" value="Gate-4">
+                    </div>
+                    <div class="form-group">
+                        <label>Description Of Goods</label>
+                        <input type="text" id="ch-goods" class="form-control" placeholder="Goods Info">
+                    </div>
+                    <div class="form-group">
+                        <label>Trailer Service Provider</label>
+                        <input type="text" id="ch-provider" class="form-control" placeholder="Provider Name">
+                    </div>
+                    <div class="form-group">
+                        <label>Driver Name & ID</label>
+                        <input type="text" id="ch-driver" class="form-control" placeholder="Driver Info">
+                    </div>
+                    <div class="form-group">
+                        <label>Helper Name & ID</label>
+                        <input type="text" id="ch-helper" class="form-control" placeholder="Helper Info">
+                    </div>
+                </div>
+                <button type="submit" id="challan-save-btn" class="btn-submit">Save & Add Challan Entry</button>
+            </form>
+
+            <div class="data-table-panel">
+                <h3>📋 Submitted Deliver Challan Data List</h3>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Challan No</th>
+                            <th>Date Time</th>
+                            <th>Messrs</th>
+                            <th>Container No</th>
+                            <th>Size/Type</th>
+                            <th>Status Category</th>
+                            <th>Vehicle No</th>
+                            <th>Driver</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody id="challan-list-body"></tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- 2. IMPORT CONTAINER EIR ENTRY INTERFACE -->
+        <div class="interface-card" id="eir-interface">
+            <h2>📥 Import Container EIR Entry Interface</h2>
+            <form onsubmit="saveEir(event)">
+                <div class="grid-4">
+                    <div class="form-group">
+                        <label>1. EIR No.</label>
+                        <input type="text" id="eir-no" class="form-control" required placeholder="EIR Number">
+                    </div>
+                    <div class="form-group">
+                        <label>2. Date</label>
+                        <input type="date" id="eir-date" class="form-control" required>
+                    </div>
+                    <div class="form-group">
+                        <label>3. Import Vessel & Rot.No</label>
+                        <input type="text" id="eir-vessel-rot" class="form-control" placeholder="Vessel & Rot">
+                    </div>
+                    <div class="form-group">
+                        <label>4. Berth No.</label>
+                        <input type="text" id="eir-berth" class="form-control" placeholder="Berth No.">
+                    </div>
+                    <div class="form-group">
+                        <label>5. Container No.</label>
+                        <input type="text" id="eir-cont" class="form-control" required placeholder="Container No.">
+                    </div>
+                    <div class="form-group">
+                        <label>6. Declared Seal No.</label>
+                        <input type="text" id="eir-seal" class="form-control" placeholder="Seal No.">
+                    </div>
+                    <div class="form-group">
+                        <label>7. Re-Seal No. (If Applicable)</label>
+                        <input type="text" id="eir-reseal" class="form-control" placeholder="Re-seal No.">
+                    </div>
+                    <div class="form-group">
+                        <label>8. Consignee</label>
+                        <input type="text" id="eir-consignee" class="form-control" placeholder="Consignee Name">
+                    </div>
+                    <div class="form-group">
+                        <label>9. Commodity</label>
+                        <input type="text" id="eir-commodity" class="form-control" placeholder="Commodity">
+                    </div>
+                    <div class="form-group">
+                        <label>10. MLO (Select or Type)</label>
+                        <input type="text" id="eir-mlo" class="form-control" list="mlo-list" required placeholder="Type or select MLO">
+                    </div>
+                    <div class="form-group">
+                        <label>11. Vehicle No.</label>
+                        <select id="eir-trailer" class="form-control trailer-dropdown"></select>
+                    </div>
+                    <div class="form-group">
+                        <label>12. CPA Gate(Out) No.</label>
+                        <input type="text" id="eir-gate" class="form-control" placeholder="Gate Out No.">
+                    </div>
+                </div>
+                <button type="submit" class="btn-submit" style="background:var(--accent-emerald);">Save EIR Entry</button>
+            </form>
+
+            <div class="data-table-panel">
+                <h3>📋 Submitted Import EIR Data List</h3>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>EIR No</th>
+                            <th>Date</th>
+                            <th>Vessel & Rot</th>
+                            <th>Container No</th>
+                            <th>Consignee</th>
+                            <th>Vehicle No</th>
+                            <th>CPA Gate Out</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody id="eir-list-body"></tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- 3. EMPTY STOCK INTERFACE -->
+        <div class="interface-card" id="empty-interface">
+            <h2>📦 Empty Stock Interface</h2>
+            <form onsubmit="saveEmptyStock(event)">
+                <div class="grid-4">
+                    <div class="form-group">
+                        <label>1. Container No.</label>
+                        <input type="text" id="es-cont" class="form-control" required placeholder="Container No.">
+                    </div>
+                    <div class="form-group">
+                        <label>2. Size</label>
+                        <select id="es-size" class="form-control">
+                            <option value='40"'>40"</option>
+                            <option value='20"'>20"</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>3. Type</label>
+                        <select id="es-type" class="form-control">
+                            <option>HC</option>
+                            <option>ST</option>
+                            <option>RF</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>4. Container Dumping Location</label>
+                        <input type="text" id="es-location" class="form-control" required placeholder="e.g. Block-A, Yard-2">
+                    </div>
+                    <div class="form-group">
+                        <label>5. Vehicle No.</label>
+                        <select id="es-trailer" class="form-control trailer-dropdown"></select>
+                    </div>
+                    <div class="form-group">
+                        <label>6. Depot In Date</label>
+                        <input type="date" id="es-indate" class="form-control" required onchange="calculateAge()">
+                    </div>
+                    <div class="form-group">
+                        <label>7. Depot Out Date</label>
+                        <input type="date" id="es-outdate" class="form-control" required onchange="calculateAge()">
+                    </div>
+                    <div class="form-group">
+                        <label>8. Total Age (Days)</label>
+                        <input type="text" id="es-age" class="form-control" readonly style="font-weight:bold; color:var(--accent-cyan);" placeholder="Auto Calculated">
+                    </div>
+                    <div class="form-group">
+                        <label>9. Clearance</label>
+                        <select id="es-clearance" class="form-control">
+                            <option>Cleared</option>
+                            <option>Pending</option>
+                            <option>Custom Hold</option>
+                        </select>
+                    </div>
+                </div>
+                <button type="submit" class="btn-submit" style="background:var(--accent-purple);">Save Empty Stock Entry</button>
+            </form>
+
+            <div class="data-table-panel">
+                <h3>📋 Submitted Empty Stock Data List</h3>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Container No</th>
+                            <th>Size / Type</th>
+                            <th>Dumping Location</th>
+                            <th>Vehicle No</th>
+                            <th>In Date</th>
+                            <th>Out Date</th>
+                            <th>Total Age</th>
+                            <th>Clearance</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody id="empty-list-body"></tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- 4. STOCK ANALYSIS REPORT INTERFACE -->
+        <div class="interface-card" id="report-interface">
+            <h2>📊 Container In & Category Analysis Report</h2>
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; flex-wrap: wrap; gap: 10px;">
+                <p style="font-size: 13px; color: var(--text-muted);">কন্টেইনার ইন (Challan) ডাটার ক্যাটাগরি (IMPORT, LOAD, EMPTY) অনুযায়ী অ্যানালাইসিস স্ট্যাটাস ও স্টক নিচে দেখানো হলো।</p>
+                <button class="cpa-btn cpa-btn-dark" onclick="printFullReport()">🖨️ Print / Save PDF Report</button>
+            </div>
+
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 14px; margin-bottom: 24px;">
+                <div style="background:rgba(59, 130, 246, 0.1); border:1px solid rgba(59, 130, 246, 0.3); padding:16px; border-radius:var(--radius-md);">
+                    <div style="font-size:11px; color:var(--accent-cyan); font-weight:700;">IMPORT OPERATION STOCK</div>
+                    <div id="stat-import" style="font-size:24px; font-weight:800; color:#fff; margin-top:4px;">0</div>
+                </div>
+                <div style="background:rgba(168, 85, 247, 0.1); border:1px solid rgba(168, 85, 247, 0.3); padding:16px; border-radius:var(--radius-md);">
+                    <div style="font-size:11px; color:var(--accent-purple); font-weight:700;">LOAD / EXPORT OPERATION</div>
+                    <div id="stat-load" style="font-size:24px; font-weight:800; color:#fff; margin-top:4px;">0</div>
+                </div>
+                <div style="background:rgba(236, 72, 153, 0.1); border:1px solid rgba(236, 72, 153, 0.3); padding:16px; border-radius:var(--radius-md);">
+                    <div style="font-size:11px; color:#f472b6; font-weight:700;">EMPTY OPERATION STOCK</div>
+                    <div id="stat-empty-op" style="font-size:24px; font-weight:800; color:#fff; margin-top:4px;">0</div>
+                </div>
+                <div style="background:rgba(16, 185, 129, 0.1); border:1px solid rgba(16, 185, 129, 0.3); padding:16px; border-radius:var(--radius-md);">
+                    <div style="font-size:11px; color:var(--accent-emerald); font-weight:700;">GENERAL EMPTY STOCK MODULE</div>
+                    <div id="stat-total-stock" style="font-size:24px; font-weight:800; color:#fff; margin-top:4px;">0</div>
+                </div>
+            </div>
+
+            <div class="data-table-panel" style="margin-top:0; margin-bottom:16px;">
+                <h3>📥 Analyzed Stock: IMPORT Operation Listbox</h3>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Challan No</th><th>Date Time</th><th>Messrs</th><th>Container No</th><th>Size/Type</th><th>Vehicle No</th>
+                        </tr>
+                    </thead>
+                    <tbody id="report-import-body"></tbody>
+                </table>
+            </div>
+
+            <div class="data-table-panel" style="margin-top:0; margin-bottom:16px;">
+                <h3>🚢 Analyzed Stock: LOAD (Export) Operation Listbox</h3>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Challan No</th><th>Date Time</th><th>Messrs</th><th>Container No</th><th>Size/Type</th><th>Vehicle No</th>
+                        </tr>
+                    </thead>
+                    <tbody id="report-load-body"></tbody>
+                </table>
+            </div>
+
+            <div class="data-table-panel" style="margin-top:0;">
+                <h3>📦 Analyzed Stock: EMPTY Operation Listbox</h3>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Challan No</th><th>Date Time</th><th>Messrs</th><th>Container No</th><th>Size/Type</th><th>Vehicle No</th>
+                        </tr>
+                    </thead>
+                    <tbody id="report-emptyop-body"></tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- 5. TRANSPORT SERVICE REPORT INTERFACE -->
+        <div class="interface-card" id="transport-interface">
+            <h2>🚛 Transport Service & Vehicle-wise Monthly & Datewise Trip Report</h2>
+            <p style="font-size: 13px; color: var(--text-muted); margin-bottom: 18px;">প্রতিটি গাড়ির (Vehicle/Trailer No.) বিপরীতে পুরো মাসের মোট ট্রিপ এবং নির্দিষ্ট তারিখ অনুযায়ী (Datewise) কোন দিনে কয়টি ট্রিপ হয়েছে তা এখানে দেখা যাবে।</p>
+            
+            <div style="display: flex; gap: 14px; align-items: center; margin-bottom: 20px; flex-wrap: wrap;">
+                <div style="flex: 1; min-width: 250px;">
+                    <label style="font-size: 11px; font-weight: 600; display: block; margin-bottom: 6px;">Select Vehicle / Trailer No. for Filter</label>
+                    <select id="transport-vehicle-filter" class="form-control trailer-dropdown" onchange="renderTransportReport()">
+                        <option value="ALL">-- Show All Vehicles Summary --</option>
+                    </select>
+                </div>
+                <div>
+                    <button class="cpa-btn cpa-btn-teal" style="margin-top: 18px;" onclick="printTransportReport()">🖨️ Print Transport Report</button>
+                </div>
+            </div>
+
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 14px; margin-bottom: 22px;">
+                <div style="background:rgba(14, 165, 233, 0.1); border:1px solid rgba(14, 165, 233, 0.3); padding:16px; border-radius:var(--radius-md);">
+                    <div style="font-size:11px; color:var(--accent-cyan); font-weight:700;">TOTAL REGISTERED FLEET</div>
+                    <div id="tr-total-fleet" style="font-size:24px; font-weight:800; color:#fff; margin-top:4px;">51</div>
+                </div>
+                <div style="background:rgba(16, 185, 129, 0.1); border:1px solid rgba(16, 185, 129, 0.3); padding:16px; border-radius:var(--radius-md);">
+                    <div style="font-size:11px; color:var(--accent-emerald); font-weight:700;">TOTAL RECORDED TRIPS</div>
+                    <div id="tr-total-trips" style="font-size:24px; font-weight:800; color:#fff; margin-top:4px;">0</div>
+                </div>
+            </div>
+
+            <div class="data-table-panel" style="margin-top:0; margin-bottom:20px;">
+                <h3>🚛 Vehicle-wise Monthly Trip Breakdown List</h3>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Vehicle No.</th>
+                            <th>Driver Name & ID</th>
+                            <th>Total Trips</th>
+                            <th>Import Trips</th>
+                            <th>Export (Load) Trips</th>
+                            <th>Empty Trips</th>
+                            <th>Last Activity Date</th>
+                        </tr>
+                    </thead>
+                    <tbody id="transport-list-body"></tbody>
+                </table>
+            </div>
+
+            <div class="data-table-panel" style="margin-top:0;">
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 14px; flex-wrap: wrap; gap: 10px;">
+                    <h3 style="margin-bottom:0;">📅 Datewise Trip Breakdown (তারিখ অনুযায়ী ট্রিপ সংখ্যা)</h3>
+                    <div>
+                        <label style="font-size: 11px; font-weight: 600; margin-right: 8px;">Select Date Filter:</label>
+                        <input type="date" id="transport-date-filter" class="form-control" style="display: inline-block; width: auto; padding: 6px 12px;" onchange="renderTransportReport()">
+                    </div>
+                </div>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Date</th>
+                            <th>Vehicle No.</th>
+                            <th>Driver Name & ID</th>
+                            <th>Total Trips on this Date</th>
+                            <th>Import</th>
+                            <th>Load (Export)</th>
+                            <th>Empty</th>
+                        </tr>
+                    </thead>
+                    <tbody id="transport-datewise-body"></tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- 6. DAILY VESSEL UPDATE INTERFACE -->
+        <div class="interface-card" id="vessel-interface">
+            <h2>⚓ Daily Vessel Update - Management Panel</h2>
+            <p style="font-size: 13px; color: var(--text-muted); margin-bottom: 18px;">এখান থেকে দৈনিক ভেসেল আপডেট এন্ট্রি করুন। এন্ট্রি করার সাথে সাথে এটি ওয়েবসাইটের মূল পেজে লাইভ লিস্টবক্স হিসেবে প্রদর্শিত হবে।</p>
+            
+            <form onsubmit="saveVesselUpdate(event)">
+                <div class="grid-4">
+                    <div class="form-group">
+                        <label>Sl No. (Automatic)</label>
+                        <input type="text" id="v-sl" class="form-control" readonly style="font-weight:bold; color:var(--accent-rose);">
+                    </div>
+                    <div class="form-group">
+                        <label>Vessel Name</label>
+                        <input type="text" id="v-name" class="form-control" required placeholder="Vessel Name">
+                    </div>
+                    <div class="form-group">
+                        <label>Jetty</label>
+                        <input type="text" id="v-jetty" class="form-control" required placeholder="Jetty No./Location">
+                    </div>
+                    <div class="form-group">
+                        <label>Berthed on</label>
+                        <input type="date" id="v-bertheddate" class="form-control" required>
+                    </div>
+                    <div class="form-group">
+                        <label>L/Agent</label>
+                        <input type="text" id="v-agent" class="form-control" required placeholder="Local Agent Name">
+                    </div>
+                    <div class="form-group">
+                        <label>Berth Operator</label>
+                        <input type="text" id="v-operator" class="form-control" required placeholder="Berth Operator Name">
+                    </div>
+                    <div class="form-group">
+                        <label>Sailling</label>
+                        <input type="text" id="v-sailling" class="form-control" required placeholder="Sailing Status/Date">
+                    </div>
+                    <div class="form-group">
+                        <label>Time</label>
+                        <input type="time" id="v-time" class="form-control" required>
+                    </div>
+                </div>
+                <button type="submit" class="btn-submit" style="background:var(--accent-rose);">Save & Publish Vessel Update</button>
+            </form>
+
+            <div class="data-table-panel">
+                <h3>📋 Submitted Daily Vessel Update Records</h3>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Sl No</th>
+                            <th>Vessel Name</th>
+                            <th>Jetty</th>
+                            <th>Berthed on</th>
+                            <th>L/Agent</th>
+                            <th>Berth Operator</th>
+                            <th>Sailling</th>
+                            <th>Time</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody id="vessel-admin-list-body"></tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- 7. CONTAINER BILLING SYSTEM INTERFACE -->
+        <div class="interface-card" id="bill-interface">
+            <h2>💳 Container Automatic Billing System</h2>
+            <p style="font-size: 13px; color: var(--text-muted); margin-bottom: 18px;">কন্টেইনার নম্বর লিখে সার্চ করুন। সিস্টেম নিজে থেকে ডাটা নিয়ে সাইজ (20ft / 40ft) ও ইয়ার্ডের অবস্থানকাল (Days) গণনা করে নির্ধারিত ফিক্সড রেট অনুযায়ী অটোমেটিক বিল তৈরি করে দেবে।</p>
+            
+            <div style="background:rgba(15, 23, 42, 0.6); border:1px solid var(--border-light); padding:18px; border-radius:var(--radius-md); margin-bottom:22px;">
+                <h3 style="font-size:13px; color:var(--accent-cyan); margin-bottom:12px; font-weight:700;">⚙️ Fixed Rate Settings (Tk. / Day)</h3>
+                <div class="grid-4">
+                    <div class="form-group">
+                        <label>Import / Export (20ft Rate / Day)</label>
+                        <input type="number" id="rate-imp-20" class="form-control" value="500" onchange="calculateAutoBill()">
+                    </div>
+                    <div class="form-group">
+                        <label>Import / Export (40ft Rate / Day)</label>
+                        <input type="number" id="rate-imp-40" class="form-control" value="1000" onchange="calculateAutoBill()">
+                    </div>
+                    <div class="form-group">
+                        <label>Empty Container (20ft Rate / Day)</label>
+                        <input type="number" id="rate-emp-20" class="form-control" value="200" onchange="calculateAutoBill()">
+                    </div>
+                    <div class="form-group">
+                        <label>Empty Container (40ft Rate / Day)</label>
+                        <input type="number" id="rate-emp-40" class="form-control" value="400" onchange="calculateAutoBill()">
+                    </div>
+                </div>
+            </div>
+
+            <div style="background:rgba(15, 23, 42, 0.6); border:1px solid var(--border-light); padding:18px; border-radius:var(--radius-md); margin-bottom:22px;">
+                <h3 style="font-size:13px; color:var(--accent-cyan); margin-bottom:12px; font-weight:700;">🔍 Search Container & Auto Fetch Data</h3>
+                <div style="display:flex; gap:12px; flex-wrap:wrap;">
+                    <input type="text" id="bill-search-input" class="form-control" style="flex:1; min-width:250px;" placeholder="Enter Container No (e.g. MSKU1234567)...">
+                    <button type="button" class="cpa-btn cpa-btn-bill" onclick="searchContainerForBill()">Fetch & Generate Bill</button>
+                </div>
+            </div>
+
+            <div id="bill-result-panel" style="display:none; background:rgba(16, 185, 129, 0.08); border:1px solid rgba(16, 185, 129, 0.3); padding:20px; border-radius:var(--radius-md);">
+                <h3 style="font-size:15px; color:var(--accent-emerald); margin-bottom:14px; font-weight:700;">🧾 Generated Bill Summary</h3>
+                <div class="grid-4">
+                    <div class="form-group">
+                        <label>Bill No.</label>
+                        <input type="text" id="b-no" class="form-control" readonly style="font-weight:bold; color:var(--accent-emerald);">
+                    </div>
+                    <div class="form-group">
+                        <label>Container No.</label>
+                        <input type="text" id="b-cont" class="form-control" readonly style="font-weight:bold;">
+                    </div>
+                    <div class="form-group">
+                        <label>Category / Status</label>
+                        <input type="text" id="b-status" class="form-control" readonly>
+                    </div>
+                    <div class="form-group">
+                        <label>Size / Type</label>
+                        <input type="text" id="b-sizetype" class="form-control" readonly>
+                    </div>
+                    <div class="form-group">
+                        <label>In Date / Entry Time</label>
+                        <input type="text" id="b-indate" class="form-control" readonly>
+                    </div>
+                    <div class="form-group">
+                        <label>Out Date / Bill Date</label>
+                        <input type="date" id="b-outdate" class="form-control" onchange="calculateAutoBill()">
+                    </div>
+                    <div class="form-group">
+                        <label>Total Yard Stay (Days)</label>
+                        <input type="text" id="b-days" class="form-control" readonly style="font-weight:bold; color:var(--accent-cyan);">
+                    </div>
+                    <div class="form-group">
+                        <label>Applied Fixed Rate / Day (BDT)</label>
+                        <input type="text" id="b-rate" class="form-control" readonly>
+                    </div>
+                </div>
+
+                <div style="margin-top:18px; background:rgba(15, 23, 42, 0.8); padding:16px; border-radius:var(--radius-md); border:1px solid var(--border-light); display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:12px;">
+                    <div>
+                        <span style="font-size:13px; color:var(--text-muted); font-weight:600;">Total Bill Amount: </span>
+                        <span id="b-total-amount" style="font-size:24px; font-weight:800; color:var(--accent-emerald);">BDT 0.00</span>
+                    </div>
+                    <div style="display:flex; gap:10px;">
+                        <button class="cpa-btn cpa-btn-bill" onclick="saveAndPrintBill()">🖨️ Save & Print Bill Memo</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="data-table-panel">
+                <h3>📋 Generated Bills Records List</h3>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Bill No</th>
+                            <th>Container No</th>
+                            <th>Category</th>
+                            <th>Size</th>
+                            <th>Yard Days</th>
+                            <th>Rate/Day</th>
+                            <th>Total Amount</th>
+                            <th>Date</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody id="bill-list-body"></tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- 8. ADMIN PANEL INTERFACE -->
+        <div class="interface-card" id="admin-interface">
+            <h2>⚙️ System Admin Panel - Staff User Management & Permissions</h2>
+            <p style="font-size: 13px; color: var(--text-muted); margin-bottom: 18px;">এখান থেকে নতুন স্টাফ আইডি তৈরি করুন এবং তাদের মডিউল অ্যাক্সেস (Allow/Deny) নিয়ন্ত্রণ করুন।</p>
+            
+            <div style="background: rgba(15, 23, 42, 0.6); border: 1px solid var(--border-light); padding: 18px; border-radius: var(--radius-md); margin-bottom: 22px;">
+                <h3 style="font-size: 14px; color: var(--accent-amber); margin-bottom: 12px; font-weight: 700;">➕ Create New Staff User ID</h3>
+                <form onsubmit="handleCreateStaff(event)">
+                    <div class="grid-4">
+                        <div class="form-group">
+                            <label>Username</label>
+                            <input type="text" id="new-staff-user" class="form-control" required placeholder="Staff Username">
+                        </div>
+                        <div class="form-group">
+                            <label>Password</label>
+                            <input type="password" id="new-staff-pass" class="form-control" required placeholder="Password">
+                        </div>
+                        <div class="form-group">
+                            <label>Designation</label>
+                            <input type="text" id="new-staff-design" class="form-control" required placeholder="Designation">
+                        </div>
+                        <div class="form-group">
+                            <label>Contact No.</label>
+                            <input type="text" id="new-staff-contact" class="form-control" required placeholder="017xxxxxxxx">
+                        </div>
+                    </div>
+                    <button type="submit" class="cpa-btn cpa-btn-admin" style="margin-top: 12px;">Create Staff ID</button>
+                </form>
+            </div>
+
+            <div class="data-table-panel" style="margin-top:0;">
+                <h3>👥 Registered Staff Users & Access Control Matrix</h3>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Username</th>
+                            <th>Designation</th>
+                            <th>Contact</th>
+                            <th>Deliver Challan Access</th>
+                            <th>Import EIR Access</th>
+                            <th>Empty Stock Access</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody id="admin-user-list-body"></tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <!-- PRINT PREVIEW CONTAINER -->
+    <div id="print-area"></div>
+
+    <script>
+        // UPDATED 51 TRAILERS LIST WITH HS NUMBERS
+        const trailerList = [
+            "ZHDA-61-0001 HS-01", "ZHDA-61-0002 HS-02", "ZHDA-61-0003 HS-03", "ZHDA-61-0004 HS-04",
+            "ZHDA-61-0005 HS-05", "ZHDA-61-0006 HS-06", "ZHDA-61-0007 HS-07", "ZHDA-61-0008 HS-08",
+            "ZHDA-61-0009 HS-09", "ZHDA-61-0010 HS-10", "ZHDA-61-0011 HS-11", "ZHDA-61-0012 HS-12",
+            "ZHDA-61-0013 HS-13", "ZHDA-61-0014 HS-14", "ZHDA-61-0015 HS-15", "CMDA-81-0667 HS-16",
+            "CMD-81-0653 HS-17", "CMD-81-0654 HS-18", "CMD-81-0655 HS-19", "CMD-81-0656 HS-20",
+            "CMD-81-0657 HS-21", "CMD-81-0658 HS-22", "CMD-81-0659 HS-23", "CMD-81-0660 HS-24",
+            "CMD-81-0661 HS-25", "CMD-81-0574 HS-26", "CMD-81-0597 HS-27", "CMDH-81-2183 HS-28",
+            "CMDH-81-2184 HS-29", "CMDH-81-2185 HS-30", "CMDH-81-2186 HS-31", "CMDH-81-2187 HS-32",
+            "CMDH-81-2188 HS-33", "CMDH-81-2189 HS-34", "CMDH-81-2190 HS-35", "CMDH-81-2191 HS-36",
+            "CMDH-81-2192 HS-37", "CMDH-81-2193 HS-38", "CMDH-81-2194 HS-39", "CMDH-81-2195 HS-40",
+            "CMDH-81-2196 HS-41", "CMDH-81-2197 HS-42", "CMDH-81-2198 HS-43", "CMDH-81-2199 HS-44",
+            "CMDH-81-2200 HS-45", "CMDH-81-2208 HS-46", "CMDH-81-2210 HS-47", "CME-81-0151 HS-48",
+            "CMDH-81-0413 HS-49", "CMDH-81-0414 HS-50", "CMDH-81-0348 HS-51"
+        ];
+
+        // DATABASES
+        let registeredUsers = {
+            "admin": { 
+                pass: "1234", 
+                designation: "System Administrator", 
+                contact: "01700000000", 
+                permissions: { challan: true, eir: true, empty: true } 
+            }
+        };
+
+        try {
+            const savedUsers = localStorage.getItem('hsat_registered_users');
+            if (savedUsers) {
+                const parsedUsers = JSON.parse(savedUsers);
+                if (parsedUsers && typeof parsedUsers === 'object' && parsedUsers.admin) {
+                    registeredUsers = parsedUsers;
+                }
+            }
+        } catch (storageError) {
+            console.warn('User account storage is unavailable.', storageError);
+        }
+
+        function persistUsers() {
+            try {
+                localStorage.setItem('hsat_registered_users', JSON.stringify(registeredUsers));
+                if (typeof persistAllData === 'function') persistAllData();
+            } catch (storageError) {
+                console.warn('Could not save user accounts.', storageError);
+            }
+        }
+
+        let challanDataList = [];
+        let eirDataList = [];
+        let emptyStockDataList = [];
+        let vesselDataList = [];
+        let billDataList = [];
+        let recycleBin = [];
+        let currentUser = null;
+        let editingChallanId = null;
+        let lastDataSaveAt = 0;
+        let lastActivityAt = Date.now();
+        const SESSION_IDLE_LIMIT = 30 * 60 * 1000;
+        const MAX_LOGIN_ATTEMPTS = 5;
+        const LOGIN_LOCK_TIME = 60 * 1000;
+
+        const HSAT_DATA_KEY = 'hsat_all_data_v1';
+        const HSAT_BACKUP_KEY = 'hsat_all_data_backup_v1';
+
+        function persistAllData() {
+            const payload = {
+                version: 1,
+                savedAt: new Date().toISOString(),
+                registeredUsers,
+                challanDataList,
+                eirDataList,
+                emptyStockDataList,
+                vesselDataList,
+                billDataList,
+                recycleBin
+            };
+            const serialized = JSON.stringify(payload);
+            try {
+                const previous = localStorage.getItem(HSAT_DATA_KEY);
+                if (previous) localStorage.setItem(HSAT_BACKUP_KEY, previous);
+                localStorage.setItem(HSAT_DATA_KEY, serialized);
+                localStorage.setItem('hsat_last_save_at', payload.savedAt);
+                lastDataSaveAt = Date.now();
+            } catch (storageError) {
+                console.warn('Could not save HSAT data.', storageError);
+            }
+        }
+
+        function restoreAllData() {
+            let candidates = [];
+            try {
+                candidates = [localStorage.getItem(HSAT_DATA_KEY), localStorage.getItem(HSAT_BACKUP_KEY)].filter(Boolean);
+            } catch (storageError) {
+                console.warn('Local storage read error.', storageError);
+            }
+            for (const savedData of candidates) {
+                try {
+                    const parsed = JSON.parse(savedData);
+                    if (!parsed || typeof parsed !== 'object') continue;
+                    const data = parsed.data || parsed;
+                    if (Array.isArray(data.challanDataList)) challanDataList = data.challanDataList;
+                    if (Array.isArray(data.eirDataList)) eirDataList = data.eirDataList;
+                    if (Array.isArray(data.emptyStockDataList)) emptyStockDataList = data.emptyStockDataList;
+                    if (Array.isArray(data.vesselDataList)) vesselDataList = data.vesselDataList;
+                    if (Array.isArray(data.billDataList)) billDataList = data.billDataList;
+                    if (Array.isArray(data.recycleBin)) recycleBin = data.recycleBin;
+                    if (data.registeredUsers && data.registeredUsers.admin) {
+                        registeredUsers = data.registeredUsers;
+                        localStorage.setItem('hsat_registered_users', JSON.stringify(registeredUsers));
+                    }
+                    return;
+                } catch (storageError) {
+                    console.warn('Invalid copy, trying backup.', storageError);
+                }
+            }
+        }
+
+        restoreAllData();
+        setInterval(() => persistAllData(), 10000);
+        window.addEventListener('beforeunload', () => persistAllData());
+
+        function populateDropdowns() {
+            document.querySelectorAll('#transport-vehicle-filter').forEach(dropdown => {
+                dropdown.innerHTML = `<option value="ALL">-- Show All Vehicles Summary --</option>` + trailerList.map(t => `<option value="${t}">${t}</option>`).join('');
+            });
+            
+            document.querySelectorAll('.trailer-dropdown').forEach(d => {
+                if (d.id !== 'transport-vehicle-filter') {
+                    d.innerHTML = trailerList.map(t => `<option value="${t}">${t}</option>`).join('');
+                }
+            });
+        }
+
+        window.onload = function() {
+            populateDropdowns();
+            resetChallanAutoFields();
+            resetVesselAutoFields();
+            renderPublicVesselTable();
+            renderChallanTable();
+            renderEirTable();
+            renderEmptyStockTable();
+            renderBillTable();
+            const today = new Date().toISOString().split('T')[0];
+            const dateFilter = document.getElementById('transport-date-filter');
+            if(dateFilter) dateFilter.value = today;
+        };
+
+        function resetChallanAutoFields() {
+            document.getElementById('ch-no').value = 'CH-' + Math.floor(100000 + Math.random() * 900000);
+            document.getElementById('ch-time').value = new Date().toLocaleString();
+        }
+
+        function resetVesselAutoFields() {
+            document.getElementById('v-sl').value = 'VS-' + (vesselDataList.length + 101);
+            document.getElementById('v-name').value = '';
+            document.getElementById('v-jetty').value = '';
+            document.getElementById('v-bertheddate').value = '';
+            document.getElementById('v-agent').value = '';
+            document.getElementById('v-operator').value = '';
+            document.getElementById('v-sailling').value = '';
+            document.getElementById('v-time').value = '';
+        }
+
+        function handleMainContainerSearch() {
+            const query = document.getElementById('main-search-input').value.trim().toUpperCase();
+            const resultBox = document.getElementById('search-result-container');
+            const tbody = document.getElementById('main-search-result-body');
+
+            if(!query) {
+                resultBox.style.display = 'none';
+                tbody.innerHTML = '';
+                return;
+            }
+
+            let foundRecords = [];
+
+            challanDataList.forEach(item => {
+                if((item.cont || '').toUpperCase().includes(query) || (item.cont2 || '').toUpperCase().includes(query)) {
+                    foundRecords.push({
+                        module: 'Deliver Challan (In Entry)',
+                        cont: [item.cont, item.cont2].filter(Boolean).join(' / '),
+                        details: `Challan No: ${item.no}, Messrs: ${item.messrs}, Status: ${item.status}`,
+                        sizeType: `${item.size} / ${item.type}`,
+                        trailer: item.trailer,
+                        dateTime: item.time
+                    });
+                }
+            });
+
+            eirDataList.forEach(item => {
+                if(item.cont.toUpperCase().includes(query)) {
+                    foundRecords.push({
+                        module: 'Import EIR Entry',
+                        cont: item.cont,
+                        details: `EIR No: ${item.no}, Vessel/Rot: ${item.vesselRot}, Consignee: ${item.consignee}`,
+                        sizeType: 'Standard Import',
+                        trailer: item.trailer,
+                        dateTime: item.date
+                    });
+                }
+            });
+
+            emptyStockDataList.forEach(item => {
+                if(item.cont.toUpperCase().includes(query)) {
+                    foundRecords.push({
+                        module: 'Empty Stock Module',
+                        cont: item.cont,
+                        details: `Location: ${item.location}, Clearance: ${item.clearance}, Age: ${item.age}`,
+                        sizeType: `${item.size} / ${item.type}`,
+                        trailer: item.trailer,
+                        dateTime: `In: ${item.indate} / Out: ${item.outdate}`
+                    });
+                }
+            });
+
+            resultBox.style.display = 'block';
+
+            if(foundRecords.length === 0) {
+                tbody.innerHTML = `<tr><td colspan="6" style="text-align:center; color:#ef4444; font-weight:bold;">No matching container found with '${query}' in any module!</td></tr>`;
+            } else {
+                tbody.innerHTML = foundRecords.map(r => `
+                    <tr>
+                        <td><span style="background:rgba(56, 189, 248, 0.15); color:var(--accent-cyan); padding:4px 10px; border-radius:6px; font-weight:bold; font-size:11px;">${r.module}</span></td>
+                        <td><strong>${r.cont}</strong></td>
+                        <td>${r.details}</td>
+                        <td>${r.sizeType}</td>
+                        <td>${r.trailer}</td>
+                        <td>${r.dateTime}</td>
+                    </tr>
+                `).join('');
+            }
+        }
+
+        function handleLogin(e) {
+            if (e) e.preventDefault();
+            const user = document.getElementById('login-user').value.trim().toLowerCase();
+            const pass = document.getElementById('login-pass').value;
+            const now = Date.now();
+            const lockUntil = Number(localStorage.getItem('hsat_login_lock_until') || 0);
+            
+            if (lockUntil > now) {
+                alert(`Too many failed attempts. Please try again in ${Math.ceil((lockUntil - now) / 1000)} seconds.`);
+                return;
+            }
+
+            if(registeredUsers[user] && registeredUsers[user].pass === pass) {
+                currentUser = user;
+                localStorage.removeItem('hsat_login_attempts');
+                localStorage.removeItem('hsat_login_lock_until');
+                lastActivityAt = now;
+                document.getElementById('home-view').style.display = 'none';
+                document.getElementById('dashboard').style.display = 'block';
+                document.getElementById('logout-btn').style.display = 'inline-flex';
+                document.getElementById('user-display').style.display = 'inline-block';
+                document.getElementById('backup-actions').style.display = 'flex';
+                document.getElementById('user-display').innerText = `Logged in: ${user} (${user === 'admin' ? 'Admin' : 'Staff'})`;
+                
+                populateDropdowns();
+                applyUserPermissions();
+            } else {
+                const attempts = Number(localStorage.getItem('hsat_login_attempts') || 0) + 1;
+                localStorage.setItem('hsat_login_attempts', String(attempts));
+                if (attempts >= MAX_LOGIN_ATTEMPTS) {
+                    localStorage.setItem('hsat_login_lock_until', String(now + LOGIN_LOCK_TIME));
+                    localStorage.setItem('hsat_login_attempts', '0');
+                    alert('Too many failed attempts. Login is locked for 60 seconds.');
+                    return;
+                }
+                alert('Invalid Username or Password!');
+            }
+        }
+
+        function applyUserPermissions() {
+            if (!currentUser) return;
+            const userObj = registeredUsers[currentUser];
+            const isAdmin = currentUser === 'admin';
+
+            document.getElementById('card-admin').style.display = isAdmin ? 'flex' : 'none';
+
+            if (!isAdmin && userObj && userObj.permissions) {
+                document.getElementById('card-challan').style.display = userObj.permissions.challan ? 'flex' : 'none';
+                document.getElementById('card-eir').style.display = userObj.permissions.eir ? 'flex' : 'none';
+                document.getElementById('card-empty').style.display = userObj.permissions.empty ? 'flex' : 'none';
+            } else {
+                document.getElementById('card-challan').style.display = 'flex';
+                document.getElementById('card-eir').style.display = 'flex';
+                document.getElementById('card-empty').style.display = 'flex';
+            }
+        }
+
+        function handleForgotPassword() {
+            alert('Please contact System Administrator (admin) to reset your password.');
+        }
+
+        function logout() {
+            currentUser = null;
+            document.getElementById('dashboard').style.display = 'none';
+            document.getElementById('home-view').style.display = 'flex';
+            document.getElementById('logout-btn').style.display = 'none';
+            document.getElementById('user-display').style.display = 'none';
+            document.getElementById('backup-actions').style.display = 'none';
+            
+            document.getElementById('challan-interface').style.display = 'none';
+            document.getElementById('eir-interface').style.display = 'none';
+            document.getElementById('empty-interface').style.display = 'none';
+            document.getElementById('report-interface').style.display = 'none';
+            document.getElementById('transport-interface').style.display = 'none';
+            document.getElementById('vessel-interface').style.display = 'none';
+            document.getElementById('bill-interface').style.display = 'none';
+            document.getElementById('admin-interface').style.display = 'none';
+            document.getElementById('login-form').reset();
+            renderPublicVesselTable();
+        }
+
+        function showInterface(type) {
+            document.getElementById('challan-interface').style.display = 'none';
+            document.getElementById('eir-interface').style.display = 'none';
+            document.getElementById('empty-interface').style.display = 'none';
+            document.getElementById('report-interface').style.display = 'none';
+            document.getElementById('transport-interface').style.display = 'none';
+            document.getElementById('vessel-interface').style.display = 'none';
+            document.getElementById('bill-interface').style.display = 'none';
+            document.getElementById('admin-interface').style.display = 'none';
+
+            populateDropdowns();
+
+            if(type === 'challan') {
+                document.getElementById('challan-interface').style.display = 'block';
+                resetChallanAutoFields();
+            } else if(type === 'eir') {
+                document.getElementById('eir-interface').style.display = 'block';
+            } else if(type === 'empty') {
+                document.getElementById('empty-interface').style.display = 'block';
+            } else if(type === 'report') {
+                document.getElementById('report-interface').style.display = 'block';
+                updateReportData();
+            } else if(type === 'transport') {
+                document.getElementById('transport-interface').style.display = 'block';
+                if(!document.getElementById('transport-date-filter').value) {
+                    document.getElementById('transport-date-filter').value = new Date().toISOString().split('T')[0];
+                }
+                renderTransportReport();
+            } else if(type === 'vessel') {
+                document.getElementById('vessel-interface').style.display = 'block';
+                resetVesselAutoFields();
+                renderVesselAdminTable();
+            } else if(type === 'bill') {
+                document.getElementById('bill-interface').style.display = 'block';
+                document.getElementById('b-outdate').value = new Date().toISOString().split('T')[0];
+                renderBillTable();
+            } else if(type === 'admin' && currentUser === 'admin') {
+                document.getElementById('admin-interface').style.display = 'block';
+                renderAdminUserTable();
+            }
+        }
+
+        // SAVE & HANDLERS FOR CHALLAN
+        function syncLineData(val, targetId) { document.getElementById(targetId).value = val; }
+
+        function saveChallan(e) {
+            e.preventDefault();
+            const data = {
+                id: editingChallanId || Date.now(),
+                no: document.getElementById('ch-no').value,
+                time: document.getElementById('ch-time').value,
+                messrs: document.getElementById('ch-messrs').value,
+                mlo: document.getElementById('ch-mlo').value,
+                line: document.getElementById('ch-line').value,
+                cont: document.getElementById('ch-cont-no').value,
+                cont2: document.getElementById('ch-cont-no-2').value,
+                size: document.getElementById('ch-size').value,
+                type: document.getElementById('ch-type').value,
+                vessel: document.getElementById('ch-vessel').value,
+                rot: document.getElementById('ch-rot').value,
+                status: document.getElementById('ch-status').value,
+                trailer: document.getElementById('ch-trailer').value,
+                gate: document.getElementById('ch-gate').value,
+                goods: document.getElementById('ch-goods').value,
+                provider: document.getElementById('ch-provider').value,
+                driver: document.getElementById('ch-driver').value,
+                helper: document.getElementById('ch-helper').value
+            };
+
+            if (editingChallanId) {
+                const idx = challanDataList.findIndex(i => i.id == editingChallanId);
+                if (idx !== -1) challanDataList[idx] = data;
+                editingChallanId = null;
+                document.getElementById('challan-save-btn').innerText = 'Save & Add Challan Entry';
+            } else {
+                challanDataList.push(data);
+            }
+
+            persistAllData();
+            alert('Challan Saved Successfully!');
+            resetChallanAutoFields();
+            renderChallanTable();
+        }
+
+        function renderChallanTable() {
+            const tbody = document.getElementById('challan-list-body');
+            if(!tbody) return;
+            tbody.innerHTML = challanDataList.length === 0 ? 
+                `<tr><td colspan="9" style="text-align:center; color:var(--text-muted);">No Challan Records Found</td></tr>` :
+                challanDataList.map(item => `
+                    <tr>
+                        <td><strong>${item.no}</strong></td>
+                        <td>${item.time}</td>
+                        <td>${item.messrs}</td>
+                        <td><strong>${[item.cont, item.cont2].filter(Boolean).join(' / ')}</strong></td>
+                        <td>${item.size} / ${item.type}</td>
+                        <td><span style="background:rgba(59, 130, 246, 0.15); color:var(--accent-cyan); padding:2px 8px; border-radius:4px; font-weight:bold;">${item.status}</span></td>
+                        <td>${item.trailer}</td>
+                        <td>${item.driver || 'N/A'}</td>
+                        <td>
+                            <button class="action-btn btn-print" onclick="printChallan('${item.id}')">Print</button>
+                            <button class="action-btn btn-delete" onclick="deleteChallan('${item.id}')">Delete</button>
+                        </td>
+                    </tr>
+                `).join('');
+        }
+
+        function deleteChallan(id) {
+            if(confirm('Are you sure you want to delete this Challan?')) {
+                const item = challanDataList.find(i => i.id == id);
+                if (item) recycleBin.push({ type: 'challan', data: item, deletedAt: new Date().toISOString() });
+                challanDataList = challanDataList.filter(i => i.id != id);
+                persistAllData();
+                renderChallanTable();
+            }
+        }
+
+        /* PRINT CHALLAN FORM */
+        function printChallan(id) {
+            const item = challanDataList.find(i => i.id == id);
+            if (!item) return;
+
+            const printArea = document.getElementById('print-area');
+            printArea.className = 'challan-a5';
+            printArea.innerHTML = `
+                <div class="hs-wrap">
+                    <div class="hs-sheet">
+                        <!-- UPDATED PRINT HEADER WITH SVG LOGO -->
+                        <div class="hs-a" style="left:20px; top:15px; display:flex; align-items:center; gap:12px;">
+                            <svg viewBox="0 0 160 160" width="55" height="55">
+                                <circle cx="80" cy="80" r="76" fill="#0f172a" stroke="#000" stroke-width="4"/>
+                                <path d="M 45 40 L 45 120 M 45 80 L 115 80 M 115 40 L 115 120" stroke="#fff" stroke-width="12" stroke-linecap="round"/>
+                                <circle cx="80" cy="80" r="14" fill="#000"/>
+                            </svg>
+                            <div>
+                                <h1 style="font-size:24px; font-weight:900; margin:0;">HAJI SABER AHMED TIMBER CO., LTD.</h1>
+                                <p style="font-size:12px; font-weight:bold; margin:2px 0 0 0;">HSAT TERMINAL PORT OPERATION - DELIVERY CHALLAN</p>
+                            </div>
+                        </div>
+                        
+                        <div class="hs-frame"></div>
+                        
+                        <div class="hs-a hs-lbl hs-b" style="left:20px; top:270px;">CHALLAN NO: <span style="font-size:22px; color:#000;">${item.no}</span></div>
+                        <div class="hs-a hs-lbl hs-b" style="left:700px; top:270px;">DATE & TIME: <span>${item.time}</span></div>
+                        
+                        <div class="hs-a hs-lbl" style="left:20px; top:320px;">To Messrs: <span class="hs-b">${item.messrs}</span></div>
+                        <div class="hs-a hs-lbl" style="left:700px; top:320px;">MLO / LINE: <span class="hs-b">${item.mlo} / ${item.line}</span></div>
+                        
+                        <div class="hs-a hs-lbl" style="left:20px; top:370px;">Container 1: <span class="hs-b" style="font-size:22px;">${item.cont}</span></div>
+                        <div class="hs-a hs-lbl" style="left:400px; top:370px;">Container 2: <span class="hs-b" style="font-size:22px;">${item.cont2 || 'N/A'}</span></div>
+                        <div class="hs-a hs-lbl" style="left:800px; top:370px;">Size/Type: <span class="hs-b">${item.size} / ${item.type}</span></div>
+                        
+                        <div class="hs-a hs-lbl" style="left:20px; top:420px;">Vessel Name: <span class="hs-b">${item.vessel || 'N/A'}</span></div>
+                        <div class="hs-a hs-lbl" style="left:500px; top:420px;">Rotation No: <span class="hs-b">${item.rot || 'N/A'}</span></div>
+                        <div class="hs-a hs-lbl" style="left:850px; top:420px;">Status: <span class="hs-b">${item.status}</span></div>
+                        
+                        <div class="hs-a hs-lbl" style="left:20px; top:470px;">Vehicle / Trailer No: <span class="hs-b" style="font-size:20px;">${item.trailer}</span></div>
+                        <div class="hs-a hs-lbl" style="left:600px; top:470px;">CPA Gate: <span class="hs-b">${item.gate}</span></div>
+                        
+                        <div class="hs-a hs-lbl" style="left:20px; top:520px;">Driver: <span class="hs-b">${item.driver || 'N/A'}</span></div>
+                        <div class="hs-a hs-lbl" style="left:500px; top:520px;">Helper: <span class="hs-b">${item.helper || 'N/A'}</span></div>
+                        <div class="hs-a hs-lbl" style="left:850px; top:520px;">Provider: <span class="hs-b">${item.provider || 'N/A'}</span></div>
+                        
+                        <!-- UPDATED ROUND SEAL (SEAL & SIGNATURE) -->
+                        <div class="hs-a" style="left:850px; top:720px; text-align:center;">
+                            <svg viewBox="0 0 140 140" width="130" height="130">
+                                <circle cx="70" cy="70" r="64" fill="none" stroke="#000" stroke-width="3" stroke-dasharray="6,4"/>
+                                <circle cx="70" cy="70" r="56" fill="none" stroke="#000" stroke-width="1.5"/>
+                                <path id="sealPath" d="M 22,70 A 48,48 0 1,1 118,70" fill="none"/>
+                                <text font-size="10" font-weight="bold" fill="#000">
+                                    <textPath href="#sealPath" startOffset="50%" text-anchor="middle">
+                                        HAJI SABER AHMED TIMBER CO. LTD.
+                                    </textPath>
+                                </text>
+                                <path d="M 35 75 Q 55 45 70 75 T 105 70" fill="none" stroke="#000" stroke-width="2.5"/>
+                                <text x="70" y="105" font-size="9" font-weight="bold" text-anchor="middle" fill="#000">AUTHORIZED SEAL</text>
+                            </svg>
+                        </div>
+                        
+                        <div class="hs-a hs-lbl" style="left:50px; top:850px;">----------------------------------------<br>Receiver's Signature</div>
+                        <div class="hs-a hs-lbl" style="left:500px; top:850px;">----------------------------------------<br>Gate In-Charge Signature</div>
+                    </div>
+                </div>
+            `;
+            window.print();
+        }
+
+        // SAVE & HANDLERS FOR EIR
+        function saveEir(e) {
+            e.preventDefault();
+            const data = {
+                id: Date.now(),
+                no: document.getElementById('eir-no').value,
+                date: document.getElementById('eir-date').value,
+                vesselRot: document.getElementById('eir-vessel-rot').value,
+                berth: document.getElementById('eir-berth').value,
+                cont: document.getElementById('eir-cont').value,
+                seal: document.getElementById('eir-seal').value,
+                reseal: document.getElementById('eir-reseal').value,
+                consignee: document.getElementById('eir-consignee').value,
+                commodity: document.getElementById('eir-commodity').value,
+                mlo: document.getElementById('eir-mlo').value,
+                trailer: document.getElementById('eir-trailer').value,
+                gate: document.getElementById('eir-gate').value
+            };
+
+            eirDataList.push(data);
+            persistAllData();
+            alert('Import EIR Saved Successfully!');
+            renderEirTable();
+        }
+
+        function renderEirTable() {
+            const tbody = document.getElementById('eir-list-body');
+            if(!tbody) return;
+            tbody.innerHTML = eirDataList.length === 0 ? 
+                `<tr><td colspan="8" style="text-align:center; color:var(--text-muted);">No EIR Records Found</td></tr>` :
+                eirDataList.map(item => `
+                    <tr>
+                        <td><strong>${item.no}</strong></td>
+                        <td>${item.date}</td>
+                        <td>${item.vesselRot}</td>
+                        <td><strong>${item.cont}</strong></td>
+                        <td>${item.consignee}</td>
+                        <td>${item.trailer}</td>
+                        <td>${item.gate}</td>
+                        <td>
+                            <button class="action-btn btn-delete" onclick="deleteEir('${item.id}')">Delete</button>
+                        </td>
+                    </tr>
+                `).join('');
+        }
+
+        function deleteEir(id) {
+            if(confirm('Are you sure you want to delete this EIR?')) {
+                const item = eirDataList.find(i => i.id == id);
+                if (item) recycleBin.push({ type: 'eir', data: item, deletedAt: new Date().toISOString() });
+                eirDataList = eirDataList.filter(i => i.id != id);
+                persistAllData();
+                renderEirTable();
+            }
+        }
+
+        // SAVE & HANDLERS FOR EMPTY STOCK
+        function calculateAge() {
+            const inDate = new Date(document.getElementById('es-indate').value);
+            const outDate = new Date(document.getElementById('es-outdate').value);
+            if(inDate && outDate && outDate >= inDate) {
+                const diffTime = Math.abs(outDate - inDate);
+                const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
+                document.getElementById('es-age').value = diffDays + ' Days';
+            } else {
+                document.getElementById('es-age').value = '0 Days';
+            }
+        }
+
+        function saveEmptyStock(e) {
+            e.preventDefault();
+            const data = {
+                id: Date.now(),
+                cont: document.getElementById('es-cont').value,
+                size: document.getElementById('es-size').value,
+                type: document.getElementById('es-type').value,
+                location: document.getElementById('es-location').value,
+                trailer: document.getElementById('es-trailer').value,
+                indate: document.getElementById('es-indate').value,
+                outdate: document.getElementById('es-outdate').value,
+                age: document.getElementById('es-age').value,
+                clearance: document.getElementById('es-clearance').value
+            };
+
+            emptyStockDataList.push(data);
+            persistAllData();
+            alert('Empty Stock Entry Saved Successfully!');
+            renderEmptyStockTable();
+        }
+
+        function renderEmptyStockTable() {
+            const tbody = document.getElementById('empty-list-body');
+            if(!tbody) return;
+            tbody.innerHTML = emptyStockDataList.length === 0 ? 
+                `<tr><td colspan="9" style="text-align:center; color:var(--text-muted);">No Empty Stock Records Found</td></tr>` :
+                emptyStockDataList.map(item => `
+                    <tr>
+                        <td><strong>${item.cont}</strong></td>
+                        <td>${item.size} / ${item.type}</td>
+                        <td>${item.location}</td>
+                        <td>${item.trailer}</td>
+                        <td>${item.indate}</td>
+                        <td>${item.outdate}</td>
+                        <td><strong style="color:var(--accent-cyan);">${item.age}</strong></td>
+                        <td>${item.clearance}</td>
+                        <td>
+                            <button class="action-btn btn-delete" onclick="deleteEmptyStock('${item.id}')">Delete</button>
+                        </td>
+                    </tr>
+                `).join('');
+        }
+
+        function deleteEmptyStock(id) {
+            if(confirm('Are you sure you want to delete this Empty Stock record?')) {
+                const item = emptyStockDataList.find(i => i.id == id);
+                if (item) recycleBin.push({ type: 'empty', data: item, deletedAt: new Date().toISOString() });
+                emptyStockDataList = emptyStockDataList.filter(i => i.id != id);
+                persistAllData();
+                renderEmptyStockTable();
+            }
+        }
+
+        // AUTOMATIC BILLING SYSTEM FUNCTIONS
+        let currentFetchedContainer = null;
+
+        function searchContainerForBill() {
+            const query = document.getElementById('bill-search-input').value.trim().toUpperCase();
+            if(!query) {
+                alert('Please enter a container number!');
+                return;
+            }
+
+            currentFetchedContainer = null;
+
+            const esMatch = emptyStockDataList.find(i => i.cont.toUpperCase() === query);
+            if(esMatch) {
+                currentFetchedContainer = {
+                    cont: esMatch.cont,
+                    size: esMatch.size,
+                    type: esMatch.type,
+                    status: 'EMPTY',
+                    indate: esMatch.indate,
+                    source: 'Empty Stock'
+                };
+            } else {
+                const chMatch = challanDataList.find(i => (i.cont || '').toUpperCase() === query || (i.cont2 || '').toUpperCase() === query);
+                if(chMatch) {
+                    let entryDate = chMatch.time ? chMatch.time.split(',')[0] : new Date().toLocaleDateString();
+                    currentFetchedContainer = {
+                        cont: query,
+                        size: chMatch.size,
+                        type: chMatch.type,
+                        status: chMatch.status || 'IMPORT',
+                        indate: entryDate,
+                        source: 'Deliver Challan'
+                    };
+                } else {
+                    const eirMatch = eirDataList.find(i => i.cont.toUpperCase() === query);
+                    if(eirMatch) {
+                        currentFetchedContainer = {
+                            cont: eirMatch.cont,
+                            size: '20"',
+                            type: 'ST',
+                            status: 'IMPORT',
+                            indate: eirMatch.date,
+                            source: 'Import EIR'
+                        };
+                    }
+                }
+            }
+
+            if(!currentFetchedContainer) {
+                alert(`No loaded container record found for '${query}'. You can manually calculate or check data.`);
+                document.getElementById('bill-result-panel').style.display = 'none';
+                return;
+            }
+
+            document.getElementById('b-no').value = 'BILL-' + Math.floor(100000 + Math.random() * 900000);
+            document.getElementById('b-cont').value = currentFetchedContainer.cont;
+            document.getElementById('b-status').value = currentFetchedContainer.status + ` (${currentFetchedContainer.source})`;
+            document.getElementById('b-sizetype').value = `${currentFetchedContainer.size} / ${currentFetchedContainer.type}`;
+            document.getElementById('b-indate').value = currentFetchedContainer.indate;
+            
+            if(!document.getElementById('b-outdate').value) {
+                document.getElementById('b-outdate').value = new Date().toISOString().split('T')[0];
+            }
+
+            document.getElementById('bill-result-panel').style.display = 'block';
+            calculateAutoBill();
+        }
+
+        function calculateAutoBill() {
+            if(!currentFetchedContainer) return;
+
+            const inDateStr = document.getElementById('b-indate').value;
+            const outDateStr = document.getElementById('b-outdate').value;
+
+            let days = 1;
+            if(inDateStr && outDateStr) {
+                const d1 = new Date(inDateStr);
+                const d2 = new Date(outDateStr);
+                const diff = d2 - d1;
+                days = Math.ceil(diff / (1000 * 60 * 60 * 24));
+                if(isNaN(days) || days <= 0) days = 1;
+            }
+
+            document.getElementById('b-days').value = days + ' Days';
+
+            const is40 = (currentFetchedContainer.size || '').includes('40');
+            const isEmpty = currentFetchedContainer.status === 'EMPTY';
+
+            let rate = 0;
+            if(isEmpty) {
+                rate = is40 ? parseFloat(document.getElementById('rate-emp-40').value || 400) : parseFloat(document.getElementById('rate-emp-20').value || 200);
+            } else {
+                rate = is40 ? parseFloat(document.getElementById('rate-imp-40').value || 1000) : parseFloat(document.getElementById('rate-imp-20').value || 500);
+            }
+
+            document.getElementById('b-rate').value = 'BDT ' + rate.toFixed(2);
+
+            const total = days * rate;
+            document.getElementById('b-total-amount').innerText = 'BDT ' + total.toLocaleString('en-BD', { minimumFractionDigits: 2 });
+        }
+
+        function saveAndPrintBill() {
+            if(!currentFetchedContainer) return;
+
+            const billRecord = {
+                id: Date.now(),
+                billNo: document.getElementById('b-no').value,
+                cont: currentFetchedContainer.cont,
+                status: currentFetchedContainer.status,
+                size: currentFetchedContainer.size,
+                indate: document.getElementById('b-indate').value,
+                outdate: document.getElementById('b-outdate').value,
+                days: document.getElementById('b-days').value,
+                rate: document.getElementById('b-rate').value,
+                total: document.getElementById('b-total-amount').innerText,
+                createdDate: new Date().toLocaleDateString()
+            };
+
+            billDataList.push(billRecord);
+            persistAllData();
+            renderBillTable();
+
+            const printArea = document.getElementById('print-area');
+            printArea.className = '';
+            printArea.innerHTML = `
+                <div class="bill-memo">
+                    <div class="bill-header">
+                        <h2>HAJI SABER AHMED TIMBER CO., LTD</h2>
+                        <p>HSAT TERMINAL PORT OPERATION - AUTOMATIC CONTAINER BILL MEMO</p>
+                    </div>
+                    <div class="bill-grid">
+                        <div><strong>Bill No:</strong> ${billRecord.billNo}</div>
+                        <div><strong>Date:</strong> ${billRecord.createdDate}</div>
+                        <div><strong>Container No:</strong> ${billRecord.cont}</div>
+                        <div><strong>Category:</strong> ${billRecord.status}</div>
+                        <div><strong>Container Size/Type:</strong> ${billRecord.size} / ${currentFetchedContainer.type}</div>
+                        <div><strong>Yard Stay Days:</strong> ${billRecord.days}</div>
+                        <div><strong>Depot In Date:</strong> ${billRecord.indate}</div>
+                        <div><strong>Bill Out Date:</strong> ${billRecord.outdate}</div>
+                    </div>
+                    <table class="bill-table">
+                        <thead>
+                            <tr>
+                                <th>Description</th>
+                                <th>Duration</th>
+                                <th>Fixed Rate / Day</th>
+                                <th>Total Amount</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Container Yard Storage & Handling Charge (${billRecord.status})</td>
+                                <td>${billRecord.days}</td>
+                                <td>${billRecord.rate}</td>
+                                <td>${billRecord.total}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <div class="bill-total">
+                        Grand Total: ${billRecord.total}
+                    </div>
+                    <div class="bill-signatures">
+                        <div>---------------------------<br>Customer Signature</div>
+                        <div>---------------------------<br>Authorized Billing Executive</div>
+                    </div>
+                </div>
+            `;
+            window.print();
+        }
+
+        function renderBillTable() {
+            const tbody = document.getElementById('bill-list-body');
+            if(!tbody) return;
+            tbody.innerHTML = billDataList.length === 0 ? 
+                `<tr><td colspan="9" style="text-align:center; color:var(--text-muted);">No bills generated yet.</td></tr>` :
+                billDataList.map(item => `
+                    <tr>
+                        <td><strong>${item.billNo}</strong></td>
+                        <td><strong>${item.cont}</strong></td>
+                        <td>${item.status}</td>
+                        <td>${item.size}</td>
+                        <td>${item.days}</td>
+                        <td>${item.rate}</td>
+                        <td><strong style="color:var(--accent-emerald);">${item.total}</strong></td>
+                        <td>${item.createdDate}</td>
+                        <td>
+                            <button class="action-btn btn-delete" onclick="deleteBill('${item.id}')">Delete</button>
+                        </td>
+                    </tr>
+                `).join('');
+        }
+
+        function deleteBill(id) {
+            if(confirm('Are you sure you want to delete this bill record?')) {
+                const item = billDataList.find(i => i.id == id);
+                if (item) recycleBin.push({ type: 'bill', data: item, deletedAt: new Date().toISOString() });
+                billDataList = billDataList.filter(i => i.id != id);
+                persistAllData();
+                renderBillTable();
+            }
+        }
+
+        // DAILY VESSEL UPDATE FUNCTIONS
+        function saveVesselUpdate(e) {
+            e.preventDefault();
+            const data = {
+                id: Date.now(),
+                sl: document.getElementById('v-sl').value,
+                name: document.getElementById('v-name').value,
+                jetty: document.getElementById('v-jetty').value,
+                berthed: document.getElementById('v-bertheddate').value,
+                agent: document.getElementById('v-agent').value,
+                operator: document.getElementById('v-operator').value,
+                sailling: document.getElementById('v-sailling').value,
+                time: document.getElementById('v-time').value
+            };
+
+            vesselDataList.push(data);
+            persistAllData();
+            alert('Daily Vessel Update Saved & Published Successfully!');
+            resetVesselAutoFields();
+            renderVesselAdminTable();
+            renderPublicVesselTable();
+        }
+
+        function renderVesselAdminTable() {
+            const tbody = document.getElementById('vessel-admin-list-body');
+            if(!tbody) return;
+            tbody.innerHTML = vesselDataList.length === 0 ? 
+                `<tr><td colspan="9" style="text-align:center; color:var(--text-muted);">No vessel records found</td></tr>` :
+                vesselDataList.map(item => `
+                    <tr>
+                        <td><strong>${item.sl}</strong></td>
+                        <td>${item.name}</td>
+                        <td>${item.jetty}</td>
+                        <td>${item.berthed}</td>
+                        <td>${item.agent}</td>
+                        <td>${item.operator}</td>
+                        <td>${item.sailling}</td>
+                        <td>${item.time}</td>
+                        <td>
+                            <button class="action-btn btn-delete" onclick="deleteVessel('${item.id}')">Delete</button>
+                        </td>
+                    </tr>
+                `).join('');
+        }
+
+        function renderPublicVesselTable() {
+            const tbody = document.getElementById('public-vessel-list-body');
+            if(!tbody) return;
+            tbody.innerHTML = vesselDataList.length === 0 ? 
+                `<tr><td colspan="8" style="text-align:center; color:var(--text-muted);">No vessel update records available at the moment.</td></tr>` :
+                vesselDataList.map(item => `
+                    <tr>
+                        <td><strong>${item.sl}</strong></td>
+                        <td><strong>${item.name}</strong></td>
+                        <td>${item.jetty}</td>
+                        <td>${item.berthed}</td>
+                        <td>${item.agent}</td>
+                        <td>${item.operator}</td>
+                        <td>${item.sailling}</td>
+                        <td>${item.time}</td>
+                    </tr>
+                `).join('');
+        }
+
+        function deleteVessel(id) {
+            if(confirm('Are you sure you want to delete this vessel update?')) {
+                const item = vesselDataList.find(i => i.id == id);
+                if (item) recycleBin.push({ type: 'vessel', data: item, deletedAt: new Date().toISOString() });
+                vesselDataList = vesselDataList.filter(i => i.id != id);
+                persistAllData();
+                renderVesselAdminTable();
+                renderPublicVesselTable();
+            }
+        }
+
+        // REPORT & TRANSPORT RENDER
+        function updateReportData() {
+            const importList = challanDataList.filter(i => i.status === 'IMPORT');
+            const loadList = challanDataList.filter(i => i.status === 'LOAD');
+            const emptyOpList = challanDataList.filter(i => i.status === 'EMPTY');
+
+            document.getElementById('stat-import').innerText = importList.length;
+            document.getElementById('stat-load').innerText = loadList.length;
+            document.getElementById('stat-empty-op').innerText = emptyOpList.length;
+            document.getElementById('stat-total-stock').innerText = emptyStockDataList.length;
+
+            const importBody = document.getElementById('report-import-body');
+            importBody.innerHTML = importList.length === 0 ? 
+                `<tr><td colspan="6" style="text-align:center; color:var(--text-muted);">No import operation data found</td></tr>` :
+                importList.map(item => `
+                    <tr>
+                        <td>${item.no}</td><td>${item.time}</td><td>${item.messrs}</td>
+                        <td><strong>${[item.cont, item.cont2].filter(Boolean).join(' / ')}</strong></td><td>${item.size} / ${item.type}</td><td>${item.trailer}</td>
+                    </tr>
+                `).join('');
+
+            const loadBody = document.getElementById('report-load-body');
+            loadBody.innerHTML = loadList.length === 0 ? 
+                `<tr><td colspan="6" style="text-align:center; color:var(--text-muted);">No load/export operation data found</td></tr>` :
+                loadList.map(item => `
+                    <tr>
+                        <td>${item.no}</td><td>${item.time}</td><td>${item.messrs}</td>
+                        <td><strong>${[item.cont, item.cont2].filter(Boolean).join(' / ')}</strong></td><td>${item.size} / ${item.type}</td><td>${item.trailer}</td>
+                    </tr>
+                `).join('');
+
+            const emptyOpBody = document.getElementById('report-emptyop-body');
+            emptyOpBody.innerHTML = emptyOpList.length === 0 ? 
+                `<tr><td colspan="6" style="text-align:center; color:var(--text-muted);">No empty operation data found</td></tr>` :
+                emptyOpList.map(item => `
+                    <tr>
+                        <td>${item.no}</td><td>${item.time}</td><td>${item.messrs}</td>
+                        <td><strong>${[item.cont, item.cont2].filter(Boolean).join(' / ')}</strong></td><td>${item.size} / ${item.type}</td><td>${item.trailer}</td>
+                    </tr>
+                `).join('');
+        }
+
+        function printFullReport() {
+            window.print();
+        }
+
+        function renderTransportReport() {
+            const selectedVehicle = document.getElementById('transport-vehicle-filter').value;
+            const selectedDateFilter = document.getElementById('transport-date-filter').value;
+
+            document.getElementById('tr-total-fleet').innerText = trailerList.length;
+            document.getElementById('tr-total-trips').innerText = challanDataList.length;
+
+            let vehiclesToProcess = selectedVehicle === 'ALL' ? trailerList : [selectedVehicle];
+
+            const tbody = document.getElementById('transport-list-body');
+            let htmlMonthly = '';
+
+            vehiclesToProcess.forEach(vehicle => {
+                const vehicleChallans = challanDataList.filter(i => i.trailer === vehicle);
+                const totalTrips = vehicleChallans.length;
+                const importTrips = vehicleChallans.filter(i => i.status === 'IMPORT').length;
+                const loadTrips = vehicleChallans.filter(i => i.status === 'LOAD').length;
+                const emptyTrips = vehicleChallans.filter(i => i.status === 'EMPTY').length;
+                
+                const drivers = [...new Set(vehicleChallans.map(i => i.driver).filter(d => d))].join(', ') || 'No Driver Assigned';
+                const lastDate = vehicleChallans.length > 0 ? vehicleChallans[vehicleChallans.length - 1].time : 'N/A';
+
+                if(selectedVehicle === 'ALL' || totalTrips > 0) {
+                    htmlMonthly += `
+                        <tr>
+                            <td><strong>${vehicle}</strong></td>
+                            <td>${drivers}</td>
+                            <td><strong style="color:var(--accent-cyan);">${totalTrips}</strong></td>
+                            <td><span style="color:var(--accent-emerald); font-weight:bold;">${importTrips}</span></td>
+                            <td><span style="color:var(--accent-purple); font-weight:bold;">${loadTrips}</span></td>
+                            <td><span style="color:var(--text-muted); font-weight:bold;">${emptyTrips}</span></td>
+                            <td>${lastDate}</td>
+                        </tr>
+                    `;
+                }
+            });
+
+            tbody.innerHTML = htmlMonthly || `<tr><td colspan="7" style="text-align:center; color:var(--text-muted);">No matching trip records found</td></tr>`;
+
+            const datewiseBody = document.getElementById('transport-datewise-body');
+            let htmlDatewise = '';
+
+            vehiclesToProcess.forEach(vehicle => {
+                const vehicleChallans = challanDataList.filter(i => {
+                    const matchVehicle = i.trailer === vehicle;
+                    let matchDate = true;
+                    if(selectedDateFilter) {
+                        matchDate = i.time && i.time.includes(selectedDateFilter);
+                    }
+                    return matchVehicle && matchDate;
+                });
+
+                if(vehicleChallans.length > 0) {
+                    const totalTripsOnDate = vehicleChallans.length;
+                    const impOnDate = vehicleChallans.filter(i => i.status === 'IMPORT').length;
+                    const loadOnDate = vehicleChallans.filter(i => i.status === 'LOAD').length;
+                    const emptyOnDate = vehicleChallans.filter(i => i.status === 'EMPTY').length;
+                    const driversOnDate = [...new Set(vehicleChallans.map(i => i.driver).filter(d => d))].join(', ') || 'N/A';
+
+                    htmlDatewise += `
+                        <tr>
+                            <td><strong>${selectedDateFilter || 'All Dates'}</strong></td>
+                            <td><strong>${vehicle}</strong></td>
+                            <td>${driversOnDate}</td>
+                            <td><strong style="color:var(--accent-cyan);">${totalTripsOnDate}</strong></td>
+                            <td><span style="color:var(--accent-emerald); font-weight:bold;">${impOnDate}</span></td>
+                            <td><span style="color:var(--accent-purple); font-weight:bold;">${loadOnDate}</span></td>
+                            <td><span style="color:var(--text-muted); font-weight:bold;">${emptyOnDate}</span></td>
+                        </tr>
+                    `;
+                }
+            });
+
+            datewiseBody.innerHTML = htmlDatewise || `<tr><td colspan="7" style="text-align:center; color:var(--text-muted);">No datewise trip records found</td></tr>`;
+        }
+
+        function printTransportReport() {
+            window.print();
+        }
+
+        // ADMIN USER TABLE
+        function handleCreateStaff(e) {
+            e.preventDefault();
+            const user = document.getElementById('new-staff-user').value.trim().toLowerCase();
+            const pass = document.getElementById('new-staff-pass').value;
+            const designation = document.getElementById('new-staff-design').value;
+            const contact = document.getElementById('new-staff-contact').value;
+
+            if (registeredUsers[user]) {
+                alert('User already exists!');
+                return;
+            }
+
+            registeredUsers[user] = {
+                pass,
+                designation,
+                contact,
+                permissions: { challan: true, eir: true, empty: true }
+            };
+
+            persistUsers();
+            alert('Staff Account Created Successfully!');
+            e.target.reset();
+            renderAdminUserTable();
+        }
+
+        function togglePerm(user, type) {
+            if (registeredUsers[user] && registeredUsers[user].permissions) {
+                registeredUsers[user].permissions[type] = !registeredUsers[user].permissions[type];
+                persistUsers();
+            }
+        }
+
+        function deleteStaff(user) {
+            if (confirm(`Are you sure you want to delete user ${user}?`)) {
+                delete registeredUsers[user];
+                persistUsers();
+                renderAdminUserTable();
+            }
+        }
+
+        function renderAdminUserTable() {
+            const tbody = document.getElementById('admin-user-list-body');
+            if(!tbody) return;
+            let html = '';
+            for(let u in registeredUsers) {
+                if(u === 'admin') continue;
+                const usr = registeredUsers[u];
+                html += `
+                    <tr>
+                        <td><strong>${u}</strong></td>
+                        <td>${usr.designation}</td>
+                        <td>${usr.contact}</td>
+                        <td><input type="checkbox" ${usr.permissions.challan ? 'checked' : ''} onchange="togglePerm('${u}', 'challan')"></td>
+                        <td><input type="checkbox" ${usr.permissions.eir ? 'checked' : ''} onchange="togglePerm('${u}', 'eir')"></td>
+                        <td><input type="checkbox" ${usr.permissions.empty ? 'checked' : ''} onchange="togglePerm('${u}', 'empty')"></td>
+                        <td><button class="action-btn btn-delete" onclick="deleteStaff('${u}')">Delete</button></td>
+                    </tr>
+                `;
+            }
+            tbody.innerHTML = html || `<tr><td colspan="7" style="text-align:center; color:var(--text-muted);">No staff accounts created yet.</td></tr>`;
+        }
+
+        // BACKUP & RESTORE UTILITIES
+        function exportBackupJSON() {
+            const payload = {
+                exportedAt: new Date().toISOString(),
+                registeredUsers,
+                challanDataList,
+                eirDataList,
+                emptyStockDataList,
+                vesselDataList,
+                billDataList,
+                recycleBin
+            };
+            const blob = new Blob([JSON.stringify(payload, null, 2)], { type: 'application/json' });
+            const a = document.createElement('a');
+            a.href = URL.createObjectURL(blob);
+            a.download = `HSAT_Backup_${new Date().toISOString().slice(0, 10)}.json`;
+            a.click();
+        }
+
+        function exportBackupCSV() {
+            let csv = "Module,ID/No,Container,Trailer,Date/Time,Status\n";
+            challanDataList.forEach(i => csv += `"Challan","${i.no}","${[i.cont, i.cont2].filter(Boolean).join('/')}","${i.trailer}","${i.time}","${i.status}"\n`);
+            eirDataList.forEach(i => csv += `"EIR","${i.no}","${i.cont}","${i.trailer}","${i.date}","IMPORT"\n`);
+            emptyStockDataList.forEach(i => csv += `"EmptyStock","${i.cont}","${i.cont}","${i.trailer}","${i.indate}","${i.clearance}"\n`);
+
+            const blob = new Blob([csv], { type: 'text/csv' });
+            const a = document.createElement('a');
+            a.href = URL.createObjectURL(blob);
+            a.download = `HSAT_Summary_${new Date().toISOString().slice(0, 10)}.csv`;
+            a.click();
+        }
+
+        function importBackupFile(event) {
+            const file = event.target.files[0];
+            if (!file) return;
+            const reader = new FileReader();
+            reader.onload = function(e) {
+                try {
+                    const parsed = JSON.parse(e.target.result);
+                    if (parsed.challanDataList) challanDataList = parsed.challanDataList;
+                    if (parsed.eirDataList) eirDataList = parsed.eirDataList;
+                    if (parsed.emptyStockDataList) emptyStockDataList = parsed.emptyStockDataList;
+                    if (parsed.vesselDataList) vesselDataList = parsed.vesselDataList;
+                    if (parsed.billDataList) billDataList = parsed.billDataList;
+                    if (parsed.registeredUsers) registeredUsers = parsed.registeredUsers;
+                    persistAllData();
+                    alert('Data restored successfully!');
+                    location.reload();
+                } catch (err) {
+                    alert('Invalid JSON File Format!');
+                }
+            };
+            reader.readAsText(file);
+        }
+
+        function viewRecycleBin() {
+            if (recycleBin.length === 0) {
+                alert('Recycle bin is empty!');
+                return;
+            }
+            if (confirm(`Recycle Bin contains ${recycleBin.length} deleted items. Do you want to restore all items?`)) {
+                recycleBin.forEach(item => {
+                    if (item.type === 'challan') challanDataList.push(item.data);
+                    else if (item.type === 'eir') eirDataList.push(item.data);
+                    else if (item.type === 'empty') emptyStockDataList.push(item.data);
+                    else if (item.type === 'vessel') vesselDataList.push(item.data);
+                    else if (item.type === 'bill') billDataList.push(item.data);
+                });
+                recycleBin = [];
+                persistAllData();
+                alert('All items restored successfully!');
+                location.reload();
+            }
+        }
+    </script>
+</body>
+</html>
